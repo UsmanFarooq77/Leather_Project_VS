@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+body{
+    font-family: Playfair Display;
+    color: black !important;
+}
+.site-navbar-wrap.scrolled {
+    background: rgb(151, 116, 116) !important;
+    height: auto;
+    margin-top: 38px;
+}
+.site-navbar-wrap{
+    margin-top: 20px;
+}
+@media (max-width:767px) {
+    .sf_logo{
+        width: 15%;
+    }  
+}

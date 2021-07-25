@@ -1,0 +1,57 @@
+
+.marquee_adjustment_top_header{
+font-weight: bold;
+margin-top: 7px;
+}
+.icon-facebook, .icon-instagram, .icon-whatsapp {
+    color: white;
+    font-weight: bold;
+}
+.customer_support{
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    float: right;
+    margin-top: 5px;
+    margin-right: 24px;
+}
+.facebook_logo_top_header{
+    margin-right: 7px;
+}
+
+.instagram_logo_top_header{
+    margin-right: 7px;
+}
+.whatsapp_logo_top_header{
+    margin-right: 7px;
+}
+.top_header_logo{
+    display: inline-block;
+    padding: 5px;
+    margin-left: 80px;
+}
+@media (max-width:767px) {
+    .customer_support{
+        margin-right: 7px;
+    }
+    .top_header_logo{
+        margin-left: 0px;
+    }
+}
+
+@media (min-width:768px) and (max-width:1024px) {
+    .customer_support{
+        margin-right: 2px;
+    }
+    .col-md-8{
+        flex: 0 0 58%;
+        max-width: 58%;
+    }
+    .col-md-4{
+        flex: 0 0 42%;
+        max-width: 42%;
+    }
+    .top_header_logo{
+        margin-left: 0px;
+    }
+}

@@ -1,0 +1,31 @@
+.glyphicon{
+    float: right !important;
+    top: -29px !important;
+    right: 5px !important;
+}
+
+.alert{
+    position:inherit !important;
+}
+
+.asterisk_mark{
+    color: red;
+    position: relative !important;
+    float: right;
+    top: 8px !important;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 0rem !important;
+    color: black;
+}
+
+.btn{
+    color: darkred
+}
+
+.btn:hover {
+    background-color: darkred;
+    color: #fff;
+}

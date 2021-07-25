@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "quickbook-994bb"
+  },
+  "targets": {
+    "quickbook-994bb": {
+      "hosting": {
+        "app": [
+          "sfleathers"
+        ]
+      }
+    }
+  }
+}

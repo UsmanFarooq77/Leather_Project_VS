@@ -1,0 +1,39 @@
+
+.navbar-nav{
+    margin-left: auto;
+}
+.nav-item{
+    margin-left: 12px;
+}
+.dropdown-menu{
+    background-color: black;
+    color: red;
+    border-radius: 10px;
+}
+.dropdown-item{
+color: slategrey;
+}
+.navbar-brand {
+    padding-top: 10px !important;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    .sf_logo_tab{
+            font-size: revert !important;
+            margin-top: 3px;
+    }
+}
+@media (max-width:767px) {
+    .site-navbar-wrap{
+        background-color: rgb(151, 116, 116) !important;
+        padding: 0px 0 !important;
+        margin-top: 67px;
+    }
+}
+@media (max-width:303px) {
+    .site-navbar-wrap{
+        margin-top: 104px;
+    }
+}
+

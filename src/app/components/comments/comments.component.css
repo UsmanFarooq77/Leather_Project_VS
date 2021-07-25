@@ -1,0 +1,58 @@
+.main_div_comments {
+  height: 430.5px !important;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.comment_content {
+  width: 100%;
+  color: black;
+  background-color: #f5f5f5;
+  padding-left: 15px;
+  border-radius: 40px;
+  overflow: auto;
+  overflow-x: hidden;
+  border-width: 0px;
+}
+
+.media {
+  border-left: 2px solid #eee !important;
+}
+
+.glyphicon {
+  top: 15px !important;
+  right: 20px !important;
+}
+
+.alert {
+  position: inherit !important;
+}
+
+.btn {
+  color: darkred;
+}
+
+.btn:hover {
+  background-color: darkred;
+  color: #fff;
+}
+.comment_feedback {
+  text-decoration: underline;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+}
+
+.no_comment_div {
+  margin-left: auto;
+  margin-right: auto;
+}
+.no_comment_heading {
+  border: 1px solid darkgray;
+  padding: 11px;
+}
+
+@media (max-width: 767px) {
+  .no_comment_div {
+    margin-bottom: 30px;
+  }
+}

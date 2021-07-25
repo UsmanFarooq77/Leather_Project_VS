@@ -1,0 +1,182 @@
+<div class="header">
+  <app-header></app-header>
+</div>
+<div class="container-fluid">
+  <!-- <div class="row"> -->
+  <!-- Blog Entries Column -->
+  <!-- <div class="col-md-12"> -->
+  <div class="font" *ngIf="Post$ as post else postLoading">
+    <div class="row">
+      <div class="col-md-12">
+        <p class="page-header">
+          <!-- <marquee behavior="alternate" scrollamount="4"> -->
+          Premium Quality Leather Products in Pakistan
+          <small>(SF Leathers) </small>
+          <!-- </marquee> -->
+        </p>
+        <!-- First Blog Post -->
+        <h2 style="font-family: cursive;">{{ post.post_title }}</h2>
+        <h3 *ngIf="post.post_actual_price" style="font-family: cursive;">
+          Actual Price Rs:
+          <del>{{ post.post_actual_price }}</del>
+        </h3>
+        <h3 style="display: inline-block; font-family: cursive;">
+          Price Rs:
+          {{ post.post_tags }}
+        </h3>
+        <img *ngIf="post.post_actual_price" src="../../../assets/images/offer.png" width="62px">
+        <h4 style="font-family: cursive;">
+          Category:
+          {{ post.post_category }}
+        </h4>
+        <p style="font-weight: bold; color: black">
+          <span class="fa fa-clock-o"></span>
+          {{ post.picker | date: "dd/MM/yyyy" }}
+        </p>
+        <hr style="margin-bottom: 2px;" />
+        <marquee width="100%" behavior="scroll">
+          <img style="border-radius: 20px;" *ngIf="post.post_status==false"
+            src="https://media.giphy.com/media/ftSsFBJqT84nvE5YUh/giphy.gif" width="110px" height="auto">
+        </marquee>
+      </div>
+    </div>
+    <div class="row">
+      <div class="carousel_column">
+        <div class="col-md-7">
+          <div id="demo" class="carousel slide" data-ride="carousel" style="
+                width: 100%;
+                background-color: black;
+                border: 1px solid black;
+                padding: 30px;
+                border-radius: 6px;
+              ">
+            <ul class="carousel-indicators">
+              <li data-target="#demo" data-slide-to="0" class="active"></li>
+              <li data-target="#demo" data-slide-to="1"></li>
+              <li data-target="#demo" data-slide-to="2"></li>
+              <li data-target="#demo" data-slide-to="3"></li>
+            </ul>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="image_height" [src]="post.image1" alt="Los Angeles" max-width="100%" />
+                <div class="carousel-caption">
+                  <h3><img class="sf_logo" src="../../../assets/images/SF-Leathers.png" width="10%" height="auto">
+                  </h3>
+                  <p style="color: black;">SF Leathers</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img class="image_height" [src]="post.image2" alt="Chicago" max-width="100%" />
+                <div class="carousel-caption">
+                  <h3><img class="sf_logo" src="../../../assets/images/SF-Leathers.png" width="10%" height="auto">
+                  </h3>
+                  <p style="color: black;">SF Leathers</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img class="image_height" [src]="post.image3" alt="New York" max-width="100%" />
+                <div class="carousel-caption">
+                  <h3><img class="sf_logo" src="../../../assets/images/SF-Leathers.png" width="10%" height="auto">
+                  </h3>
+                  <p style="color: black;">SF Leathers</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img class="image_height" [src]="post.image4" alt="New York" max-width="100%" />
+                <div class="carousel-caption">
+                  <h3><img class="sf_logo" src="../../../assets/images/SF-Leathers.png" width="10%" height="auto">
+                  </h3>
+                  <p style="color: black;">SF Leathers</p>
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo" data-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="room-description">
+            <div style="background-color: #f5f5f5; padding: 10px; margin-bottom: 5px;">
+              <h6 style="display: inline-block; width: 50%;">
+                SKU: {{ post.post_address }}
+              </h6>
+              <h6 style="display: inline-block;">
+                Discount %
+              </h6>
+            </div>
+            <!-- <h4 style="background-color: #f5f5f5; padding: 10px">
+                Phone #: {{ post.post_phone_num }}
+              </h4> -->
+            <h5>
+              <h3 style="background-color: #f5f5f5; padding: 10px">
+                Description:
+              </h3>
+              <!-- <div class="description-content">{{ post.post_content }}</div> -->
+              <div class="description-content" [innerText]="post.post_content">
+              </div>
+            </h5>
+            <a style="font-size: x-large" class="btn" [routerLink]="['/booking', post.$key]">Buy Now <span
+                class="fa fa-shopping-cart"></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #postLoading>
+    <div class="text-center">
+      <span><img src="../../../assets/images/loading_dots.gif" width="30%"></span>
+    </div>
+    <div class="text-center">
+      <img class="room_no_data_found" src="../../../assets/images/no-data-found.jpg" width="30%" height="auto">
+      <h3>Oops!</h3>
+      <h5>No Data Found.</h5>
+    </div>
+  </ng-template>
+  <!-- </div>
+  </div> -->
+  <br />
+  <!-- Comment -->
+  <!-- <div class="row">
+    <div class="col-md-7 mb-4"> -->
+  <app-comments *ngIf="Post$ as post"></app-comments>
+  <!-- </div>
+  </div> -->
+  <div *ngIf="filteredPostsByCategory.length" class="row mb-4">
+    <div class="col-md-12">
+      <h3 style="font-family: 'FontAwesome'; text-decoration: underline;">Related Products </h3>
+      <div>
+        <!-- <a class="btn prev">Previous</a> -->
+        <span class="icon-arrow_back prev"></span>
+        <div id="slider" class="nonloop-block-15 owl-carousel">
+          <ng-container *ngFor="let relatedPost of filteredPostsByCategory">
+            <div class="media-with-text">
+              <div class="img-border-sm">
+                <button style="cursor: pointer;" (click)="relatedPostDetails(relatedPost.$key)" title="Click Me">
+                  <img max-width="100%" height="280px" [src]="relatedPost.image1" alt="Image Not Found.">
+                </button>
+              </div>
+              <span *ngIf="relatedPost.post_special_price else onlyActualPrice">
+                <h5 style="display: inline;"><span style="color: crimson;">Was </span><del>{{ 'Rs ' +
+                    relatedPost.post_actual_price}}</del></h5>
+                <h5 style="display: inline;"><span style="color: darkgreen;">Now </span> Rs
+                  {{relatedPost.post_special_price}}</h5>
+              </span>
+              <ng-template #onlyActualPrice>
+                <h5 style="display: inline;">{{ 'Rs ' + relatedPost.post_actual_price}}</h5>
+              </ng-template>
+            </div>
+          </ng-container>
+          <!-- <h2 *ngIf="!filteredPostsByCategory.length">
+          No Related Data Found.
+          </h2> -->
+        </div>
+        <!-- <a class="btn next">Next</a> -->
+        <span class="icon-arrow_forward next"></span>
+      </div>
+    </div>
+  </div>
+</div>

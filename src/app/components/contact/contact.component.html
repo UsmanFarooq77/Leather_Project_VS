@@ -1,0 +1,144 @@
+<app-header></app-header>
+<!-- <app-mobile-menu></app-mobile-menu> -->
+<div class="site-blocks-cover overlay" style="background-image: url(../../../assets/images/contact-us1.jpg);"
+  data-aos="fade" data-stellar-background-ratio="0.5">
+  <div class="container">
+    <div class="row align-items-center justify-content-center">
+      <div class="col-md-7 text-center w3-animate-zoom" data-aos="fade">
+        <span class="caption mb-3">Chat With Us</span>
+        <h1 class="mb-4">Get In Touch</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="site-section site-section-sm">
+  <div class="container">
+    <div class="row">
+      <div *ngIf="Hidden" class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+        <strong>Well done!</strong> Thank you for Contacting us, We will contact you as soon as possible..!!!
+      </div>
+      <div *ngIf="Hidden==false" class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+        <strong>Attention!</strong> Your Information Is Not Submit
+      </div>
+      <div class="col-md-12 col-lg-8 mb-5">
+        <form #contactForm="ngForm" (ngSubmit)="addContact(contactForm)">
+          <div class="row form-group">
+            <div class="col-md-12 mb-3 mb-md-0">
+              <label class="font-weight-bold" for="fullname">Full Name</label><span
+                class="asterisk_mark">*</span>
+              <div class="form-group has-success has-feedback">
+                <div class="form-group">
+                  <div class="input-group">
+                    <input style="border-radius: 15px;" type="text" name="fullname" class="form-control"
+                      placeholder="Full Name" [(ngModel)]="contact.fullname" required #first='ngModel' minlength="3">
+                  </div>
+                  <span *ngIf="first.errors?.required && first.touched"
+                  class="glyphicon glyphicon-remove form-control-feedback"></span>
+                  <span *ngIf="first.errors?.minlength && first.touched"
+                  class="glyphicon glyphicon-remove form-control-feedback"></span>
+                  <span *ngIf="first.valid && first.touched"
+                  class="glyphicon glyphicon-ok form-control-feedback"></span>
+                  <span class="alert alert-danger" *ngIf="first.errors?.required && first.touched">Full Name required !</span>
+                  <span class="alert alert-danger" *ngIf="first.errors?.minlength && first.touched">Must be at least 3
+                    characters.</span>
+                </div>
+                <!-- <span *ngIf="first.errors?.minlength!=false && first.touched" class="glyphicon glyphicon-ok form-control-feedback"></span> -->
+
+              </div>
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-md-12">
+              <label class="font-weight-bold" for="email">Email</label>
+              <div class="form-group has-success has-feedback">
+                <div class="form-group">
+                  <div class="input-group">
+                    <input style="border-radius: 15px;" type="email" name="email" class="form-control"
+                      placeholder="Email Address" [(ngModel)]="contact.email"
+                      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" #emailCheck='ngModel'>
+                  </div>
+                  <span *ngIf="emailCheck.errors?.pattern && emailCheck.touched"
+                      class="glyphicon glyphicon-remove form-control-feedback"></span>
+                    <span *ngIf="!emailCheck.errors?.pattern"
+                      class="glyphicon glyphicon-ok form-control-feedback"></span>
+                  <!-- <span class="alert alert-danger" *ngIf="emailCheck.touched && emailCheck.errors?.required">Email required</span> -->
+                  <span class="alert alert-danger" *ngIf="emailCheck.errors?.pattern && emailCheck.touched">Example@gmail.com</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-md-12 mb-3 mb-md-0">
+              <label class="font-weight-bold" for="phone">Phone</label><span class="asterisk_mark">*</span>
+              <div class="form-group has-success has-feedback">
+                <div class="form-group">
+                  <div class="input-group">
+                    <input style="border-radius: 15px;" type="tel" name="phone" class="form-control"
+                      placeholder="Phone #" [(ngModel)]="contact.phone" required
+                      pattern="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]" #phoneCheck='ngModel'
+                      onkeypress=" return (event.charCode >= 48 && event.charCode <=57 )">
+                  </div>
+                  <span *ngIf="phoneCheck.errors?.required && phoneCheck.touched"
+                      class="glyphicon glyphicon-remove form-control-feedback"></span>
+                      <span *ngIf="phoneCheck.errors?.pattern && phoneCheck.touched"
+                      class="glyphicon glyphicon-remove form-control-feedback"></span>
+                    <span *ngIf="phoneCheck.valid && phoneCheck.touched"
+                      class="glyphicon glyphicon-ok form-control-feedback"></span>
+                  <span class="alert alert-danger"
+                    *ngIf="phoneCheck.errors?.required && phoneCheck.touched">Phone # Required !</span>
+                  <span class="alert alert-danger" *ngIf="phoneCheck.errors?.pattern && phoneCheck.touched">Example
+                    (01231231111)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-md-12">
+              <label class="font-weight-bold" for="message">Message</label> <span
+                class="asterisk_mark">*</span>
+              <div class="form-group has-success has-feedback">
+                <div class="form-group">
+                  <div class="input-group">
+                    <textarea style="border-radius: 15px;" name="message" cols="30" rows="5" class="form-control"
+                      placeholder="Say hello to us" minlength="10" #last='ngModel' [(ngModel)]="contact.message"
+                      required></textarea>
+                  </div>
+                  <span *ngIf="last.errors?.required && last.touched"
+                      class="glyphicon glyphicon-remove form-control-feedback"></span>
+                      <span *ngIf="last.errors?.minlength && last.touched"
+                      class="glyphicon glyphicon-remove form-control-feedback"></span>
+                    <span *ngIf="last.valid && last.touched"
+                      class="glyphicon glyphicon-ok form-control-feedback"></span>
+                  <span class="alert alert-danger" *ngIf="last.touched && last.errors?.required">Message required !</span>
+                  <span class="alert alert-danger" *ngIf="last.errors?.minlength && last.touched">Must be at least 10
+                    characters.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-md-12">
+              <input type="submit" value="Send Message" [disabled]="contactForm.invalid"
+                class="btn btn-outline-primary pill px-4 py-2">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-4">
+        <div class="p-4 mb-3 bg-white">
+          <h3 class="h5 text-black mb-3">Contact Info</h3>
+          <p class="mb-0 font-weight-bold">Address</p>
+          <p class="mb-4">Masjid Mian Wali Muhammad,Inside Mori Gate Kasur</p>
+          <p class="mb-0 font-weight-bold">Phone</p>
+          <p class="mb-4">03451234567</p>
+          <p class="mb-0 font-weight-bold">Email Address</p>
+          <p class="mb-0">Example@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
