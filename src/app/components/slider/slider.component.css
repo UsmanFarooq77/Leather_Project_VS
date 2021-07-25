@@ -1,0 +1,35 @@
+/* .owl-carousel.owl-loaded {
+    
+}
+
+.owl-carousel.owl-hidden {
+    opacity: none;
+} */
+
+/* .owl-carousel.owl-loaded {
+    display: block;
+}
+
+.owl-carousel.owl-hidden {
+    opacity: 0;
+    display: block;
+}
+
+.slide-one-item {
+    position: relative;
+    z-index: 1;
+}
+
+.owl-carousel {
+    display: block;
+    width: 100%;
+    z-index: 1;
+} */
+
+/* .site-blocks-cover {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: none !important;
+} */
+
+.owl-nav{text-align:center;-webkit-tap-highlight-color:transparent}

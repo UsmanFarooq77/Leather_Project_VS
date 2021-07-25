@@ -1,0 +1,145 @@
+<div class="row">
+  <!-- Blog Entries Column -->
+  <div class="col-md-7 mb-4">
+    <div *ngIf="Hidden" class="alert alert-success alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <strong>Well done!</strong> Thank you for your Feedback..!!
+    </div>
+    <div *ngIf="Hidden == false" class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <strong>Attention!</strong> Your Feedback Is Not Submit.
+    </div>
+    <!-- Comments Form -->
+    <div class="well">
+      <h4 style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">Add Feedback:</h4>
+      <form #commentForm="ngForm" (ngSubmit)="commentUser(commentForm)">
+        <!-- <input style="display: none" type="text" name="date" class="form-control"
+          [ngModel]="comment_date | date: 'dd/MM/yyyy'" /> -->
+        <div class="row form-group">
+          <div class="col-md-12 mb-3 mb-md-0">
+            <label class="font-weight-bold" for="Author">Full Name</label><span style="color: red">*</span>
+            <div class="form-group has-success has-feedback">
+              <div class="form-group">
+                <div class="input-group">
+                  <input style="border-radius: 15px; border-color: blue" type="text" name="comment_author" placeholder="Full Name"
+                    class="form-control" [(ngModel)]="comment.comment_author" required #first="ngModel" minlength="3" />
+                  <span *ngIf="first.errors?.required && first.touched"
+                    class="glyphicon glyphicon-remove form-control-feedback"></span>
+                  <span *ngIf="first.errors?.minlength && first.touched"
+                    class="glyphicon glyphicon-remove form-control-feedback"></span>
+                  <span *ngIf="first.valid && first.touched"
+                    class="glyphicon glyphicon-ok form-control-feedback"></span>
+                </div>
+                <span class="alert alert-danger" *ngIf="first.errors?.required && first.touched">Full Name required
+                  !</span>
+                <span class="alert alert-danger" *ngIf="first.errors?.minlength && first.touched">Must be at least 3
+                  characters.</span>
+              </div>
+              <!-- <span *ngIf="first.errors?.minlength!=false && first.touched" class="glyphicon glyphicon-ok form-control-feedback"></span> -->
+            </div>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-12 mb-3 mb-md-0">
+            <label class="font-weight-bold" for="Email">Email</label>
+            <div class="form-group has-success has-feedback">
+              <div class="form-group">
+                <div class="input-group">
+                  <input style="border-radius: 15px; border-color: blue" type="email" name="comment_email" placeholder="Email Address"
+                    class="form-control" [(ngModel)]="comment.comment_email"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" #emailCheck="ngModel"/>
+                  <!-- <span *ngIf="emailCheck.valid && emailCheck.touched"
+                    class="glyphicon glyphicon-remove form-control-feedback"></span> -->
+                  <span *ngIf="emailCheck.errors?.pattern && emailCheck.touched"
+                    class="glyphicon glyphicon-remove form-control-feedback"></span>
+                  <span *ngIf="emailCheck.valid"
+                    class="glyphicon glyphicon-ok form-control-feedback"></span>
+                </div>
+                <!-- <span class="alert alert-danger" *ngIf="emailCheck.touched && emailCheck.errors?.required">Email
+                  required</span> -->
+                <span class="alert alert-danger" *ngIf="emailCheck.errors?.pattern && emailCheck.touched">Enter Email
+                  Like us@gmail.com</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="form-group" style="display: none">
+          <label for="Author">ID</label>
+          <input type="text" name="id" class="form-control" [ngModel]="IdLower" />
+        </div> -->
+        <div class="row form-group">
+          <div class="col-md-12 mb-3 mb-md-0">
+            <label class="font-weight-bold" for="comment">Your Feedback</label><span style="color: red">*</span>
+            <div class="form-group has-success has-feedback">
+              <div class="form-group">
+                <div class="input-group">
+                  <textarea style="border-radius: 15px; border-color: blue" name="comment_content" placeholder="Write Feedback here...,"
+                    class="form-control" rows="3" [(ngModel)]="comment.comment_content" minlength="10" #last="ngModel"
+                     required>
+                          </textarea>
+                  <span *ngIf="last.errors?.required && last.touched"
+                    class="glyphicon glyphicon-remove form-control-feedback"></span>
+                  <span *ngIf="last.errors?.minlength && last.touched"
+                    class="glyphicon glyphicon-remove form-control-feedback"></span>
+                  <span *ngIf="last.valid && last.touched"
+                    class="glyphicon glyphicon-ok form-control-feedback"></span>
+                </div>
+                <span class="alert alert-danger" *ngIf="last.touched && last.errors?.required">Message required !</span>
+                <span class="alert alert-danger" *ngIf="last.errors?.minlength && last.touched">Must be at least 10
+                  characters.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="form-group" style="display: none">
+          <label for="Author">Image</label>
+          <input type="text" name="image" class="form-control"
+            [(ngModel)]="comment.image" />
+        </div> -->
+        
+        <input type="submit" name="create_comment" class="btn btn-outline-primary" 
+        [disabled]="commentForm.invalid" value="Submit"/>
+        
+      </form>
+    </div>
+  </div>
+  <!-- Posted Comments -->
+  <!-- Comment -->
+  <div *ngIf="commentStatusCount.length else zeroComment" class="col-md-5 main_div_comments">
+    {{commentStatusCount.length}}
+    <h3 class="comment_feedback">FeedBacks:</h3>
+    <ng-container *ngFor="let comment of Comments | reverse">
+      <div class="media mt-3" *ngIf="comment.comment_status == 'approved'">
+        <img [src]="comment.image" alt="John Doe" class="mr-1 mt-3 rounded-circle" style="width: 75px" />
+        <div>
+          <div class="media-body">
+            <h6 class="media-heading">
+              <h5 style="
+                  display: inline-block;
+                  color: crimson;
+                  font-family: 'Times New Roman', Times, serif;
+                ">
+                {{ comment.comment_author }}
+              </h5>
+              <small>
+                {{ comment.comment_date }}
+              </small>
+            </h6>
+            <textarea class="comment_content" disabled>{{ comment.comment_content }}</textarea>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <ng-template #zeroComment>
+    <div class="no_comment_div">
+      <h3 class="no_comment_heading">No Feedback Yet.</h3>
+    </div>
+  </ng-template>
+
+</div>

@@ -1,0 +1,165 @@
+<!-- <app-mobile-menu></app-mobile-menu> -->
+<div class="header">
+  <app-header></app-header>
+</div>
+<marquee class="marquee_adjustment" direction="left" scrollamount="4">
+  <span style="color: red;">Note:</span> Congratulation you will save <span style="color: blue;">Rs 50</span>
+  on buying the product
+  from here.The product will be delivered to you in 2-3 working days in
+  Lahore and 4-5 working days outside Lahore.
+</marquee>
+<div class="container w3-animate-left">
+  <div class="row">
+    <div class="col-md-5">
+      <div class="panel panel-default">
+        <div style="background-color: #eee; padding: 15px" class="panel-body">
+          <div class="text-center">
+            <div *ngIf="Hidden" class="alert alert-success alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <strong>Well done!</strong> You Successfully submit This Order.
+            </div>
+            <div *ngIf="Hidden == false" class="alert alert-danger alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <strong>Attention!</strong> Your Order Is Not Submit
+            </div>
+            <!-- <h3><i class="fa fa-user fa-4x"></i></h3> -->
+            <h3 style="padding-top: 10px;">
+              <img style="width: 50%; border-radius: 25px"
+                src="../../../assets/images/booking-mobile-click.gif" alt="No Image Found." />
+            </h3>
+            <div class="sf_logo_booking w3-red">
+              <button type="button" class="subtract_cart" (click)="subtractCart()">-</button>
+              <h2 style="font-family: Playfair Display; display: inline-block;">
+                SF Leathers
+              </h2>
+              <button type="button" class="add_cart" (click)="addCart()">+</button>
+              <i class="fa fa-shopping-cart" aria-hidden="true">
+                <sup>{{totalOrders}}</sup></i>
+            </div>
+            <div class="panel-body">
+              <form #book="ngForm" (ngSubmit)="booking(book)" autocomplete="on">
+                <div class="form-group has-success has-feedback">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input id="inputSuccess" id="inputWarning" name="user_firstname" type="text" class="form-control"
+                        placeholder="Firstname" [(ngModel)]="bookings.user_firstname" #first="ngModel" required
+                        minlength="3"/>
+                      <span *ngIf="first.errors?.required && first.touched"
+                        class="glyphicon glyphicon-remove form-control-feedback"></span>
+                      <span *ngIf="first.errors?.minlength && first.touched"
+                        class="glyphicon glyphicon-remove form-control-feedback"></span>
+                      <span *ngIf="first.valid && first.touched"
+                        class="glyphicon glyphicon-ok form-control-feedback"></span>
+                      <span style="color: red">*</span>
+                    </div>
+                    <span class="alert alert-danger" *ngIf="first.errors?.required && first.touched">First name required
+                      !</span>
+                    <span class="alert alert-danger" *ngIf="first.errors?.minlength && first.touched">Must be at least 3
+                      characters.</span>
+                  </div>
+                  <!-- <span *ngIf="first.errors?.minlength!=false && first.touched" class="glyphicon glyphicon-ok form-control-feedback"></span> -->
+                </div>
+                <div class="form-group has-success has-feedback">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input name="user_lastname" type="text" class="form-control" placeholder="Lastname"
+                        [(ngModel)]="bookings.user_lastname" #last="ngModel" required minlength="3" />
+                      <span *ngIf="last.errors?.required && last.touched"
+                        class="glyphicon glyphicon-remove form-control-feedback"></span>
+                      <span *ngIf="last.errors?.minlength && last.touched"
+                        class="glyphicon glyphicon-remove form-control-feedback"></span>
+                      <span *ngIf="last.valid && last.touched"
+                        class="glyphicon glyphicon-ok form-control-feedback"></span>
+                      <span style="color: red">*</span>
+                    </div>
+                    <span class="alert alert-danger" *ngIf="last.touched && last.errors?.required">Last name required !</span>
+                    <span class="alert alert-danger" *ngIf="last.errors?.minlength && last.touched">Must be at least 3
+                      characters.</span>
+                  </div>
+                </div>
+                <div class="form-group has-success has-feedback">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                      <input name="user_email" type="text" class="form-control" placeholder="Email Address"
+                        [(ngModel)]="bookings.user_email" #email="ngModel"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" />
+                      <span *ngIf="email.errors?.pattern && email.touched"
+                        class="glyphicon glyphicon-remove form-control-feedback"></span>
+                      <span *ngIf="!email.errors?.pattern" class="glyphicon glyphicon-ok form-control-feedback"></span>
+                      <span style="visibility: hidden;">* </span>
+                    </div>
+                    <span class="alert alert-danger"
+                      *ngIf="email.errors?.pattern && email.touched">Example@gmail.com</span>
+                  </div>
+                </div>
+                <div class="form-group has-success has-feedback">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+                      <input name="user_phone" type="tel" class="form-control" placeholder="Phone"
+                        [(ngModel)]="bookings.user_phone" #phone="ngModel" required
+                        pattern="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"
+                        onkeypress=" return (event.charCode >= 48 && event.charCode <=57 )" />
+                      <span *ngIf="phone.errors?.required && phone.touched"
+                        class="glyphicon glyphicon-remove form-control-feedback"></span>
+                      <span *ngIf="phone.valid && phone.touched"
+                        class="glyphicon glyphicon-ok form-control-feedback"></span>
+                      <span style="color: red">*</span>
+                    </div>
+                    <span class="alert alert-danger" *ngIf="phone.errors?.required && phone.touched">Phone #
+                      Required !</span>
+                    <span class="alert alert-danger" *ngIf="phone.errors?.pattern && phone.touched">
+                      Example (0000-0000000)</span>
+                  </div>
+                  <span *ngIf="phone.errors?.minlength && phone.touched"
+                    class="glyphicon glyphicon-remove form-control-feedback"></span>
+                </div>
+                <div class="form-group has-success has-feedback">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                      <input name="user_address" type="text" class="form-control" placeholder="Address"
+                        [(ngModel)]="bookings.user_address" #address="ngModel" required minlength="15" />
+                      <span *ngIf="address.errors?.required && address.touched"
+                        class="glyphicon glyphicon-remove form-control-feedback"></span>
+                      <span *ngIf="address.errors?.minlength && address.touched"
+                        class="glyphicon glyphicon-remove form-control-feedback"></span>
+                      <span *ngIf="address.valid && address.touched"
+                        class="glyphicon glyphicon-ok form-control-feedback"></span>
+                      <span style="color: red">*</span>
+                    </div>
+                    <span class="alert alert-danger" *ngIf="address.touched && address.errors?.required">Address
+                      required !</span>
+                    <span class="alert alert-danger" *ngIf="address.errors?.minlength && address.touched">Must be at
+                      least 15 characters.</span>
+                  </div>
+                </div>
+                <div class="form-group has-success has-feedback">
+                  <span *ngIf="description.valid"
+                    class="glyphicon glyphicon-ok form-control-feedback book_description_mark"></span>
+                  <div class="form-group">
+                    <textarea name="user_description" class="form-control book_description" rows="10" cols="8"
+                      placeholder="Any Special Instruction..." [(ngModel)]="bookings.user_description"
+                      #description="ngModel"></textarea>
+                  </div>
+                </div>
+                <div style="padding: 13px;" class="form-group">
+                  <input class="btn btn-lg btn-outline-primary btn-block" value="Request To Buy" type="submit"
+                    [disabled]="book.invalid" />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr />
