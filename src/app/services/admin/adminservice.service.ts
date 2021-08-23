@@ -1,10 +1,10 @@
-import { booking } from '../interfaces/booking';
-import { comment } from '../interfaces/comment';
-import { Product } from '../interfaces/Product';
+import { booking } from '../../interfaces/booking';
+import { comment } from '../../interfaces/comment';
+import { Product } from '../../interfaces/Product';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
-import { contact } from '../interfaces/contact';
-import { Review } from '../interfaces/review';
+import { contact } from '../../interfaces/contact';
+import { Review } from '../../interfaces/review';
 @Injectable()
 export class AdminserviceService {
   constructor(private db: AngularFireDatabase) { }

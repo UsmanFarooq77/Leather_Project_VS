@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { AdminserviceService } from '../../services/adminservice.service';
+import { AdminserviceService } from '../../services/admin/adminservice.service';
 import { ReversePipe } from 'ngx-pipes';
 declare var $: any;
 // import * as $ from 'jquery';

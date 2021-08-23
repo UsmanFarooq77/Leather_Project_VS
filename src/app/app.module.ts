@@ -10,9 +10,9 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { ComponentsModule } from './components/components.module';
-import { AdminserviceService } from './services/adminservice.service';
-import { AuthService } from './components/auth.service';
-import { GuardsGuard } from './guards.guard';
+import { AdminserviceService } from './services/admin/adminservice.service';
+import { AuthService } from './services/auth/auth.service';
+import { GuardsGuard } from './guards/guards.guard';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 @NgModule({
   declarations: [

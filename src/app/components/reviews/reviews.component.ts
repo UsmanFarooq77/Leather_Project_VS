@@ -1,6 +1,6 @@
 import { Subscription } from 'rxjs/Subscription';
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { AdminserviceService } from '../../services/adminservice.service';
+import { AdminserviceService } from '../../services/admin/adminservice.service';
 import { Review } from '../../interfaces/review';
 declare var $: any;
 

@@ -1,7 +1,7 @@
 import { Product } from '../../../interfaces/Product';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AdminserviceService } from '../../../services/adminservice.service';
+import { AdminserviceService } from '../../../services/admin/adminservice.service';
 import { NgForm } from '@angular/forms';
 import { ReversePipe } from 'ngx-pipes';
 import { comments } from '../../../models/comment-model';

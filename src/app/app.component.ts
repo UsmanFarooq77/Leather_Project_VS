@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router'
-import { AuthService } from './components/auth.service';
+import { AuthService } from './services/auth/auth.service';
 declare var $: any;
 @Component({
   selector: 'app-root',

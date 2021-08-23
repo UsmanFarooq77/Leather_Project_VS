@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
-import { AdminserviceService } from '../../../services/adminservice.service';
+import { AdminserviceService } from '../../../services/admin/adminservice.service';
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import { Product } from '../../../interfaces/Product';

@@ -1,7 +1,7 @@
 import { comment } from './../../interfaces/comment';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { AdminserviceService } from '../../services/adminservice.service';
+import { AdminserviceService } from '../../services/admin/adminservice.service';
 import { comments } from '../../models/comment-model';
 import { NgForm } from '@angular/forms';
 @Component({
