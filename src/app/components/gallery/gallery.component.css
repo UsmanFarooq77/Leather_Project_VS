@@ -3,11 +3,6 @@
     font-weight: bold;
     font-size: 20px;
 }
-.header{
-    width: 100%; 
-    height: 100px; 
-    background-color: rgb(151, 116, 116);
-}
 .images > .col-md-4 {
     height: 321px;
     border: 1px solid crimson;
@@ -51,9 +46,6 @@ a > img:hover{
         max-width: 99.33333%;
         height: 321px;
         
-    }
-    .header{ 
-        height: 0px;
     }
 } 
 @media (min-width: 768px) and (max-width: 1023px){

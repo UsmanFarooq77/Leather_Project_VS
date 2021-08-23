@@ -1,8 +1,3 @@
-.header {
-  width: 100%;
-  height: 100px;
-  background-color: rgb(151, 116, 116);
-}
 
 .prev {
   cursor: pointer;
@@ -24,11 +19,6 @@
 }
 
 @media (min-width:320px) and (max-width: 767px) {
-  .header {
-    width: 100%;
-    height: 0px;
-    background-color: rgb(151, 116, 116);
-  }
   .section-heading h2 {
     margin-top: 115px !important;
   }
