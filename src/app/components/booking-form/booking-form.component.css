@@ -26,6 +26,11 @@ body{
     line-height: 2.7px; 
 }
 
+.header{
+    width: 100%; 
+    height: 100px; 
+    background-color: rgb(151, 116, 116);
+}
 .marquee_adjustment{
     font-size: x-large;
     color: black;
@@ -141,6 +146,11 @@ sup {
 }
 
 @media  (max-width: 767px){
+    .header{ 
+        width: 100%; 
+        height: 0px; 
+        background-color: rgb(151, 116, 116);
+    }
     .col-md-5{
         max-width: 100%;
         flex: 0 0 100%;
