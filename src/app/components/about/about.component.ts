@@ -11,6 +11,5 @@ export class AboutComponent implements OnInit {
       top:0,
       behavior: 'smooth'
     });
-
   }
 }

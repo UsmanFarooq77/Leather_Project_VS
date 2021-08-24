@@ -9,15 +9,13 @@ import { AboutComponent } from './about/about.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { MobileMenuComponent } from './mobile-menu/mobile-menu.component';
 import { ContactComponent } from './contact/contact.component';
-import { FooterComponent } from './footer/footer.component';
 import { RoomDetailsComponent } from './products/product-details/room-details.component';
 import { BookingFormComponent } from './booking-form/booking-form.component';
-import {NgxPaginationModule} from 'ngx-pagination'
-import {NgPipesModule} from 'ngx-pipes';
+import { NgxPaginationModule } from 'ngx-pagination'
+import { NgPipesModule } from 'ngx-pipes';
 import { CommentsComponent } from './comments/comments.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { MaterialModule } from '../shared/material.module';
-import { TopHeaderComponent } from './top-header/top-header.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -28,20 +26,25 @@ import { TopHeaderComponent } from './top-header/top-header.component';
     MaterialModule
   ],
   exports:
-    [HeaderComponent,SliderComponent,
-    RoomsComponent,AboutComponent,
-    GalleryComponent,MobileMenuComponent,
-    FooterComponent, TopHeaderComponent],
-  declarations: 
     [HeaderComponent,
-     SliderComponent, 
-     RoomsComponent, 
-     AboutComponent, 
-     GalleryComponent, 
-     MobileMenuComponent,
-    ContactComponent, 
-    FooterComponent, 
-    RoomDetailsComponent, 
-    BookingFormComponent, CommentsComponent, ReviewsComponent, TopHeaderComponent]
+      SliderComponent,
+      RoomsComponent,
+      AboutComponent,
+      GalleryComponent,
+      MobileMenuComponent
+    ],
+  declarations:
+    [HeaderComponent,
+      SliderComponent,
+      RoomsComponent,
+      AboutComponent,
+      GalleryComponent,
+      MobileMenuComponent,
+      ContactComponent,
+      RoomDetailsComponent,
+      BookingFormComponent,
+      CommentsComponent,
+      ReviewsComponent
+    ]
 })
 export class ComponentsModule { }

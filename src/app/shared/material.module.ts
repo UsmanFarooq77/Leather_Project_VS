@@ -1,9 +1,23 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MatButtonModule, MatMenuModule, MatToolbarModule, MatIconModule, MatCardModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, MatRadioModule, MatSelectModule, MatOptionModule, MatSlideToggleModule } from '@angular/material';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import {
+  MatButtonModule,
+  MatMenuModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatRadioModule,
+  MatSelectModule,
+  MatOptionModule,
+  MatSlideToggleModule,
+} from "@angular/material";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { Ng2SearchPipeModule } from "ng2-search-filter";
+import { BrowserModule } from "@angular/platform-browser";
 
 @NgModule({
   imports: [
@@ -23,9 +37,9 @@ import { BrowserModule } from '@angular/platform-browser';
     MatSelectModule,
     MatOptionModule,
     MatSlideToggleModule,
-    Ng2SearchPipeModule, 
+    Ng2SearchPipeModule,
   ],
-  exports:[
+  exports: [
     MatButtonModule,
     MatMenuModule,
     MatToolbarModule,
@@ -40,8 +54,8 @@ import { BrowserModule } from '@angular/platform-browser';
     MatSelectModule,
     MatOptionModule,
     MatSlideToggleModule,
-    Ng2SearchPipeModule,  
+    Ng2SearchPipeModule,
   ],
-  declarations: []
+  declarations: [],
 })
-export class MaterialModule { }
+export class MaterialModule {}

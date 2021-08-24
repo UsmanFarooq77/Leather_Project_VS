@@ -9,18 +9,18 @@ export class SliderComponent implements OnInit {
   @ViewChild('carousel') el: ElementRef;
   constructor() { }
   ngOnInit() {
-    $(document).ready(function(){
+    $(document).ready(function () {
       $(".owl-carousel").owlCarousel({
         // loop:true,
-        margin:0,
-        items:1,
+        margin: 0,
+        items: 1,
         // nav:true,
         // autoplay:true,
         // navText: ['<span class="icon-arrow_back"></span>', '<span class="icon-arrow_forward"> </span>'],
         animateOut: 'fadeOut',
         // smartSpeed:650,
-    // autoplayTimeout:1000,
-    // autoplayHoverPause:true
+        // autoplayTimeout:1000,
+        // autoplayHoverPause:true
       })
     }
     )

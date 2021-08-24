@@ -11,14 +11,15 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 const routes: Routes = [
   // {path:'index', component:IndexComponent},
-  {path:'gallery', component:GalleryComponent},
-  {path:'Products', component:RoomsComponent},
-  {path:'product-detail/:category/:id', component:RoomDetailsComponent},
-  {path:'booking/:id', component:BookingFormComponent},
-  {path:'contact', component:ContactComponent},
-  {path:'about', component:AboutComponent},
-  {path:'reviews', component:ReviewsComponent},
-  {path:'**', component:PageNotFoundComponent}
+  { path: '', component: RoomsComponent},
+  { path: 'gallery', component: GalleryComponent },
+  { path: 'Products', component: RoomsComponent },
+  { path: 'product-detail/:category/:id', component: RoomDetailsComponent },
+  { path: 'booking/:id', component: BookingFormComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'reviews', component: ReviewsComponent },
+  { path: '**', component: PageNotFoundComponent }
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

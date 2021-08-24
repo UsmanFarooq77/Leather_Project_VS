@@ -8,9 +8,10 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
-  Hidden: boolean;
+  isAlertHide: boolean;
   public contact = new contacts();
   constructor(private adservice:AdminserviceService) {
+    this.isAlertHide = null;
    }
   ngOnInit() {
     window.scrollTo({
@@ -21,7 +22,7 @@ export class ContactComponent implements OnInit {
   addContact(contact:NgForm){
     if(confirm("Are You Sure To Contacting Us?")){
       this.adservice.addContact(this.contact);
-       this.Hidden=true;
+       this.isAlertHide=true;
        contact.resetForm();
        window.scrollTo({
         top:500,
@@ -29,7 +30,7 @@ export class ContactComponent implements OnInit {
       });
       }
       else{
-       this.Hidden=false;
+       this.isAlertHide=false;
       }
    }
 }

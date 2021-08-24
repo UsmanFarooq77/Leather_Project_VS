@@ -71,7 +71,8 @@ export class AdminserviceService {
   //   return toSend;
   // }
   addComment(comment) {
-    return this.db.list('/comment').push(comment);
+    const commentRef = this.db.list('/comment').push(comment);
+    return commentRef.key;
   }
   getComment(): FirebaseListObservable<comment[]> {
     return this.db.list('/comment');
@@ -83,7 +84,7 @@ export class AdminserviceService {
     this.db.object('/comment/' + key).update({ comment_status: approved, comment_toggle: toggle })
   }
 
-  getReviews() : FirebaseListObservable<Review[]>{
+  getReviews(): FirebaseListObservable<Review[]> {
     return this.db.list('/addReview');
   }
 }

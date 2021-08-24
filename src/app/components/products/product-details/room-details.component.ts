@@ -1,3 +1,4 @@
+import { Subscription } from 'rxjs/Subscription';
 import { Product } from '../../../interfaces/Product';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -18,12 +19,12 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
   Post$: Product;
   IdLower: string;
   unapproved: string = "unapproved";
-  Comments$;
   comment_date: Date = new Date();
-  Hidden: boolean;
   public comment = new comments();
   category: string;
   filteredPostsByCategory: Product[];
+  postIdSubscription : Subscription;
+  postsSubscription : Subscription;
   
   constructor(
     private route: ActivatedRoute,
@@ -41,9 +42,8 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
       top: 0,
       behavior: 'smooth'
     });
-    this.Comments$ = this.adservice.getComment();
-    this.adservice.getIdObject(this.id).subscribe((post) => this.Post$ = post);
-    this.adservice.getPost().subscribe((posts) => {
+    this.postIdSubscription = this.adservice.getIdObject(this.id).subscribe((post) => this.Post$ = post);
+    this.postsSubscription = this.adservice.getPost().subscribe((posts) => {
       this.filteredPostsByCategory = posts.filter((post) => this.category == post.post_category && this.id !== post.$key);
       
       if (this.filteredPostsByCategory.length) {
@@ -86,13 +86,15 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
       }
     });
   }
-  relatedPostDetails(key) {
+  relatedPostDetails(key : any) {
     this.reInitComponent(key);
   }
-  reInitComponent(key) {
+  reInitComponent(key : any) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.navigate(['/product-detail', this.Post$.post_category, key]);
   }
   ngOnDestroy() {
+    this.postIdSubscription.unsubscribe();
+    this.postsSubscription.unsubscribe();
   }
 }

@@ -14,9 +14,13 @@ import { AdminserviceService } from './services/admin/adminservice.service';
 import { AuthService } from './services/auth/auth.service';
 import { GuardsGuard } from './guards/guards.guard';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { FooterComponent } from './footer/footer.component';
+import { TopHeaderComponent } from './top-header/top-header.component';
 @NgModule({
   declarations: [
     AppComponent,
+    TopHeaderComponent,
+    FooterComponent,
     PageNotFoundComponent
   ],
   imports: [

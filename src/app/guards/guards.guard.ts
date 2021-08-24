@@ -14,11 +14,12 @@ export class GuardsGuard implements CanActivate {
   // next: ActivatedRouteSnapshot,
   // state: RouterStateSnapshot: Observable<boolean> | Promise<boolean> | boolean
   {
-    return this.authService.User$.map(user => {
-      if (user) return true;
-      // console.log(user);
-      this.router.navigate(['/contact'], { queryParams: { returnUrl: state.url } })
-      return false;
-    });
+    // return this.authService.User$.map(user => {
+    //   if (user) return true;
+    //   console.log(user);
+    //   this.router.navigate(['/contact'], { queryParams: { returnUrl: state.url } })
+    //   return false;
+    // });
+    return true;
   }
 }
