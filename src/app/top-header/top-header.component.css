@@ -82,3 +82,9 @@
     flex-direction: column;
   }
 }
+
+@media (max-width:768px) {
+  .scroll_left_top_header p {
+    min-width: 625px !important;
+  }
+}
