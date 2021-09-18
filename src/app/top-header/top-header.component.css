@@ -1,8 +1,56 @@
-.marquee_adjustment_top_header {
-  font-weight: bold;
-  margin-top: 7px;
+.scroll_left_top_header {
+  height: 39px;
+  overflow: hidden;
+  position: relative;
 }
-.contact_section {
+.scroll_left_top_header p {
+  font-weight: bold;
+  color: white;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin-top: 7px;
+  text-align: center;
+  /* Starting position */
+  -moz-transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+  /* Apply animation to this element */
+  -moz-animation: scroll_left_top_header 25s linear 1s infinite;
+  -webkit-animation: scroll_left_top_header 25s linear 1s infinite;
+  animation: scroll_left_top_header 25s linear 1s infinite;
+}
+/* Move it (define the animation) */
+@-moz-keyframes scroll_left_top_header {
+  0% {
+    -moz-transform: translateX(100%);
+  }
+  100% {
+    -moz-transform: translateX(-100%);
+  }
+}
+@-webkit-keyframes scroll_left_top_header {
+  0% {
+    -webkit-transform: translateX(100%);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+  }
+}
+@keyframes scroll_left_top_header {
+  0% {
+    -moz-transform: translateX(100%); /* Firefox bug fix */
+    -webkit-transform: translateX(100%); /* Firefox bug fix */
+    transform: translateX(100%);
+  }
+  100% {
+    -moz-transform: translateX(-100%); /* Firefox bug fix */
+    -webkit-transform: translateX(-100%); /* Firefox bug fix */
+    transform: translateX(-100%);
+  }
+}
+
+.contact_section_top_header {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -15,22 +63,22 @@
   color: white;
   font-weight: bold;
 }
-.contact_section .icon-facebook:hover{
-    color: rgb(110, 110, 255);
+.contact_section_top_header .icon-facebook:hover {
+  color: rgb(110, 110, 255);
 }
-.contact_section .icon-instagram:hover{
-    color: rgb(255, 138, 157)
+.contact_section_top_header .icon-instagram:hover {
+  color: rgb(255, 138, 157);
 }
-.contact_section .icon-whatsapp:hover{
-    color: rgb(65, 255, 65);
+.contact_section_top_header .icon-whatsapp:hover {
+  color: rgb(65, 255, 65);
 }
 
-.contact_section .top_header_logo > a{
-    margin-right: 0.7375em;
+.contact_section_top_header .top_header_logo > a {
+  margin-right: 0.7375em;
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-    .contact_section{
-        flex-direction: column;
-    }
+  .contact_section_top_header {
+    flex-direction: column;
+  }
 }
