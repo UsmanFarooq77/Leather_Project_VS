@@ -1,8 +1,12 @@
-
-/* body{
-    line-height: none !important;
-} */
-
 .h2{
     margin-top: 14px !important;
+}
+.contact_section_social_links .icon-facebook:hover {
+    color: rgb(110, 110, 255);
+  }
+  .contact_section_social_links .icon-instagram:hover {
+    color: rgb(255, 138, 157);
+  }
+  .contact_section_social_links .icon-whatsapp:hover {
+    color: rgb(65, 255, 65);
 }
