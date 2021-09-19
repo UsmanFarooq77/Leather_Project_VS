@@ -26,8 +26,7 @@
         <form #contactForm="ngForm" (ngSubmit)="addContact(contactForm)">
           <div class="row form-group">
             <div class="col-md-12 mb-3 mb-md-0">
-              <label class="font-weight-bold" for="fullname">Full Name</label><span
-                class="asterisk_mark">*</span>
+              <label class="font-weight-bold" for="fullname">Full Name</label><span class="asterisk_mark">*</span>
               <div class="form-group has-success has-feedback">
                 <div class="form-group">
                   <div class="input-group">
@@ -35,12 +34,13 @@
                       placeholder="Full Name" [(ngModel)]="contact.fullname" required #first='ngModel' minlength="3">
                   </div>
                   <span *ngIf="first.errors?.required && first.touched"
-                  class="glyphicon glyphicon-remove form-control-feedback"></span>
+                    class="glyphicon glyphicon-remove form-control-feedback"></span>
                   <span *ngIf="first.errors?.minlength && first.touched"
-                  class="glyphicon glyphicon-remove form-control-feedback"></span>
+                    class="glyphicon glyphicon-remove form-control-feedback"></span>
                   <span *ngIf="first.valid && first.touched"
-                  class="glyphicon glyphicon-ok form-control-feedback"></span>
-                  <span class="alert alert-danger" *ngIf="first.errors?.required && first.touched">Full Name required !</span>
+                    class="glyphicon glyphicon-ok form-control-feedback"></span>
+                  <span class="alert alert-danger" *ngIf="first.errors?.required && first.touched">Full Name required
+                    !</span>
                   <span class="alert alert-danger" *ngIf="first.errors?.minlength && first.touched">Must be at least 3
                     characters.</span>
                 </div>
@@ -60,11 +60,11 @@
                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" #emailCheck='ngModel'>
                   </div>
                   <span *ngIf="emailCheck.errors?.pattern && emailCheck.touched"
-                      class="glyphicon glyphicon-remove form-control-feedback"></span>
-                    <span *ngIf="!emailCheck.errors?.pattern"
-                      class="glyphicon glyphicon-ok form-control-feedback"></span>
+                    class="glyphicon glyphicon-remove form-control-feedback"></span>
+                  <span *ngIf="!emailCheck.errors?.pattern" class="glyphicon glyphicon-ok form-control-feedback"></span>
                   <!-- <span class="alert alert-danger" *ngIf="emailCheck.touched && emailCheck.errors?.required">Email required</span> -->
-                  <span class="alert alert-danger" *ngIf="emailCheck.errors?.pattern && emailCheck.touched">Example@gmail.com</span>
+                  <span class="alert alert-danger"
+                    *ngIf="emailCheck.errors?.pattern && emailCheck.touched">Example@gmail.com</span>
                 </div>
               </div>
             </div>
@@ -81,13 +81,13 @@
                       onkeypress=" return (event.charCode >= 48 && event.charCode <=57 )">
                   </div>
                   <span *ngIf="phoneCheck.errors?.required && phoneCheck.touched"
-                      class="glyphicon glyphicon-remove form-control-feedback"></span>
-                      <span *ngIf="phoneCheck.errors?.pattern && phoneCheck.touched"
-                      class="glyphicon glyphicon-remove form-control-feedback"></span>
-                    <span *ngIf="phoneCheck.valid && phoneCheck.touched"
-                      class="glyphicon glyphicon-ok form-control-feedback"></span>
-                  <span class="alert alert-danger"
-                    *ngIf="phoneCheck.errors?.required && phoneCheck.touched">Phone # Required !</span>
+                    class="glyphicon glyphicon-remove form-control-feedback"></span>
+                  <span *ngIf="phoneCheck.errors?.pattern && phoneCheck.touched"
+                    class="glyphicon glyphicon-remove form-control-feedback"></span>
+                  <span *ngIf="phoneCheck.valid && phoneCheck.touched"
+                    class="glyphicon glyphicon-ok form-control-feedback"></span>
+                  <span class="alert alert-danger" *ngIf="phoneCheck.errors?.required && phoneCheck.touched">Phone #
+                    Required !</span>
                   <span class="alert alert-danger" *ngIf="phoneCheck.errors?.pattern && phoneCheck.touched">Example
                     (01231231111)</span>
                 </div>
@@ -96,8 +96,7 @@
           </div>
           <div class="row form-group">
             <div class="col-md-12">
-              <label class="font-weight-bold" for="message">Message</label> <span
-                class="asterisk_mark">*</span>
+              <label class="font-weight-bold" for="message">Message</label> <span class="asterisk_mark">*</span>
               <div class="form-group has-success has-feedback">
                 <div class="form-group">
                   <div class="input-group">
@@ -106,12 +105,12 @@
                       required></textarea>
                   </div>
                   <span *ngIf="last.errors?.required && last.touched"
-                      class="glyphicon glyphicon-remove form-control-feedback"></span>
-                      <span *ngIf="last.errors?.minlength && last.touched"
-                      class="glyphicon glyphicon-remove form-control-feedback"></span>
-                    <span *ngIf="last.valid && last.touched"
-                      class="glyphicon glyphicon-ok form-control-feedback"></span>
-                  <span class="alert alert-danger" *ngIf="last.touched && last.errors?.required">Message required !</span>
+                    class="glyphicon glyphicon-remove form-control-feedback"></span>
+                  <span *ngIf="last.errors?.minlength && last.touched"
+                    class="glyphicon glyphicon-remove form-control-feedback"></span>
+                  <span *ngIf="last.valid && last.touched" class="glyphicon glyphicon-ok form-control-feedback"></span>
+                  <span class="alert alert-danger" *ngIf="last.touched && last.errors?.required">Message required
+                    !</span>
                   <span class="alert alert-danger" *ngIf="last.errors?.minlength && last.touched">Must be at least 10
                     characters.</span>
                 </div>
@@ -121,7 +120,8 @@
           <div class="row form-group">
             <div class="col-md-12">
               <input type="submit" value="Send Message" [disabled]="contactForm.invalid"
-                class="btn btn-outline-primary pill px-4 py-2">
+                class="btn btn-outline-primary pill px-4 py-2" [style.color]="contactForm.invalid ? '#000' : 'white'"
+                [style.background-color]="contactForm.invalid ? 'white' : 'crimson'">
             </div>
           </div>
         </form>

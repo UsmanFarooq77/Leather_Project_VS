@@ -1,31 +1,31 @@
-.glyphicon{
-    float: right !important;
-    top: -29px !important;
-    right: 5px !important;
+.glyphicon {
+  float: right !important;
+  top: -29px !important;
+  right: 5px !important;
 }
-
-.alert{
-    position:inherit !important;
+.alert {
+  position: inherit !important;
 }
-
-.asterisk_mark{
-    color: red;
-    position: relative !important;
-    float: right;
-    top: 8px !important;
+.asterisk_mark {
+  color: red;
+  position: relative !important;
+  float: right;
+  top: 8px !important;
 }
-
 label {
-    display: inline-block;
-    margin-bottom: 0rem !important;
-    color: black;
+  display: inline-block;
+  margin-bottom: 0rem !important;
+  color: black;
 }
-
-.btn{
-    color: darkred
+input,
+textarea {
+  border-color: rgb(151, 116, 116);
 }
-
-.btn:hover {
-    background-color: darkred;
-    color: #fff;
+input.ng-valid,
+textarea.ng-valid {
+  border-color: green;
+}
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border-color: red;
 }
