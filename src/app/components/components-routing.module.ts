@@ -12,7 +12,7 @@ import { ReviewsComponent } from './reviews/reviews.component';
 const routes: Routes = [
   // {path:'index', component:IndexComponent},
   { path: '', component: RoomsComponent},
-  { path: 'gallery', component: GalleryComponent },
+  { path: 'gallery/:pageNumber', component: GalleryComponent },
   { path: 'Products', component: RoomsComponent },
   { path: 'product-detail/:category/:id', component: RoomDetailsComponent },
   { path: 'booking/:id', component: BookingFormComponent },

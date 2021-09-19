@@ -11,24 +11,24 @@
 </div>
 <div *ngIf="!isImageLoad" class="container">
   <ng-container
-    *ngFor="let post of Posts$ | reverse | paginate:{itemsPerPage:6, currentPage: pageNumber}; let i = index">
+    *ngFor="let post of posts | reverse | paginate:{itemsPerPage:6, currentPage: pageNumber}; let i = index">
     <span class="images">
       <!-- <div class="row"> -->
       <div class="col-md-4">
-        <a [routerLink]="['/product-detail',post.post_category,post.$key]" title="Click Me!"><img [src]="post.image1" alt="Image Not Found."
-            class=""></a>
+        <a [routerLink]="['/product-detail',post.post_category,post.$key]" title="Click Me!"><img [src]="post.image1"
+            alt="Image Not Found." class=""></a>
       </div>
       <div class="col-md-4">
-        <a [routerLink]="['/product-detail',post.post_category,post.$key]" title="Click Me!"><img [src]="post.image2" alt="Image Not Found."
-            class=""></a>
+        <a [routerLink]="['/product-detail',post.post_category,post.$key]" title="Click Me!"><img [src]="post.image2"
+            alt="Image Not Found." class=""></a>
       </div>
       <div class="col-md-4">
-        <a [routerLink]="['/product-detail',post.post_category,post.$key]" title="Click Me!"><img [src]="post.image3" alt="Image Not Found."
-            class=""></a>
+        <a [routerLink]="['/product-detail',post.post_category,post.$key]" title="Click Me!"><img [src]="post.image3"
+            alt="Image Not Found." class=""></a>
       </div>
       <div class="col-md-4">
-        <a [routerLink]="['/product-detail',post.post_category,post.$key]" title="Click Me!"><img [src]="post.image4" alt="Image Not Found."
-            class=""></a>
+        <a [routerLink]="['/product-detail',post.post_category,post.$key]" title="Click Me!"><img [src]="post.image4"
+            alt="Image Not Found." class=""></a>
       </div>
       <!-- <div class="col-md-4">
         <a [routerLink]="['/product-detail',post.post_category,post.$key]" title="Click Me!"><img [src]="post.image5" alt="Image Not Found."
@@ -47,10 +47,14 @@
       <!-- <span><i class="fa fa-circle-o-notch fa-spin" style="font-size:60px; color: crimson;"></i></span> -->
       <span><img src="../../../assets/images/loading_dots.gif" width="30%"></span>
     </div>
-    <div class="col-md-12 text-center" *ngIf="isImageLoad">
-      <img src="../../../assets/images/no-data-found.jpg" width="30%">
-      <h3>Oops!</h3>
-      <h5>Images are Loading...</h5>
+  </div>
+  <div *ngIf="!isImageLoad && !posts.length" class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <img src="../../../assets/images/no-data-found.jpg" width="30%">
+        <h3>Oops!</h3>
+        <h5>Images are Loading...</h5>
+      </div>
     </div>
   </div>
 </div>
@@ -58,7 +62,7 @@
   <div class="d-block">
     <div class="col-md-12 text-center">
       <div class="d-inline-block" style="padding-right: 43px;">
-        <pagination-controls class="pagination" (pageChange)="pageNumber = $event"></pagination-controls>
+        <pagination-controls class="pagination" (pageChange)="pageChanged(pageNumber = $event)"></pagination-controls>
       </div>
     </div>
   </div>
