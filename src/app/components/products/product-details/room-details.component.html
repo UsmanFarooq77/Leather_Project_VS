@@ -34,10 +34,14 @@
           {{ post.picker | date: "dd/MM/yyyy" }}
         </p>
         <hr style="margin-bottom: 2px;" />
-        <marquee width="100%" behavior="scroll">
+        <!-- <marquee width="100%" behavior="scroll">
           <img style="border-radius: 20px;" *ngIf="post.post_status==false"
             src="https://media.giphy.com/media/ftSsFBJqT84nvE5YUh/giphy.gif" width="110px" height="auto">
-        </marquee>
+        </marquee> -->
+        <div class="sold_out_section" *ngIf="post.post_status==false">
+          <img class="sold_out_image" src="https://media.giphy.com/media/ftSsFBJqT84nvE5YUh/giphy.gif" width="110px"
+            height="auto">
+        </div>
       </div>
     </div>
     <div class="row">
@@ -119,7 +123,7 @@
               <div class="description-content" [innerText]="post.post_content">
               </div>
             </h5>
-            <a style="font-size: x-large" class="btn" [routerLink]="['/booking', post.$key]">Buy Now <span
+            <a style="font-size: 21px;" class="btn" [routerLink]="['/booking', post.$key]">Buy Now <span
                 class="fa fa-shopping-cart"></span></a>
           </div>
         </div>
@@ -133,7 +137,7 @@
     <div class="text-center">
       <img class="room_no_data_found" src="../../../assets/images/no-data-found.jpg" width="30%" height="auto">
       <h3>Oops!</h3>
-      <h5>No Data Found.</h5>
+      <h5>Data Loading...</h5>
     </div>
   </ng-template>
   <!-- </div>
@@ -148,15 +152,16 @@
   <div *ngIf="filteredPostsByCategory.length" class="row mb-4">
     <div class="col-md-12">
       <h3 style="font-family: 'FontAwesome'; text-decoration: underline;">Related Products </h3>
-      <div>
+      <div class="related_inner_section">
         <!-- <a class="btn prev">Previous</a> -->
         <span class="icon-arrow_back prev"></span>
         <div id="slider" class="nonloop-block-15 owl-carousel">
           <ng-container *ngFor="let relatedPost of filteredPostsByCategory">
             <div class="media-with-text">
               <div class="img-border-sm">
-                <button style="cursor: pointer;" (click)="relatedPostDetails(relatedPost.$key)" title="Click Me">
-                  <img max-width="100%" height="280px" [src]="relatedPost.image1" alt="Image Not Found.">
+                <button class="button_image_related" (click)="relatedPostDetails(relatedPost.$key)" title="Click Me">
+                  <img class="img-fluid" style="max-width:100%; height:242px" [src]="relatedPost.image1"
+                    alt="Image Not Found.">
                 </button>
               </div>
               <span *ngIf="relatedPost.post_special_price else onlyActualPrice">

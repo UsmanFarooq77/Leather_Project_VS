@@ -25,7 +25,7 @@
             <div class="form-group has-success has-feedback">
               <div class="form-group">
                 <div class="input-group">
-                  <input style="border-radius: 15px; border-color: blue" type="text" name="comment_author"
+                  <input style="border-radius: 15px;" type="text" name="comment_author"
                     placeholder="Full Name" class="form-control" [(ngModel)]="comment.comment_author" required
                     #first="ngModel" minlength="3" />
                   <span *ngIf="first.errors?.required && first.touched"
@@ -50,7 +50,7 @@
             <div class="form-group has-success has-feedback">
               <div class="form-group">
                 <div class="input-group">
-                  <input style="border-radius: 15px; border-color: blue" type="email" name="comment_email"
+                  <input style="border-radius: 15px;" type="email" name="comment_email"
                     placeholder="Email Address" class="form-control" [(ngModel)]="comment.comment_email"
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" #emailCheck="ngModel" />
                   <!-- <span *ngIf="emailCheck.valid && emailCheck.touched"
@@ -77,7 +77,7 @@
             <div class="form-group has-success has-feedback">
               <div class="form-group">
                 <div class="input-group">
-                  <textarea style="border-radius: 15px; border-color: blue" name="comment_content"
+                  <textarea style="border-radius: 15px;" name="comment_content"
                     placeholder="Write Feedback here...," class="form-control" rows="3"
                     [(ngModel)]="comment.comment_content" minlength="10" #last="ngModel" required>
                           </textarea>
@@ -100,7 +100,8 @@
             [(ngModel)]="comment.image" />
         </div> -->
         <input type="submit" name="create_comment" class="btn btn-outline-primary" [disabled]="commentForm.invalid"
-          value="Submit" />
+          value="Submit" [style.color]="commentForm.invalid ? '#000' : 'white'"
+          [style.background-color]="commentForm.invalid ? 'white' : 'crimson'" />
       </form>
     </div>
   </div>

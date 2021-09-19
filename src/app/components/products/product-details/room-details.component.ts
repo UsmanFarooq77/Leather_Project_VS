@@ -53,7 +53,7 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
           $('.owl-carousel').owlCarousel({
             nav: false,
             loop: true,
-            margin: 30,
+            margin: 28,
             items: 4,
             autoplay: true,
             // navText: ['<span class="icon-arrow_back"></span>', '<span class="icon-arrow_forward"> </span>'],

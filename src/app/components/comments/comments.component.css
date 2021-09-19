@@ -28,13 +28,17 @@
   position: inherit !important;
 }
 
-.btn {
-  color: darkred;
+input,
+textarea {
+  border-color: rgb(151, 116, 116);
 }
-
-.btn:hover {
-  background-color: darkred;
-  color: #fff;
+input.ng-valid,
+textarea.ng-valid {
+  border-color: green;
+}
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border-color: red;
 }
 .comment_feedback {
   text-decoration: underline;
