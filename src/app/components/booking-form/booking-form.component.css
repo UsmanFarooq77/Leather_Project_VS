@@ -1,166 +1,192 @@
 .input-group-addon {
-    border: 1px solid darkred;
-    padding: 0px 10px 0px 10px;
-    background-color: #eee;
+  border: 1px solid darkred;
+  padding: 0px 10px 0px 10px;
+  background-color: #eee;
 }
 .alert {
-    position: inherit;
-    padding: 0.75rem 1.25rem;
-    margin-bottom: 1rem;
-    border: 1px solid transparent;
-    border-radius: 0.25rem;
+  position: inherit;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
 }
 
-input{
-    border: 1px solid;
+input {
+  border: 1px solid;
 }
 
 .glyphicon {
-    
-    top: 10px;
-    font-weight: 400;
-    color: darkred;
+  top: 10px;
+  font-weight: 400;
+  color: darkred;
 }
 
-body{
-    line-height: 2.7px; 
+body {
+  line-height: 2.7px;
 }
 
-.header{
-    width: 100%; 
-    height: 100px; 
-    background-color: rgb(151, 116, 116);
+.header {
+  width: 100%;
+  height: 100px;
+  background-color: rgb(151, 116, 116);
 }
-.marquee_adjustment{
+/* .marquee_adjustment{
     font-size: x-large;
     color: black;
     font-family: 'Playfair Display';
     text-shadow: 1px 1px red ;
+} */
+
+.booking_scroll_note {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: 50px;
+}
+.booking_scroll_note p {
+  position: absolute;
+  width: 100%;
+  min-width: 180px;
+  height: 100%;
+  font-size: x-large;
+  color: black;
+  font-family: "Playfair Display";
+  text-shadow: 1px 1px red;
+  -webkit-transform: translateX(100%);
+  -moz-transform: translateX(100%);
+  transform: translateX(100%);
+  -webkit-animation: booking_scroll_note 35s linear 0s infinite;
+  -moz-animation: booking_scroll_note 35s linear 0s infinite;
+  animation: booking_scroll_note 35s linear 0s infinite;
 }
 
-.subtract_cart{
-    display: inline-block;
-    background-color: black;
-    color: white;
-    font-size: large !important;
-    border: 1px;
-    font-weight: bold;
-    padding: 7px;
-    cursor: pointer;
+@-webkit-keyframes booking_scroll_note {
+  0% {
+    -webkit-transform: translateX(100%);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+  }
+}
+@-moz-keyframes booking_scroll_note {
+  0% {
+    -moz-transform: translateX(100%);
+  }
+  100% {
+    -moz-transform: translateX(-100%);
+  }
 }
 
-.add_cart{
-    display: inline-block;
-    background-color: black;
-    color: white;
-    font-size: large !important;
-    border: 1px;
-    font-weight: bold;
-    padding: 7px;
-    cursor: pointer;
+@keyframes booking_scroll_note {
+  0% {
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+
+input,
+textarea {
+  border-color: rgb(151, 116, 116);
+}
+input.ng-valid,
+textarea.ng-valid {
+  border-color: green;
+}
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border-color: red;
+}
+
+.subtract_cart {
+  display: inline-block;
+  background-color: black;
+  color: white;
+  font-size: large !important;
+  border: 1px;
+  font-weight: bold;
+  padding: 7px;
+  cursor: pointer;
+}
+
+.add_cart {
+  display: inline-block;
+  background-color: black;
+  color: white;
+  font-size: large !important;
+  border: 1px;
+  font-weight: bold;
+  padding: 7px;
+  cursor: pointer;
 }
 
 /* $shopping-cart-red: #DF0000; */
 
-.sf_logo_booking{
-    width: 95%;
-    height: 100px;
-    margin-bottom: 10px;
-    display: inline-block;
+.sf_logo_booking {
+  width: 95%;
+  height: 100px;
+  margin-bottom: 10px;
+  display: inline-block;
 }
 
-.book_description{
-    width: 94%;
-    display: inline-block;
+.book_description {
+  width: 94%;
+  display: inline-block;
 }
 
-.book_description_mark{
-    float: right !important;
-    position: relative !important;
-    top: 0px;
-    right: 3px;
+.book_description_mark {
+  float: right !important;
+  position: relative !important;
+  top: 0px;
+  right: 3px;
 }
 
 sup {
-    background-color: yellow !important;
-    border-radius: 50%;
-    top: -3em;
-    right: 36px;
-    font-size: 18.5%;
-    padding: 6px;
-    border: 1px solid;
-    width: 29px;
-    font-weight: bold;
+  background-color: yellow !important;
+  border-radius: 50%;
+  top: -3em;
+  right: 36px;
+  font-size: 18.5%;
+  padding: 6px;
+  border: 1px solid;
+  width: 29px;
+  font-weight: bold;
 }
 
-.fa{
-    display: block !important;
-    margin-left: 39px !important;
-    color: black !important;
-    font-size: 56px !important;
+.fa {
+  display: block !important;
+  margin-left: 39px !important;
+  color: black !important;
+  font-size: 56px !important;
 }
 
+.col-md-5 {
+  margin: 0 auto;
+  flex: 0 0 50.66667%;
+  max-width: 50.66667%;
+}
 
-/* .site-navbar-wrap {
-    background: rgb(151, 116, 116) !important;
-    position: fixed;
-    z-index: 99;
-    width: 100%;
-    padding: 0px 0; 
-     margin-bottom: 0px;
-     left: 0;
-    transition: .3s all ease; 
-} */
-
-/* .glyphicon[_ngcontent-c7] {
-    top: 10px;
-    font-weight: 400;
-    color: darkred;
-} */
-
-/* input.ng-touched.ng-valid{
-    border-color: blue;
-} */
-
-.col-md-5{
+@media (min-width: 768px) and (max-width: 1023px) {
+  .col-md-5 {
     margin: 0 auto;
-    flex: 0 0 50.66667%;
-    max-width: 50.66667%;
+    max-width: 60%;
+    flex: 0 0 60%;
+  }
 }
 
-.btn{
-    color: darkred
-}
-
-.btn:hover {
-    background-color: darkred;
-    color: #fff;
-}
-
-@media (min-width: 768px) and (max-width:1023px){
-    .col-md-5{
-        margin: 0 auto;
-        max-width: 60%;
-        flex: 0 0 60%;
-    }
-}
-
-@media  (max-width: 767px){
-    .header{ 
-        width: 100%; 
-        height: 0px; 
-        background-color: rgb(151, 116, 116);
-    }
-    .col-md-5{
-        max-width: 100%;
-        flex: 0 0 100%;
-    }
-    .marquee_adjustment{
-        margin-top: 130px;
-    }
-} 
-@media (max-width:303px) {
-    .marquee_adjustment{
-        margin-top: 170px;
-    }
+@media (max-width: 767px) {
+  .header {
+    width: 100%;
+    height: 0px;
+    background-color: rgb(151, 116, 116);
+  }
+  .col-md-5 {
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
 }
