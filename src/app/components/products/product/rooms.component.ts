@@ -31,13 +31,14 @@ export class RoomsComponent implements OnInit {
   ) {
     this.isLoadingRoomsCategory = true;
     this.dataNotFound = false;
-    this.pageNumber = 0;
+    this.pageNumber = 1;
     this.searchText = ""
   }
 
   ngOnInit() {
+    // this.pageNumber = Number(this.route.snapshot.paramMap.get('pageNumber') ? this.route.snapshot.paramMap.get('pageNumber') : 1);
     window.scrollTo({
-      top: 0,
+      top: 600,
       behavior: 'smooth'
     });
     this.subscription = this.adservice.getPost().subscribe((posts) => {
@@ -48,6 +49,10 @@ export class RoomsComponent implements OnInit {
           if (this.Category) {
             this.reversePipe.transform(this.FilteredCategories = (this.Category) ?
               this.Post.filter(f => f.post_category === this.Category) : this.Post);
+            this.pageNumber = Number(params.get('pageNumber')) ? Number(params.get('pageNumber')) : 1;
+          }
+          else {
+            this.pageNumber = Number(this.route.snapshot.paramMap.get('pageNumber') ? this.route.snapshot.paramMap.get('pageNumber') : 1);
           }
         });
         this.isLoadingRoomsCategory = false;
@@ -71,6 +76,18 @@ export class RoomsComponent implements OnInit {
     this.Category = "";
     this.searchText = "";
     this.router.navigate(['/']);
+  }
+  pageChanged(pageNumber: number) {
+    this.reInitComponent(pageNumber);
+  }
+  reInitComponent(pageNumber: number) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    if (this.Category) {
+      this.router.navigate(['/Products'], { queryParams: { Category: this.Category, pageNumber } });
+    }
+    else {
+      this.router.navigate(['/Products', pageNumber]);
+    }
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();

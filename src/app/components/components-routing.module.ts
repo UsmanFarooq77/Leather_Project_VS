@@ -13,6 +13,7 @@ const routes: Routes = [
   // {path:'index', component:IndexComponent},
   { path: '', component: RoomsComponent},
   { path: 'gallery/:pageNumber', component: GalleryComponent },
+  { path: 'Products/:pageNumber', component:RoomsComponent},
   { path: 'Products', component: RoomsComponent },
   { path: 'product-detail/:category/:id', component: RoomDetailsComponent },
   { path: 'booking/:id', component: BookingFormComponent },
