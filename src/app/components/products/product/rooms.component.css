@@ -20,6 +20,12 @@
   margin-top: 5px;
 }
 
+.product_heading {
+  color: crimson;
+  font-family: "Playfair Display";
+  font-size: xxx-large;
+}
+
 input[type="text"] {
   width: 70%;
   -webkit-transition: width 0.4s ease-in-out;
@@ -164,6 +170,9 @@ input[type="text"]:focus {
   }
   .money_back_guarantee {
     margin-top: 28px;
+  }
+  .product_heading {
+    font-size: 40px;
   }
 }
 
