@@ -20,6 +20,10 @@ export class ReviewsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
     this.subcription = this.adminService.getReviews().subscribe((review) => {
       this.reviews = review;
       this.isReviewsLoading = false;

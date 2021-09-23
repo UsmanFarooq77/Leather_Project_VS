@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs/Observable';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AdminserviceService } from '../../../services/admin/adminservice.service';
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
@@ -23,6 +23,7 @@ export class RoomsComponent implements OnInit {
   dataNotFound: boolean;
   pageNumber: number;
   searchText: string;
+  @ViewChild('scroll') scroll: ElementRef;
   constructor(
     private adservice: AdminserviceService,
     private route: ActivatedRoute,
@@ -36,11 +37,20 @@ export class RoomsComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.pageNumber = Number(this.route.snapshot.paramMap.get('pageNumber') ? this.route.snapshot.paramMap.get('pageNumber') : 1);
-    window.scrollTo({
-      top: 600,
-      behavior: 'smooth'
-    });
+    if (this.router.url == '/') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+    else {
+      let element = this.scroll.nativeElement as HTMLElement;
+      setTimeout(() => {
+        element.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }, 1000);
+    }
     this.subscription = this.adservice.getPost().subscribe((posts) => {
       this.Post = this.FilteredCategories = posts;
       if (this.Post) {
@@ -68,7 +78,6 @@ export class RoomsComponent implements OnInit {
       $('[data-toggle="tooltip"]').tooltip();
     });
   }
-
   clearSearchText() {
     this.searchText = "";
   }
