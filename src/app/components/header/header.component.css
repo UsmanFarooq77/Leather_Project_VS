@@ -32,11 +32,11 @@
   .site-navbar-wrap {
     background-color: rgb(151, 116, 116) !important;
     padding: 0px 0 !important;
-    margin-top: 67px;
+    margin-top: 77px;
   }
 }
-@media (max-width: 303px) {
+/* @media (max-width: 303px) {
   .site-navbar-wrap {
     margin-top: 104px;
   }
-}
+} */
