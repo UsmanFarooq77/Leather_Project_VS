@@ -90,6 +90,10 @@ body {
   }
 }
 
+.alert {
+  position: relative !important;
+}
+
 input,
 textarea {
   border-color: rgb(151, 116, 116);
@@ -193,7 +197,7 @@ sup {
       -moz-transform: translateX(-100%);
     }
   }
-  
+
   @keyframes booking_scroll_note {
     0% {
       -webkit-transform: translateX(38.8%);
@@ -277,7 +281,7 @@ sup {
       -moz-transform: translateX(-100%);
     }
   }
-  
+
   @keyframes booking_scroll_note {
     0% {
       -webkit-transform: translateX(21.3%);
@@ -293,5 +297,11 @@ sup {
   .col-md-5 {
     max-width: 100%;
     flex: 0 0 100%;
+  }
+}
+
+@media (max-width: 300px) {
+  .sf_logo_booking h2 {
+    font-size: 27px !important;
   }
 }

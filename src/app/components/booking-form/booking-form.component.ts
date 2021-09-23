@@ -13,9 +13,11 @@ export class BookingFormComponent implements OnInit {
   isAlertHide: boolean;
   public bookings = new bookings();
   totalOrders: number;
+  autoGenerateId: string;
   constructor(private adservice: AdminserviceService, private route: ActivatedRoute) {
     this.id = this.route.snapshot.paramMap.get('id');
     this.totalOrders = 1;
+    this.isAlertHide = null;
   }
   ngOnInit() {
     this.scrollToUp();
@@ -24,15 +26,25 @@ export class BookingFormComponent implements OnInit {
     if (confirm("Are You Sure To Add Booking?")) {
       this.bookings.number_of_orders = this.totalOrders;
       this.bookings.user_id = this.id;
-      this.adservice.addBooking(this.bookings);
-      this.isAlertHide = true;
+      this.autoGenerateId = this.adservice.addBooking(this.bookings);
+      // this.isAlertHide = true;
+      if (this.autoGenerateId) {
+        this.isAlertHide = true;
+      }
+      else {
+        this.isAlertHide = false;
+      }
       booking.resetForm();
       this.totalOrders = 1;
       this.scrollToUp();
     }
     else {
       this.isAlertHide = false;
+      this.scrollToUp();
     }
+  }
+  closeAlert(): void {
+    this.isAlertHide = null;
   }
   subtractCart() {
     if (this.totalOrders > 1) {

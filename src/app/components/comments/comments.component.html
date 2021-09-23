@@ -15,7 +15,7 @@
     </div>
     <!-- Comments Form -->
     <div class="well">
-      <h4 style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">Add Feedback:</h4>
+      <h4 style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">Add Feedback</h4>
       <form #commentForm="ngForm" (ngSubmit)="commentUser(commentForm)">
         <!-- <input style="display: none" type="text" name="date" class="form-control"
           [ngModel]="comment_date | date: 'dd/MM/yyyy'" /> -->
@@ -25,9 +25,8 @@
             <div class="form-group has-success has-feedback">
               <div class="form-group">
                 <div class="input-group">
-                  <input style="border-radius: 15px;" type="text" name="comment_author"
-                    placeholder="Full Name" class="form-control" [(ngModel)]="comment.comment_author" required
-                    #first="ngModel" minlength="3" />
+                  <input style="border-radius: 15px;" type="text" name="comment_author" placeholder="Full Name"
+                    class="form-control" [(ngModel)]="comment.comment_author" required #first="ngModel" minlength="3" />
                   <span *ngIf="first.errors?.required && first.touched"
                     class="glyphicon glyphicon-remove form-control-feedback"></span>
                   <span *ngIf="first.errors?.minlength && first.touched"
@@ -50,8 +49,8 @@
             <div class="form-group has-success has-feedback">
               <div class="form-group">
                 <div class="input-group">
-                  <input style="border-radius: 15px;" type="email" name="comment_email"
-                    placeholder="Email Address" class="form-control" [(ngModel)]="comment.comment_email"
+                  <input style="border-radius: 15px;" type="email" name="comment_email" placeholder="Email Address"
+                    class="form-control" [(ngModel)]="comment.comment_email"
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" #emailCheck="ngModel" />
                   <!-- <span *ngIf="emailCheck.valid && emailCheck.touched"
                     class="glyphicon glyphicon-remove form-control-feedback"></span> -->
@@ -77,9 +76,9 @@
             <div class="form-group has-success has-feedback">
               <div class="form-group">
                 <div class="input-group">
-                  <textarea style="border-radius: 15px;" name="comment_content"
-                    placeholder="Write Feedback here...," class="form-control" rows="3"
-                    [(ngModel)]="comment.comment_content" minlength="10" #last="ngModel" required>
+                  <textarea style="border-radius: 15px;" name="comment_content" placeholder="Write Feedback here...,"
+                    class="form-control" rows="3" [(ngModel)]="comment.comment_content" minlength="10" #last="ngModel"
+                    required>
                           </textarea>
                   <span *ngIf="last.errors?.required && last.touched"
                     class="glyphicon glyphicon-remove form-control-feedback"></span>
@@ -108,12 +107,12 @@
   <!-- Posted Comments -->
   <!-- Comment -->
   <div *ngIf="Comments.length else zeroComment" class="col-md-5 main_div_comments">
-    {{Comments.length}}
-    <h3 class="comment_feedback">FeedBacks:</h3>
+
+    <h3 class="comment_feedback">FeedBacks <span class="comments_length">{{Comments.length}}</span></h3>
     <ng-container *ngFor="let comment of Comments | reverse">
       <div class="media mt-3" *ngIf="comment.comment_status == 'approved'">
         <img [src]="comment.image" alt="John Doe" class="mr-1 mt-3 rounded-circle" style="width: 75px" />
-        <div>
+        <div style="width: 100%;">
           <div class="media-body">
             <h6 class="media-heading">
               <h5 style="

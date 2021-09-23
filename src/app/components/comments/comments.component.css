@@ -1,5 +1,5 @@
 .main_div_comments {
-  height: 430.5px !important;
+  height: 430.5px;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -13,6 +13,20 @@
   overflow: auto;
   overflow-x: hidden;
   border-width: 0px;
+}
+
+.comment_feedback {
+  background-color: #f5f5f5;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.comments_length {
+  color: white;
+  background-color: green;
+  padding: 8px;
+  margin-left: 5px;
 }
 
 .media {
@@ -40,22 +54,22 @@ input.ng-invalid.ng-touched,
 textarea.ng-invalid.ng-touched {
   border-color: red;
 }
-.comment_feedback {
-  text-decoration: underline;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: bold;
-}
 
 .no_comment_div {
   margin-left: auto;
   margin-right: auto;
 }
 .no_comment_heading {
-  border: 1px solid darkgray;
+  border: 1px solid crimson;
   padding: 11px;
 }
 
 @media (max-width: 767px) {
+  .main_div_comments {
+    height: 100%;
+    max-height: 635px;
+    margin-bottom: 30px;
+  }
   .no_comment_div {
     margin-bottom: 30px;
   }
