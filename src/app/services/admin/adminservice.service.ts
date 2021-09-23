@@ -45,8 +45,8 @@ export class AdminserviceService {
   //   return toSend.set(booking)
   // }
   addBooking(booking) {
-    const toSend = this.db.list('/booking').push(booking);
-    return toSend;
+    const commentRef = this.db.list('/booking').push(booking);
+    return commentRef.key;
   }
   getUsers(): FirebaseListObservable<booking[]> {
     return this.db.list('/booking');
@@ -58,7 +58,8 @@ export class AdminserviceService {
     return this.db.object('/booking/' + key).remove();
   }
   addContact(contact) {
-    return this.db.list('/contact').push(contact);
+    const contactRef = this.db.list('/contact').push(contact);
+    return contactRef.key;
   }
   getContact(): FirebaseListObservable<contact[]> {
     return this.db.list('/contact');

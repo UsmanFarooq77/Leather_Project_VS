@@ -25,7 +25,7 @@ export class CommentsComponent implements OnInit, OnDestroy {
   commentsSubscription: Subscription;
 
   constructor(
-    private adminService: AdminserviceService, 
+    private adminService: AdminserviceService,
     private route: ActivatedRoute) {
     this.id = this.route.snapshot.paramMap.get("id");
     this.IdLower = this.id.substr(0, this.id.length);

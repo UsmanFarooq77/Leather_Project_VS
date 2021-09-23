@@ -90,6 +90,10 @@ body {
   }
 }
 
+.alert {
+  position: relative !important;
+}
+
 input,
 textarea {
   border-color: rgb(151, 116, 116);

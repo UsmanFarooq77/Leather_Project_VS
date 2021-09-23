@@ -16,16 +16,16 @@
         <div style="background-color: #eee; padding: 15px" class="panel-body">
           <div class="text-center">
             <div *ngIf="isAlertHide" class="alert alert-success alert-dismissible" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
                 <span aria-hidden="true">&times;</span>
               </button>
               <strong>Well done!</strong> You Successfully submit This Order.
             </div>
             <div *ngIf="isAlertHide == false" class="alert alert-danger alert-dismissible" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
                 <span aria-hidden="true">&times;</span>
               </button>
-              <strong>Attention!</strong> Your Order Is Not Submit
+              <strong>Attention!</strong> Your Order Is Not Submit.
             </div>
             <!-- <h3><i class="fa fa-user fa-4x"></i></h3> -->
             <h3 style="padding-top: 10px;">

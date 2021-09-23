@@ -10,6 +10,7 @@ import { NgForm } from '@angular/forms';
 export class ContactComponent implements OnInit {
   isAlertHide: boolean;
   public contact = new contacts();
+  autoGenerateId: string;
   constructor(private adservice:AdminserviceService) {
     this.isAlertHide = null;
    }
@@ -21,16 +22,28 @@ export class ContactComponent implements OnInit {
   }
   addContact(contact:NgForm){
     if(confirm("Are You Sure To Contacting Us?")){
-      this.adservice.addContact(this.contact);
-       this.isAlertHide=true;
+      this.autoGenerateId = this.adservice.addContact(this.contact);
+      if (this.autoGenerateId) {
+        this.isAlertHide = true;
+      }
+      else {
+        this.isAlertHide = false;
+      }
        contact.resetForm();
-       window.scrollTo({
-        top:500,
-        behavior: 'smooth'
-      });
+       this.scrollToUp();
       }
       else{
        this.isAlertHide=false;
+       this.scrollToUp();
       }
    }
+   closeAlert(): void {
+    this.isAlertHide = null;
+  }
+  scrollToUp(){
+    window.scrollTo({
+      top:500,
+      behavior: 'smooth'
+    });
+  }
 }
