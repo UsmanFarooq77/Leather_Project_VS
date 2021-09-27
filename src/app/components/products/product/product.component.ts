@@ -8,18 +8,18 @@ import { Subscription } from 'rxjs/Subscription';
 import { ReversePipe } from 'ngx-pipes';
 declare var $: any;
 @Component({
-  selector: 'app-rooms',
-  templateUrl: './rooms.component.html',
-  styleUrls: ['./rooms.component.css'],
+  selector: 'app-product',
+  templateUrl: './product.component.html',
+  styleUrls: ['./product.component.css'],
   // providers: [ReversePipe]
 })
-export class RoomsComponent implements OnInit {
+export class ProductComponent implements OnInit {
   Categories$: Observable<any>;
   posts: Product[];
   filteredCategories: Product[];
   category: string;
   subscription: Subscription;
-  isLoadingRoomsCategory: boolean;
+  isLoadingProductCategory: boolean;
   dataNotFound: boolean;
   pageNumber: number;
   searchText: string;
@@ -33,7 +33,7 @@ export class RoomsComponent implements OnInit {
     this.posts = [];
     this.filteredCategories = [];
     this.category = "";
-    this.isLoadingRoomsCategory = true;
+    this.isLoadingProductCategory = true;
     this.dataNotFound = false;
     this.pageNumber = 1;
     this.searchText = ""
@@ -68,13 +68,13 @@ export class RoomsComponent implements OnInit {
             this.pageNumber = Number(this.route.snapshot.paramMap.get('pageNumber') ? this.route.snapshot.paramMap.get('pageNumber') : 1);
           }
         });
-        this.isLoadingRoomsCategory = false;
+        this.isLoadingProductCategory = false;
       }
     });
     this.Categories$ = this.adservice.getCategories();
     // this.Categories$.subscribe((category) => {
     //   if (category) {
-    //     // this.isLoadingRoomsCategory = false;
+    //     // this.isLoadingProductCategory = false;
     //   }
     // });
     $(document).ready(function () {

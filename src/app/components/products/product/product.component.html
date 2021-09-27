@@ -65,7 +65,7 @@
           </mat-select>
         </mat-form-field>
       </div>
-      <div class="col-12 text-center mb-4" *ngIf="isLoadingRoomsCategory">
+      <div class="col-12 text-center mb-4" *ngIf="isLoadingProductCategory">
         <!-- <span><i class="fa fa-circle-o-notch fa-spin" style="font-size:60px; color: crimson;"></i></span> -->
         <span><img src="../../../assets/images/loading_dots.gif" width="30%" style="min-width: 200px;"></span>
       </div>
@@ -132,7 +132,7 @@
       </ng-container>
       <!-- <span *ngIf="!(filteredCategories | filter : searchText).length">No Result Found.</span> -->
       <div class="col-md-12 text-center"
-        *ngIf="!isLoadingRoomsCategory && !filteredCategories.length || (!(filteredCategories | filter : searchText).length && !isLoadingRoomsCategory)">
+        *ngIf="!isLoadingProductCategory && !filteredCategories.length || (!(filteredCategories | filter : searchText).length && !isLoadingProductCategory)">
         <img class="room_no_data_found" src="../../../assets/images/no-data-found.jpg" width="30%" height="auto">
         <h3>Oops!</h3>
         <h5>No Data Found.</h5>
