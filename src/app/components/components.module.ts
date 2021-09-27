@@ -12,7 +12,7 @@ import { ContactComponent } from './contact/contact.component';
 import { RoomDetailsComponent } from './products/product-details/room-details.component';
 import { BookingFormComponent } from './booking-form/booking-form.component';
 import { NgxPaginationModule } from 'ngx-pagination'
-import { NgPipesModule } from 'ngx-pipes';
+import { NgPipesModule, ReversePipe } from 'ngx-pipes';
 import { CommentsComponent } from './comments/comments.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { MaterialModule } from '../shared/material.module';
@@ -45,6 +45,7 @@ import { MaterialModule } from '../shared/material.module';
       BookingFormComponent,
       CommentsComponent,
       ReviewsComponent
-    ]
+    ],
+    providers: [ReversePipe]
 })
 export class ComponentsModule { }
