@@ -11,13 +11,13 @@ declare var $: any;
   selector: 'app-rooms',
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.css'],
-  providers: [ReversePipe]
+  // providers: [ReversePipe]
 })
 export class RoomsComponent implements OnInit {
   Categories$: Observable<any>;
-  Post: Product[] = [];
-  FilteredCategories: Product[] = [];
-  Category: string;
+  posts: Product[];
+  filteredCategories: Product[];
+  category: string;
   subscription: Subscription;
   isLoadingRoomsCategory: boolean;
   dataNotFound: boolean;
@@ -30,6 +30,9 @@ export class RoomsComponent implements OnInit {
     public router: Router,
     public reversePipe: ReversePipe
   ) {
+    this.posts = [];
+    this.filteredCategories = [];
+    this.category = "";
     this.isLoadingRoomsCategory = true;
     this.dataNotFound = false;
     this.pageNumber = 1;
@@ -52,13 +55,13 @@ export class RoomsComponent implements OnInit {
       }, 1000);
     }
     this.subscription = this.adservice.getPost().subscribe((posts) => {
-      this.Post = this.FilteredCategories = posts;
-      if (this.Post) {
+      this.posts = this.filteredCategories = posts;
+      if (this.posts) {
         this.route.queryParamMap.subscribe(params => {
-          this.Category = params.get('Category');
-          if (this.Category) {
-            this.reversePipe.transform(this.FilteredCategories = (this.Category) ?
-              this.Post.filter(f => f.post_category === this.Category) : this.Post);
+          this.category = params.get('Category');
+          if (this.category) {
+            this.reversePipe.transform(this.filteredCategories = (this.category) ?
+              this.posts.filter(post => post.post_category === this.category) : this.posts);
             this.pageNumber = Number(params.get('pageNumber')) ? Number(params.get('pageNumber')) : 1;
           }
           else {
@@ -82,7 +85,7 @@ export class RoomsComponent implements OnInit {
     this.searchText = "";
   }
   clearAllResult() {
-    this.Category = "";
+    this.category = "";
     this.searchText = "";
     this.router.navigate(['/']);
   }
@@ -91,8 +94,8 @@ export class RoomsComponent implements OnInit {
   }
   reInitComponent(pageNumber: number) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    if (this.Category) {
-      this.router.navigate(['/Products'], { queryParams: { Category: this.Category, pageNumber } });
+    if (this.category) {
+      this.router.navigate(['/Products'], { queryParams: { Category: this.category, pageNumber } });
     }
     else {
       this.router.navigate(['/Products', pageNumber]);
