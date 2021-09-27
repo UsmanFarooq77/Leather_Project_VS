@@ -11,7 +11,6 @@ declare var $: any;
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css'],
-  // providers: [ReversePipe]
 })
 export class ProductComponent implements OnInit {
   Categories$: Observable<any>;
