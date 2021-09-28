@@ -54,7 +54,7 @@
           </a>
         </ng-container> -->
         <mat-form-field>
-          <mat-select placeholder="Search By Category" [(ngModel)]="Category">
+          <mat-select placeholder="Search By Category" [(ngModel)]="category">
             <a *ngFor="let category of Categories$ | async" routerLink="/Products" routerLinkActive="active-link"
               [routerLinkActiveOptions]="{exact:
               true}" [queryParams]="{Category: category.$key}">
@@ -65,28 +65,28 @@
           </mat-select>
         </mat-form-field>
       </div>
-      <div class="col-12 text-center mb-4" *ngIf="isLoadingRoomsCategory">
+      <div class="col-12 text-center mb-4" *ngIf="isLoadingProductCategory">
         <!-- <span><i class="fa fa-circle-o-notch fa-spin" style="font-size:60px; color: crimson;"></i></span> -->
         <span><img src="../../../assets/images/loading_dots.gif" width="30%" style="min-width: 200px;"></span>
       </div>
     </div>
     <div *ngIf="searchText" class="row">
       <div class="col-12">
-        <p class="search_result">{{(FilteredCategories | filter : searchText).length + ' items found in '}} <span
+        <p class="search_result">{{(filteredCategories | filter : searchText).length + ' items found in '}} <span
             class="search_text">{{searchText}}&nbsp; &nbsp;<i class="fa fa-close"
               (click)="clearSearchText()"></i></span>
         </p>
       </div>
     </div>
-    <div *ngIf="Category" class="row">
+    <div *ngIf="category" class="row">
       <div class="col-12">
-        <p class="search_result">Filtered By: {{Category}} <span class="clear_all_result"
+        <p class="search_result">Filtered By: {{category}} <span class="clear_all_result"
             (click)="clearAllResult()">CLEAR
             ALL</span> </p>
       </div>
     </div>
     <div class="row">
-      <ng-container *ngFor="let post of FilteredCategories | reverse | filter : searchText | paginate : {itemsPerPage:9, currentPage: pageNumber};
+      <ng-container *ngFor="let post of filteredCategories | reverse | filter : searchText | paginate : {itemsPerPage:9, currentPage: pageNumber};
         let i=index">
         <div class="col-md-6 col-lg-4 mb-5 w3-animate-left">
           <div class="hotel-room text-center">
@@ -130,16 +130,16 @@
           </div>
         </div>
       </ng-container>
-      <!-- <span *ngIf="!(FilteredCategories | filter : searchText).length">No Result Found.</span> -->
+      <!-- <span *ngIf="!(filteredCategories | filter : searchText).length">No Result Found.</span> -->
       <div class="col-md-12 text-center"
-        *ngIf="!isLoadingRoomsCategory && !FilteredCategories.length || (!(FilteredCategories | filter : searchText).length && !isLoadingRoomsCategory)">
+        *ngIf="!isLoadingProductCategory && !filteredCategories.length || (!(filteredCategories | filter : searchText).length && !isLoadingProductCategory)">
         <img class="room_no_data_found" src="../../../assets/images/no-data-found.jpg" width="30%" height="auto">
         <h3>Oops!</h3>
         <h5>No Data Found.</h5>
       </div>
     </div>
     <div
-      *ngIf="(FilteredCategories.length > 9 && !(FilteredCategories | filter : searchText).length) || (FilteredCategories | filter : searchText).length > 9"
+      *ngIf="(filteredCategories.length > 9 && !(filteredCategories | filter : searchText).length) || (filteredCategories | filter : searchText).length > 9"
       class="container">
       <div class="row">
         <div class="col-md-12 text-center">
