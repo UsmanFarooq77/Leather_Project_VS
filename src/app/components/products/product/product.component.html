@@ -42,7 +42,7 @@
     </div>
     <div class="row">
       <div class="col-md-8 mb-4">
-        <input type="text" placeholder="Search SF Leathers Products..." name="search" [(ngModel)]="searchText">
+        <input type="text" placeholder="Search SF Leathers products." name="search" [(ngModel)]="searchText">
       </div>
       <div class="col-md-4 mb-4">
         <!-- <ng-container *ngFor="let cat of Categories$ | async" style="display: inline-block;">
@@ -67,7 +67,7 @@
       </div>
       <div class="col-12 text-center mb-4" *ngIf="isLoadingProductCategory">
         <!-- <span><i class="fa fa-circle-o-notch fa-spin" style="font-size:60px; color: crimson;"></i></span> -->
-        <span><img src="../../../assets/images/loading_dots.gif" width="30%" style="min-width: 200px;"></span>
+        <span><img src="../../../assets/images/loading_dots.gif" width="30%" style="min-width: 300px;"></span>
       </div>
     </div>
     <div *ngIf="searchText" class="row">

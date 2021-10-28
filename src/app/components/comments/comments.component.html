@@ -5,17 +5,17 @@
       <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
         <span aria-hidden="true">&times;</span>
       </button>
-      <strong>Well done!</strong> Thank you for your Feedback..!!
+      <strong>Well done!</strong> Thank you for your feedback.
     </div>
     <div *ngIf="isAlertHide == false" class="alert alert-danger alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
         <span aria-hidden="true">&times;</span>
       </button>
-      <strong>Attention!</strong> Your Feedback Is Not Submit.
+      <strong>Attention!</strong> Your feedback is not submit.
     </div>
     <!-- Comments Form -->
     <div class="well">
-      <h4 style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">Add Feedback</h4>
+      <h4 style="font-weight: bold;">Add Feedback</h4>
       <form #commentForm="ngForm" (ngSubmit)="commentUser(commentForm)">
         <!-- <input style="display: none" type="text" name="date" class="form-control"
           [ngModel]="comment_date | date: 'dd/MM/yyyy'" /> -->
@@ -76,7 +76,7 @@
             <div class="form-group has-success has-feedback">
               <div class="form-group">
                 <div class="input-group">
-                  <textarea style="border-radius: 15px;" name="comment_content" placeholder="Write Feedback here...,"
+                  <textarea style="border-radius: 15px;" name="comment_content" placeholder="Write Feedback here..."
                     class="form-control" rows="3" [(ngModel)]="comment.comment_content" minlength="10" #last="ngModel"
                     required>
                           </textarea>

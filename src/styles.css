@@ -12,8 +12,8 @@ body{
 .site-navbar-wrap{
     margin-top: 20px;
 }
-@media (max-width:767px) {
+/* @media (max-width:767px) {
     .sf_logo{
         width: 15%;
     }  
-}
+} */

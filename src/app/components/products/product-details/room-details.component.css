@@ -14,6 +14,16 @@
   display: contents;
 }
 
+.carousel{
+  width: 100%;
+  background-color: black;
+  border: 1px solid black;
+  padding: 30px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+}
+
 .carousel-control-prev {
   width: 5% !important;
 }
@@ -123,6 +133,12 @@
   letter-spacing: 0.5px;
 }
 
+.related_products{
+  /* font-family: 'FontAwesome';  */
+  text-decoration: underline;
+  margin: 20px;
+}
+
 .font {
   font-family: "Playfair Display";
 }
@@ -143,6 +159,9 @@
 
 .image_height {
   height: 710px;
+}
+.carousel_image_height{
+  max-height: 590px;
 }
 
 .carousel-inner {
@@ -237,6 +256,9 @@
   .image_height {
     height: 250px;
   }
+  .carousel_image_height{
+    height: 235px;
+  }
   .product_sku_discount_section {
     flex-direction: column;
   }
@@ -246,9 +268,14 @@
   .room-description {
     max-height: 100% !important;
   }
+  .room_no_data_found{
+    width: 70%;
+  }
 }
+
 @media (max-width: 303px) {
   .page-header {
     margin-top: 169px !important;
   }
+  
 }
