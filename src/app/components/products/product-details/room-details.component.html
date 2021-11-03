@@ -14,7 +14,7 @@
           <small>(SF Leathers) </small>
           <!-- </marquee> -->
         </p>
-        <!-- First Blog Post -->
+        <div class="product_details_title_section">
         <h2>{{ post.post_title }}</h2>
         <h3 *ngIf="post.post_actual_price">
           Actual Price Rs:
@@ -33,7 +33,8 @@
           <span class="fa fa-clock-o"></span>
           {{ post.picker | date: "dd/MM/yyyy" }}
         </p>
-        <hr style="margin-bottom: 2px;" />
+        <hr style="margin-bottom: 0px;" />
+        </div>
         <!-- <marquee width="100%" behavior="scroll">
           <img style="border-radius: 20px;" *ngIf="post.post_status==false"
             src="https://media.giphy.com/media/ftSsFBJqT84nvE5YUh/giphy.gif" width="110px" height="auto">
@@ -60,7 +61,7 @@
                 <div class="carousel-caption">
                   <h3><img class="sf_logo_product_details" src="../../../assets/images/SF-Leathers.png" width="50px" height="45px">
                   </h3>
-                  <p style="color: black;">SF Leathers</p>
+                  <p style="color: black; opacity: 0.5;">SF Leathers</p>
                 </div>
               </div>
               <div class="carousel-item">
@@ -68,7 +69,7 @@
                 <div class="carousel-caption">
                   <h3><img class="sf_logo_product_details" src="../../../assets/images/SF-Leathers.png" width="50px" height="45px">
                   </h3>
-                  <p style="color: black;">SF Leathers</p>
+                  <p style="color: black; opacity: 0.5;">SF Leathers</p>
                 </div>
               </div>
               <div class="carousel-item">
@@ -76,7 +77,7 @@
                 <div class="carousel-caption">
                   <h3><img class="sf_logo_product_details" src="../../../assets/images/SF-Leathers.png" width="50px" height="45px">
                   </h3>
-                  <p style="color: black;">SF Leathers</p>
+                  <p style="color: black; opacity: 0.5;">SF Leathers</p>
                 </div>
               </div>
               <div class="carousel-item">
@@ -84,7 +85,7 @@
                 <div class="carousel-caption">
                   <h3><img class="sf_logo_product_details" src="../../../assets/images/SF-Leathers.png" width="50px" height="45px">
                   </h3>
-                  <p style="color: black;">SF Leathers</p>
+                  <p style="color: black; opacity: 0.5;">SF Leathers</p>
                 </div>
               </div>
             </div>
