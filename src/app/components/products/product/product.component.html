@@ -94,20 +94,21 @@
               number: '1.0-0' }}%</span>
             <!-- <a href="https://web.facebook.com/UHleathercollection" target="_blank"><img class="facebook_logo"
                 src="../../../assets/images/facebook-logo.png" width="5%" height="auto"></a> -->
-            <a *ngIf="post.image1" [routerLink]="['/product-detail',post.post_category,post.$key]"
-              class="d-block mb-0 thumbnail">
+            <a [routerLink]="['/product-detail',post.post_category,post.$key]" class="d-block mb-0 thumbnail">
               <!-- <img class="sf_logo" src="assets/images/SF-Leathers.png" width="12%" height="auto"> -->
-              <img *ngIf="post.image1" [src]="post.image1" alt="Image Not Found" style="max-width: 100%; height:250px;"
+              <img *ngIf="post.image1" [src]="post.image1" alt="Image Not Found" style="max-width: 100%; height:262px;"
                 class="card_main_image">
             </a>
             <div class="hotel-room-body" style="background-color: #eee;">
-              <img *ngIf="post.post_status==false" style="display: block; position: absolute; margin-left: 38px;"
-                src="../../../assets/images/sold-out.png" width="14%" height="auto">
-              <img *ngIf="post.post_status==true" style="display: block; position: absolute; margin-left: 38px;"
-                src="../../../assets/images/in-stock.JPG" width="14%" height="auto">
-              <h3 class="post_category">{{post.post_category}}</h3>
-              <img class="special_offer" *ngIf="post.post_actual_price" src="../../../assets/images/offer.png"
-                width="14%">
+              <div class="product_stock_offer">
+                <img *ngIf="post.post_status==false" class="product_stock_img" src="../../../assets/images/sold-out.png"
+                  width="60px" height="45px">
+                <img *ngIf="post.post_status==true" class="product_stock_img" src="../../../assets/images/in-stock.JPG"
+                  width="60px" height="45px">
+                <h3 class="post_category">{{post.post_category}}</h3>
+                <img class="special_offer" *ngIf="post.post_actual_price" src="../../../assets/images/offer.png"
+                  width="50px" height="50px">
+              </div>
               <h1 class="heading mb-0"><a style="color: blue; font-family: icommon;" class="btn"
                   [routerLink]="['/product-detail',post.post_category , post.$key]"
                   routerLinkActive="Active">{{post.post_title}}</a></h1>
@@ -125,7 +126,6 @@
                 <span class="glyphicon glyphicon-chevron-right"></span></a>
               <a style="font-family: cursive;" class="btn" [routerLink]="['/booking' , post.$key]">Buy Now
                 <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-              <hr>
             </div>
           </div>
         </div>

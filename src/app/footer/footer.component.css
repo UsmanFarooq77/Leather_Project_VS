@@ -1,12 +1,85 @@
-.h2{
-    margin-top: 14px !important;
+.h2 {
+  margin-top: 14px !important;
 }
-.contact_section_social_links .icon-facebook:hover {
-    color: rgb(110, 110, 255);
+.footer_social_links {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.footer_social_links a {
+  width: 38px;
+  height: 37px;
+  line-height: 35px;
+  text-align: center;
+  display: inline-block;
+  border: 2px solid crimson;
+  border-radius: 50%;
+  transition: all 1s ease;
+}
+
+.footer_social_links a:hover {
+  background-color: crimson;
+  border: 2px solid #fff;
+  transition: all 0.5s linear;
+}
+
+.footer_social_links a:hover .icon-facebook {
+  color: rgb(33, 33, 247);
+  transition: all 1s ease;
+}
+
+.footer_social_links a:hover .icon-instagram {
+  color: rgb(255, 167, 182);
+  transition: all 1s ease;
+}
+.footer_social_links a:hover .icon-whatsapp {
+  color: rgb(65, 255, 65);
+  transition: all 1s ease;
+}
+
+.news_letter h5 {
+  color: #fff;
+}
+.news_letter .form_field {
+  display: flex;
+  border: 1px solid white;
+}
+
+.news_letter .form_field input {
+  padding: 6px;
+  background: #000;
+  color: white;
+  border: 0px solid #000;
+  width: 100%;
+  outline: #000;
+}
+.news_letter .form_field button {
+  border: 0px;
+  background: #000;
+  color: white;
+  cursor: pointer;
+}
+
+.news_letter .form_field button:hover {
+  color: crimson;
+}
+
+.footer_rights {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
+.footer_rights .payment_methods img {
+  margin: 12px;
+}
+
+@media (max-width: 767px) {
+  .footer_rights {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
   }
-  .contact_section_social_links .icon-instagram:hover {
-    color: rgb(255, 138, 157);
-  }
-  .contact_section_social_links .icon-whatsapp:hover {
-    color: rgb(65, 255, 65);
 }
