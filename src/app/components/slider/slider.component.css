@@ -1,8 +1,8 @@
 
-/* .site-blocks-cover {
+.site-blocks-cover {
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: none !important;
-} */
+    background-position: initial !important;
+}
 
 .owl-nav{text-align:center;-webkit-tap-highlight-color:transparent}

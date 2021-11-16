@@ -1,0 +1,12 @@
+.about_section_offers .item h5 {
+    color: #000;
+    transform: translateZ(0);
+}
+
+.about_section_offers .item img {
+    transition: transform 0.7s linear;
+}
+
+.about_section_offers .item img:hover {
+    transform: scale(1.3);
+}

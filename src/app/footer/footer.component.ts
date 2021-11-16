@@ -8,4 +8,10 @@ export class FooterComponent implements OnInit {
   constructor() { }
   ngOnInit() {
   }
+  scrollToTop(){
+    window.scrollTo({
+      top:0,
+      behavior: 'smooth'
+    })
+  }
 }

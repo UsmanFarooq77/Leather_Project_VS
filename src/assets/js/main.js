@@ -313,15 +313,20 @@ jQuery(document).ready(function($) {
 
 	var windowScrolled = function() {
 
-
+		var arrow_top_dom_reference = document.getElementById('arrowTop');
 		$(window).scroll(function() {
 
 			var $w = $(this), st = $w.scrollTop(), navbar = $('.js-site-navbar') ;
-
+			
 			if ( st > 100 ) {
 				navbar.addClass('scrolled');
 			} else {
 				navbar.removeClass('scrolled');
+			}
+			if($(window).scrollTop() + $(window).height() >= $(document).height() - 100)  {
+				arrow_top_dom_reference.style.display = 'inline-block';
+			} else {
+				arrow_top_dom_reference.style.display = 'none';
 			}
 			
 		})

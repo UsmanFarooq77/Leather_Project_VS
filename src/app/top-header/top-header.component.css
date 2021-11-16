@@ -56,6 +56,9 @@
   align-items: center;
   min-height: 39px;
 }
+.contact_section_top_header .top_header_logo {
+  font-size: 19px;
+}
 .icon-facebook,
 .icon-instagram,
 .icon-whatsapp,
