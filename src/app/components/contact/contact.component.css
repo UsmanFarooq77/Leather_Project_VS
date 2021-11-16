@@ -29,3 +29,30 @@ input.ng-invalid.ng-touched,
 textarea.ng-invalid.ng-touched {
   border-color: red;
 }
+
+.shadow_pulse {
+  /* Starting position */
+  border: none;
+  /* Apply animation to this element */
+  -moz-animation: shadow_pulse 2s infinite;
+  -webkit-animation: shadow_pulse 2s infinite;
+  animation: shadow_pulse 2s infinite;
+}
+
+@keyframes shadow_pulse {
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.contact_details_section {
+  background: linear-gradient(464deg, crimson, #e76c83);
+  color: #fff;
+  font-size: 18px;
+}
