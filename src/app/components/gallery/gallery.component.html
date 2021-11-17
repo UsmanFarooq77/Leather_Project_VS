@@ -39,33 +39,71 @@
 </div>
 <div class="container gallery_heading">
   <div class="row">
-    <div class="col-md-12 mx-auto text-center ">
+    <div class="col-md-12 mx-auto text-center">
       <h2 class="mb-3">Our Gallery</h2>
     </div>
   </div>
 </div>
-<div *ngIf="!isImageLoad" class="container">
-  <ng-container
-    *ngFor="let post of posts | reverse | paginate:{itemsPerPage:6, currentPage: pageNumber}; let i = index">
-    <span class="images">
-      <!-- <div class="row"> -->
-      <div class="col-md-4 gallery_image">
-        <a [routerLink]="['/product-detail',post.post_category,post.$key]"><img [src]="post.image1"
-            alt="Image Not Found." class=""></a>
+<div class="container">
+  <div class="gallery_category_section">
+    <div class="row">
+      <div class="col-md-6 gallery_filtered">
+        <div class="gallery_filtered_result" *ngIf="category">
+          <p class="search_result">Filtered By: {{category}} <span class="clear_all_result"
+              (click)="clearAllResult()">CLEAR
+              ALL</span> </p>
+        </div>
       </div>
-      <div class="col-md-4 gallery_image">
-        <a [routerLink]="['/product-detail',post.post_category,post.$key]"><img [src]="post.image2"
-            alt="Image Not Found." class=""></a>
+      <div class="col-md-6 gallery_category_dropdown">
+        <mat-form-field>
+          <mat-select placeholder="Search By Category" [(ngModel)]="category">
+            <a *ngFor="let category of Categories$ | async" [routerLink]="['/gallery',1]" routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{exact:
+              true}" [queryParams]="{Category: category.$key}">
+              <mat-option [value]="category.name">
+                {{category.name}}
+              </mat-option>
+            </a>
+          </mat-select>
+        </mat-form-field>
       </div>
-      <div class="col-md-4 gallery_image">
-        <a [routerLink]="['/product-detail',post.post_category,post.$key]"><img [src]="post.image3"
-            alt="Image Not Found." class=""></a>
-      </div>
-      <div class="col-md-4 gallery_image">
-        <a [routerLink]="['/product-detail',post.post_category,post.$key]"><img [src]="post.image4"
-            alt="Image Not Found." class=""></a>
-      </div>
-      <!-- <div class="col-md-4 gallery_image">
+    </div>
+  </div>
+
+
+  <!-- <div class="col-12 text-center mb-4" *ngIf="isLoadingProductCategory">
+  <span><img src="../../../assets/images/loading_dots.gif" width="30%" style="min-width: 300px;"></span>
+</div> -->
+  <!-- <div class="container">
+  <div *ngIf="category" class="row">
+    <div class="col-12">
+      <p class="search_result">Filtered By: {{category}} <span class="clear_all_result" (click)="clearAllResult()">CLEAR
+          ALL</span> </p>
+    </div>
+  </div>
+</div> -->
+  <div *ngIf="!isImageLoad" class="container">
+    <ng-container
+      *ngFor="let post of filteredCategories | reverse | paginate:{itemsPerPage:3, currentPage: pageNumber}; let i = index">
+      <span class="images">
+        <!-- <div class="row"> -->
+        <div class="col-md-4 gallery_image">
+          <a [routerLink]="['/product-detail',post.post_category,post.$key]"><img [src]="post.image1"
+              alt="Image Not Found." class=""></a>
+        </div>
+        <div class="col-md-4 gallery_image">
+          <a [routerLink]="['/product-detail',post.post_category,post.$key]"><img [src]="post.image2"
+              alt="Image Not Found." class=""></a>
+        </div>
+        <div class="col-md-4 gallery_image">
+          <a [routerLink]="['/product-detail',post.post_category,post.$key]"><img [src]="post.image3"
+              alt="Image Not Found." class=""></a>
+        </div>
+        <div class="col-md-4 gallery_image">
+          <a [routerLink]="['/product-detail',post.post_category,post.$key]"><img [src]="post.image4"
+              alt="Image Not Found." class=""></a>
+        </div>
+        <!-- <div class="col-md-4 gallery_image">
         <a [routerLink]="['/product-detail',post.post_category,post.$key]"><img [src]="post.image5" alt="Image Not Found."
             class=""></a>
       </div>
@@ -73,32 +111,32 @@
         <a [routerLink]="['/product-detail',post.post_category,post.$key]"><img [src]="post.image6" alt="Image Not Found."
             class=""></a>
       </div> -->
-    </span>
-  </ng-container>
-</div>
-<div *ngIf="isImageLoad" class="container">
-  <div class="row">
-    <div class="col-12 text-center mb-4">
-      <!-- <span><i class="fa fa-circle-o-notch fa-spin" style="font-size:60px; color: crimson;"></i></span> -->
-      <span><img src="../../../assets/images/loading_dots.gif" width="30%" style="min-width: 200px;"></span>
+      </span>
+    </ng-container>
+  </div>
+  <div *ngIf="isImageLoad || (!filteredCategories.length && !isImageLoad)" class="container">
+    <div *ngIf="isImageLoad" class="row">
+      <div class="col-12 text-center mb-4">
+        <!-- <span><i class="fa fa-circle-o-notch fa-spin" style="font-size:60px; color: crimson;"></i></span> -->
+        <span><img src="../../../assets/images/loading_dots.gif" width="30%" style="min-width: 200px;"></span>
+      </div>
+    </div>
+    <div *ngIf="(!isImageLoad && !posts.length) || (!filteredCategories.length && !isImageLoad)" class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <img src="../../../assets/images/no-data-found.jpg" width="30%">
+          <h3>Oops!</h3>
+          <h5>No Data Found.</h5>
+        </div>
+      </div>
     </div>
   </div>
-  <div *ngIf="!isImageLoad && !posts.length" class="container">
-    <div class="row">
+  <div *ngIf="!isImageLoad && filteredCategories.length" class="container">
+    <div class="d-block">
       <div class="col-md-12 text-center">
-        <img src="../../../assets/images/no-data-found.jpg" width="30%">
-        <h3>Oops!</h3>
-        <h5>Images are Loading...</h5>
+        <div class="d-inline-block" style="padding-right: 43px;">
+          <pagination-controls class="pagination" (pageChange)="pageChanged(pageNumber = $event)"></pagination-controls>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div *ngIf="!isImageLoad" class="container">
-  <div class="d-block">
-    <div class="col-md-12 text-center">
-      <div class="d-inline-block" style="padding-right: 43px;">
-        <pagination-controls class="pagination" (pageChange)="pageChanged(pageNumber = $event)"></pagination-controls>
-      </div>
-    </div>
-  </div>
-</div>
