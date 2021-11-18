@@ -39,6 +39,7 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('usman')
     if (this.router.url == '/') {
       window.scrollTo({
         top: 0,
@@ -46,12 +47,7 @@ export class ProductComponent implements OnInit {
       });
     }
     else {
-      let element = this.scroll.nativeElement as HTMLElement;
-      setTimeout(() => {
-        element.scrollIntoView({
-          behavior: 'smooth'
-        });
-      }, 1000);
+      this.scrollToView();
     }
     this.subscription = this.adservice.getPost().subscribe((posts) => {
       this.posts = this.filteredCategories = posts;
@@ -62,6 +58,7 @@ export class ProductComponent implements OnInit {
             this.reversePipe.transform(this.filteredCategories = (this.category) ?
               this.posts.filter(post => post.post_category === this.category) : this.posts);
             this.pageNumber = Number(params.get('pageNumber')) ? Number(params.get('pageNumber')) : 1;
+            this.scrollToView();
           }
           else {
             this.pageNumber = Number(this.route.snapshot.paramMap.get('pageNumber') ? this.route.snapshot.paramMap.get('pageNumber') : 1);
@@ -80,6 +77,14 @@ export class ProductComponent implements OnInit {
       $('[data-toggle="tooltip"]').tooltip();
     });
   }
+  scrollToView() {
+    let element = this.scroll.nativeElement as HTMLElement;
+    setTimeout(() => {
+      element.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }, 1000);
+  }
   clearSearchText() {
     this.searchText = "";
   }
@@ -92,7 +97,8 @@ export class ProductComponent implements OnInit {
     this.reInitComponent(pageNumber);
   }
   reInitComponent(pageNumber: number) {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    // this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.scrollToView();
     if (this.category) {
       this.router.navigate(['/Products'], { queryParams: { Category: this.category, pageNumber } });
     }

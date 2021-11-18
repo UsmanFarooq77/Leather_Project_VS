@@ -1,36 +1,7 @@
-.navbar-nav {
-  margin-left: auto;
-}
-.nav-item {
-  margin-left: 12px;
-}
-.navbar-brand {
-  padding-top: 10px !important;
-}
-
-.nav-link {
-  color: whitesmoke !important;
-  font-family: Playfair Display;
-  font-size: large;
-}
-.site-navbar-wrap {
-  background: rgb(151, 116, 116) !important;
+:host ::ng-deep .site-navbar-wrap {
+  background-color: rgb(151, 116, 116) !important;
   margin-top: 32px;
   padding: 6px 0px;
-}
-@media (min-width: 768px) and (max-width: 1023px) {
-  .sf_logo_tab {
-    font-size: revert !important;
-    margin-top: 3px;
-  }
-  .site-navbar-wrap {
-    margin-top: 38px;
-  }
-}
-@media (max-width: 767px) {
-  .site-navbar-wrap {
-    margin-top: 71px;
-  }
 }
 
 .gallery_heading h2 {
@@ -39,9 +10,7 @@
   font-size: xxx-large;
   display: inline-block;
 }
-/* .gallery_category_section .gallery_filtered_result {
-  margin: ;
-} */
+
 .gallery_category_section .gallery_category_dropdown {
   text-align: end;
   max-width: 45% !important;
@@ -111,6 +80,16 @@ a > img {
    cursor: none !important;
    transform: scale(1.5) !important;
 } */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .sf_logo_tab {
+    font-size: revert !important;
+    margin-top: 3px;
+  }
+  .site-navbar-wrap {
+    margin-top: 38px;
+  }
+}
 @media (max-width: 767px) {
   .gallery_heading h2 {
     margin-top: 3.7em !important;

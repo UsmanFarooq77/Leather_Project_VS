@@ -55,10 +55,7 @@ export class GalleryComponent implements OnInit {
           }
         });
         this.isLoadingProductCategory = false;
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
+        this.scrollToTop();
       }
     });
     // $(document).ready(function(){
@@ -66,6 +63,12 @@ export class GalleryComponent implements OnInit {
     //   $('[data-toggle="tooltip"]').tooltip('disable',true);   
     // });
     this.Categories$ = this.adService.getCategories();
+  }
+  scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
   clearAllResult() {
     this.category = "";
@@ -75,7 +78,8 @@ export class GalleryComponent implements OnInit {
     this.reInitComponent(pageNumber);
   }
   reInitComponent(pageNumber?: number) {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    // this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.scrollToTop();
     if (this.category) {
       this.router.navigate(['/gallery', pageNumber], { queryParams: { Category: this.category } });
     }
