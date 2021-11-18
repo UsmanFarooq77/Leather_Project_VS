@@ -1,7 +1,7 @@
 <div class="header">
   <app-header></app-header>
 </div>
-<div class="site-section block-14 bg-light">
+<div class="site-section review_section">
   <div class="container">
     <div class="row">
       <div class="col-md-6 mx-auto text-center mb-5 section-heading">
@@ -10,30 +10,28 @@
     </div>
     <div *ngIf="reviews.length" class="row mb-4">
       <div class="col-md-12">
-        <span><i class="icon-arrow_back prev"></i></span>
-        <div id="slider" class="nonloop-block-15 owl-carousel">
-          <ng-container *ngFor="let review of reviews">
-            <div class="p-4">
-              <div>
-                <div class="person mr-3">
-                  <img max-width="100%" height="280px" [src]="review.image1" alt="Image">
-                </div>
-                <div>
-                  <h4>Customer Name:</h4>
-                  <h6>{{review.user_name}}</h6>
-                  <h4>Customer Reviews:</h4>
-                  <blockquote>&ldquo;{{review.user_content}}&rdquo;</blockquote>
-                </div>
-              </div>
+        <!-- You can use owl-carousel selector to include its component -->
+        <!-- If images array is dynamically changing pass this array to [items] input -->
+        <!-- classes to be attached along with owl-carousel class -->
+        <owl-carousel [options]="slideOptions" [items]="reviews" [carouselClasses]="['owl-theme', 'sliding']">
+          <div class="item" *ngFor="let review of reviews;let i = index">
+            <img max-width="100%" height="280px" [src]="review.image1" alt="Image">
+            <div>
+              <!-- <h5>Name</h5> -->
+              <h4>{{review.user_name}}</h4>
+              <!-- <h4>Customer Reviews:</h4> -->
+              <h3>
+                <blockquote>&ldquo;{{review.user_content}}&rdquo;</blockquote>
+              </h3>
             </div>
-          </ng-container>
-        </div>
-        <span><i class="icon-arrow_forward next"></i></span>
+          </div>
+        </owl-carousel>
+        <!-- <span><i class="icon-arrow_forward next"></i></span> -->
       </div>
     </div>
     <div class="col-12 text-center mb-4" *ngIf="isReviewsLoading">
-      <!-- <span><i class="fa fa-circle-o-notch fa-spin" style="font-size:60px; color: crimson;"></i></span> -->
-      <span><img src="../../../assets/images/loading_dots.gif" width="30%" style="min-width:200px;"></span>
+      <span><i class="fa fa-circle-o-notch fa-spin" style="font-size:50px; color: crimson;"></i></span>
+      <!-- <span><img src="../../../assets/images/loading_dots.gif" width="30%" style="min-width:200px;"></span> -->
     </div>
     <div class="col-md-12 text-center" *ngIf="!isReviewsLoading && !reviews.length">
       <img class="review_no_data_found" src="../../../assets/images/no-data-found.jpg" width="30%" height="auto">

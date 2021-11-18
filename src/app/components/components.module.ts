@@ -16,6 +16,7 @@ import { NgPipesModule, ReversePipe } from 'ngx-pipes';
 import { CommentsComponent } from './comments/comments.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { MaterialModule } from '../shared/material.module';
+import { OwlModule } from 'ngx-owl-carousel';
 @NgModule({
   imports: [
     CommonModule,
@@ -23,7 +24,8 @@ import { MaterialModule } from '../shared/material.module';
     FormsModule,
     NgxPaginationModule,
     NgPipesModule,
-    MaterialModule
+    MaterialModule,
+    OwlModule
   ],
   exports:
     [HeaderComponent,

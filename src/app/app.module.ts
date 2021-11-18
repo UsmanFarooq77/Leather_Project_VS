@@ -16,6 +16,7 @@ import { GuardsGuard } from './guards/guards.guard';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FooterComponent } from './footer/footer.component';
 import { TopHeaderComponent } from './top-header/top-header.component';
+import { OwlModule } from 'ngx-owl-carousel';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,8 @@ import { TopHeaderComponent } from './top-header/top-header.component';
     AngularFireAuthModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
-    NgPipesModule
+    NgPipesModule,
+    OwlModule
   ],
   providers: [AdminserviceService, AuthService, GuardsGuard],
   bootstrap: [AppComponent]

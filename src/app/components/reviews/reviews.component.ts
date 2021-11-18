@@ -3,7 +3,6 @@ import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { AdminserviceService } from '../../services/admin/adminservice.service';
 import { Review } from '../../interfaces/review';
 declare var $: any;
-
 @Component({
   selector: 'app-reviews',
   templateUrl: './reviews.component.html',
@@ -12,11 +11,12 @@ declare var $: any;
 export class ReviewsComponent implements OnInit, OnDestroy {
 
   reviews: Review[];
-  subcription : Subscription;
-  isReviewsLoading : boolean;
+  subcription: Subscription;
+  isReviewsLoading: boolean;
+  slideOptions: {};
   constructor(private adminService: AdminserviceService) {
     this.reviews = [];
-    this.isReviewsLoading  =  true;
+    this.isReviewsLoading = true;
   }
 
   ngOnInit() {
@@ -28,48 +28,57 @@ export class ReviewsComponent implements OnInit, OnDestroy {
       this.reviews = review;
       this.isReviewsLoading = false;
       if (this.reviews.length) {
-        $(document).ready(function () {
-          var slider = $('#slider');
-          $('.owl-carousel').owlCarousel({
-            nav: false,
-            loop: true,
-            margin: 30,
-            items: 4,
-            autoplay: true,
-            // navText: ['<span class="icon-arrow_back"></span>', '<span class="icon-arrow_forward"> </span>'],
-            responsiveClass: true,
-            responsive: {
-              0: {
-                items: 1,
-                nav: false,
-                loop: true,
-              },
-              600: {
-                items: 1,
-                nav: false,
-                loop: true,
-              },
-              900: {
-                items: 2,
-                nav: false,
-                loop: true,
-              },
 
-            }
-          })
-          $('.prev').on("click", function () {
-            slider.trigger('prev.owl.carousel')
-          });
-          $('.next').on("click", function () {
-            slider.trigger('next.owl.carousel')
-          });
-
-        });
       }
     });
+    this.slideOptions = {
+      items: 1,
+      dots: true,
+      loop: true,
+      autoplay: true,
+      smartSpeed: 1000
+    };
+    // CarouselOptions = { items: 3, dots: true, nav: true };
+    // $(document).ready(function () {
+    //   var slider = $('#slider');
+    //   $('.owl-carousel').owlCarousel({
+    //     nav: true,
+    //     loop: true,
+    //     margin: 28,
+    //     items: 4,
+    //     autoplay: true,
+    //     smartSpeed: 1000,
+    //     // navText: ['<span class="icon-arrow_back"></span>', '<span class="icon-arrow_forward"> </span>'],
+    //     responsiveClass: true,
+    //     responsive: {
+    //       0: {
+    //         items: 1,
+    //         nav: false
+    //       },
+    //       600: {
+    //         items: 2,
+    //         nav: false
+    //       },
+    //       1024: {
+    //         items: 3,
+    //         nav: false
+    //       },
+    //       1140: {
 
+    //       }
+    //     }
+    //   })
+    //   $('.prev').on("click", function () {
+    //     slider.trigger('prev.owl.carousel')
+    //   });
+    //   $('.next').on("click", function () {
+    //     slider.trigger('next.owl.carousel')
+    //   });
+
+    // });
   }
-  ngOnDestroy(){
+
+  ngOnDestroy() {
     this.subcription.unsubscribe();
   }
 

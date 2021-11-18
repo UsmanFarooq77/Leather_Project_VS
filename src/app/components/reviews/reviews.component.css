@@ -1,9 +1,34 @@
-.header {
-  width: 100%;
-  height: 100px;
-  background-color: rgb(151, 116, 116);
+.review_section {
+  background: repeating-linear-gradient(
+    90deg,
+    #870000,
+    #ffc9a3 33%,
+    #f3cd8b,
+    #960909
+  );
+  height: 100vh;
+  padding-bottom: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
+.section-heading h2 {
+  margin-top: 15px;
+}
+:host ::ng-deep .site-navbar-wrap {
+  background-color: rgb(151, 116, 116) !important;
+  margin-top: 32px;
+  padding: 6px 0px;
+}
+.item {
+  text-align: center;
+}
+.item img {
+  margin: 0 auto;
+  width: 120px;
+  height: 118px;
+  border-radius: 50%;
+}
 .prev {
   cursor: pointer;
   position: relative;

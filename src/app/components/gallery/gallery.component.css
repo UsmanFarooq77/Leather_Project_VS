@@ -59,6 +59,7 @@
   flex: 0 0 32.33333%;
   max-width: 32.33333%;
   text-align: center;
+  background: linear-gradient(45deg, #eaeaea, transparent);
 }
 /* .images > .col-md-4:hover {
   transform: scale(1.5);
@@ -81,15 +82,6 @@ a > img {
    transform: scale(1.5) !important;
 } */
 
-@media (min-width: 768px) and (max-width: 1023px) {
-  .sf_logo_tab {
-    font-size: revert !important;
-    margin-top: 3px;
-  }
-  .site-navbar-wrap {
-    margin-top: 38px;
-  }
-}
 @media (max-width: 767px) {
   .gallery_heading h2 {
     margin-top: 3.7em !important;

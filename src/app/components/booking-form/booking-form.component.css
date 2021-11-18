@@ -74,9 +74,9 @@ body {
   color: black;
   font-family: "Playfair Display";
   text-shadow: 1px 1px red;
-  -webkit-transform: translateX(100%);
-  -moz-transform: translateX(100%);
-  transform: translateX(100%);
+  -webkit-transform: translateX(100vw);
+  -moz-transform: translateX(100vw);
+  transform: translateX(100vw);
   -webkit-animation: booking_scroll_note 35s linear 0s infinite;
   -moz-animation: booking_scroll_note 35s linear 0s infinite;
   animation: booking_scroll_note 35s linear 0s infinite;
@@ -84,7 +84,7 @@ body {
 
 @-webkit-keyframes booking_scroll_note {
   0% {
-    -webkit-transform: translateX(100%);
+    -webkit-transform: translateX(100vw);
   }
   100% {
     -webkit-transform: translateX(-100%);
@@ -92,7 +92,7 @@ body {
 }
 @-moz-keyframes booking_scroll_note {
   0% {
-    -moz-transform: translateX(100%);
+    -moz-transform: translateX(100vw);
   }
   100% {
     -moz-transform: translateX(-100%);
@@ -101,9 +101,9 @@ body {
 
 @keyframes booking_scroll_note {
   0% {
-    -webkit-transform: translateX(100%);
-    -moz-transform: translateX(100%);
-    transform: translateX(100%);
+    -webkit-transform: translateX(100vw);
+    -moz-transform: translateX(100vw);
+    transform: translateX(100vw);
   }
   100% {
     -webkit-transform: translateX(-100%);
@@ -198,83 +198,12 @@ sup {
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-  .booking_scroll_note p {
-    -webkit-transform: translateX(38.8%);
-    -moz-transform: translateX(38.8%);
-    transform: translateX(38.8%);
-  }
-  @-webkit-keyframes booking_scroll_note {
-    0% {
-      -webkit-transform: translateX(38.8%);
-    }
-    100% {
-      -webkit-transform: translateX(-100%);
-    }
-  }
-  @-moz-keyframes booking_scroll_note {
-    0% {
-      -moz-transform: translateX(38.8%);
-    }
-    100% {
-      -moz-transform: translateX(-100%);
-    }
-  }
-
-  @keyframes booking_scroll_note {
-    0% {
-      -webkit-transform: translateX(38.8%);
-      -moz-transform: translateX(38.8%);
-      transform: translateX(38.8%);
-    }
-    100% {
-      -webkit-transform: translateX(-100%);
-      -moz-transform: translateX(-100%);
-      transform: translateX(-100%);
-    }
-  }
   .col-md-5 {
     margin: 0 auto;
     max-width: 60%;
     flex: 0 0 60%;
   }
 }
-
-/* @media (min-width: 768px) and (max-width: 1024px) {
-  .booking_scroll_note p {
-    -webkit-transform: translateX(38.8%);
-    -moz-transform: translateX(38.8%);
-    transform: translateX(38.8%);
-  }
-  @-webkit-keyframes booking_scroll_note {
-    0% {
-      -webkit-transform: translateX(38.8%);
-    }
-    100% {
-      -webkit-transform: translateX(-100%);
-    }
-  }
-  @-moz-keyframes booking_scroll_note {
-    0% {
-      -moz-transform: translateX(38.8%);
-    }
-    100% {
-      -moz-transform: translateX(-100%);
-    }
-  }
-  
-  @keyframes booking_scroll_note {
-    0% {
-      -webkit-transform: translateX(38.8%);
-      -moz-transform: translateX(38.8%);
-      transform: translateX(38.8%);
-    }
-    100% {
-      -webkit-transform: translateX(-100%);
-      -moz-transform: translateX(-100%);
-      transform: translateX(-100%);
-    }
-  }
-} */
 
 @media (max-width: 767px) {
   /* .header {
@@ -284,40 +213,6 @@ sup {
   } */
   .booking_scroll_note {
     margin-top: 142px;
-  }
-  .booking_scroll_note p {
-    -webkit-transform: translateX(21.3%);
-    -moz-transform: translateX(21.3%);
-    transform: translateX(21.3%);
-  }
-  @-webkit-keyframes booking_scroll_note {
-    0% {
-      -webkit-transform: translateX(21.3%);
-    }
-    100% {
-      -webkit-transform: translateX(-100%);
-    }
-  }
-  @-moz-keyframes booking_scroll_note {
-    0% {
-      -moz-transform: translateX(21.3%);
-    }
-    100% {
-      -moz-transform: translateX(-100%);
-    }
-  }
-
-  @keyframes booking_scroll_note {
-    0% {
-      -webkit-transform: translateX(21.3%);
-      -moz-transform: translateX(21.3%);
-      transform: translateX(21.3%);
-    }
-    100% {
-      -webkit-transform: translateX(-100%);
-      -moz-transform: translateX(-100%);
-      transform: translateX(-100%);
-    }
   }
   .col-md-5 {
     max-width: 100%;
