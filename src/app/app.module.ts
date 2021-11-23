@@ -20,17 +20,6 @@ import { OwlModule } from 'ngx-owl-carousel';
 import { OfferComponent } from './components/offer/offer.component';
 import { UpcomingComponent } from './components/upcoming/upcoming.component';
 import { SwiperModule } from 'ngx-swiper-wrapper';
-// import { SwiperModule, SwiperConfigInterface,
-//   SWIPER_CONFIG } from 'ngx-swiper-wrapper';
-
-  // const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
-  //   observer: true,
-  //   direction: 'horizontal',
-  //   threshold: 50,
-  //   spaceBetween: 5,
-  //   slidesPerView: 1,
-  //   centeredSlides: true
-  // };
 
 @NgModule({
   declarations: [
@@ -54,12 +43,7 @@ import { SwiperModule } from 'ngx-swiper-wrapper';
     OwlModule,
     SwiperModule,
   ],
-  providers: [AdminserviceService, AuthService, GuardsGuard,
-    // {
-    //   provide: SWIPER_CONFIG,
-    //   useValue: DEFAULT_SWIPER_CONFIG
-    // }
-  ],
+  providers: [AdminserviceService, AuthService, GuardsGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

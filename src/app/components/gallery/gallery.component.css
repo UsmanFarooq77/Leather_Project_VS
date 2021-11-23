@@ -73,9 +73,19 @@ a > img {
   transform: rotateY(180deg);
 } */
 .pagination {
-  /* font-family: "Times New Roman", Times, serif; */
   font-weight: bold;
   font-size: 20px;
+}
+
+.pagination /deep/ .ngx-pagination .current {
+  padding: 0px 0px;
+  background: crimson;
+  color: #fefefe;
+  cursor: default;
+  border-radius: 50%;
+  width: 36px;
+  height: 37px;
+  line-height: 31px;
 }
 /* a[title]{
    cursor: none !important;

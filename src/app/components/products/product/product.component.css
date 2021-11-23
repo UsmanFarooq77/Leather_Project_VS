@@ -112,6 +112,17 @@ input[type="text"]:focus {
   font-size: 20px;
 }
 
+.pagination /deep/ .ngx-pagination .current {
+  padding: 0px 0px;
+  background: crimson;
+  color: #fefefe;
+  cursor: default;
+  border-radius: 50%;
+  width: 36px;
+  height: 37px;
+  line-height: 31px;
+}
+
 .thumbnail {
   background-color: white !important;
   border: 1px solid lightgray !important;
