@@ -101,9 +101,9 @@
             </a>
             <div class="hotel-room-body" style="background-color: #eee;">
               <div class="product_stock_offer">
-                <img *ngIf="post.post_status==false" class="product_stock_img" src="../../../assets/images/sold-out.png"
+                <img *ngIf="post.post_status==false" class="product_stock_out_img" src="../../../assets/images/sold-out.png"
                   width="60px" height="45px">
-                <img *ngIf="post.post_status==true" class="product_stock_img" src="../../../assets/images/in-stock.JPG"
+                <img *ngIf="post.post_status==true" class="product_stock_in_img" src="../../../assets/images/in-stock.JPG"
                   width="60px" height="45px">
                 <h3 class="post_category">{{post.post_category}}</h3>
                 <img class="special_offer" *ngIf="post.post_actual_price" src="../../../assets/images/offer.png"
