@@ -140,8 +140,26 @@
 
 .related_products {
   /* font-family: 'FontAwesome';  */
-  text-decoration: underline;
+  /* text-decoration: underline; */
   margin: 20px;
+  position: relative;
+}
+
+.related_products::after {
+  bottom: 0px;
+  top: 30px;
+  content: "";
+  position: absolute;
+  left: 0px;
+  width: 145px;
+  height: 4px;
+  background-size: auto;
+  transform: skew(-50deg);
+  -webkit-transform: skew(-50deg);
+  -moz-transform: skew(-50deg);
+  -ms-transform: skew(-50deg);
+  -o-transform: skew(-50deg);
+  background-color: #000;
 }
 
 .font {
@@ -185,6 +203,11 @@
 #slider {
   width: 80%;
   /* margin: auto; */
+}
+.media-with-text .button_image_related .owl_carousel_image {
+    height: 242px;
+    max-width: max-content !important;
+    margin: auto;
 }
 
 .button_image_related {

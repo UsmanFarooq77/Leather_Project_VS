@@ -1,0 +1,23 @@
+.upcoming_section {
+  margin: 50px 0px 50px 0px;
+}
+
+.upComing_product_heading h2 {
+  text-align: center;
+  color: crimson;
+}
+
+img {
+  width: 300px !important;
+  min-height: 300px;
+}
+
+@media (max-width: 991px) {
+  .swiper-container .swiper-wrapper .swiper-slide {
+    text-align: center;
+  }
+  .swiper-container .swiper-button-prev,
+  .swiper-button-next {
+    display: none !important;
+  }
+}

@@ -17,12 +17,29 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { FooterComponent } from './footer/footer.component';
 import { TopHeaderComponent } from './top-header/top-header.component';
 import { OwlModule } from 'ngx-owl-carousel';
+import { OfferComponent } from './components/offer/offer.component';
+import { UpcomingComponent } from './components/upcoming/upcoming.component';
+import { SwiperModule } from 'ngx-swiper-wrapper';
+// import { SwiperModule, SwiperConfigInterface,
+//   SWIPER_CONFIG } from 'ngx-swiper-wrapper';
+
+  // const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+  //   observer: true,
+  //   direction: 'horizontal',
+  //   threshold: 50,
+  //   spaceBetween: 5,
+  //   slidesPerView: 1,
+  //   centeredSlides: true
+  // };
+
 @NgModule({
   declarations: [
     AppComponent,
     TopHeaderComponent,
     FooterComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    OfferComponent,
+    UpcomingComponent
   ],
   imports: [
     BrowserModule,
@@ -34,9 +51,15 @@ import { OwlModule } from 'ngx-owl-carousel';
     Ng2SearchPipeModule,
     NgxPaginationModule,
     NgPipesModule,
-    OwlModule
+    OwlModule,
+    SwiperModule,
   ],
-  providers: [AdminserviceService, AuthService, GuardsGuard],
+  providers: [AdminserviceService, AuthService, GuardsGuard,
+    // {
+    //   provide: SWIPER_CONFIG,
+    //   useValue: DEFAULT_SWIPER_CONFIG
+    // }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

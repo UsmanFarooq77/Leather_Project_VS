@@ -39,7 +39,6 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('usman')
     if (this.router.url == '/') {
       window.scrollTo({
         top: 0,

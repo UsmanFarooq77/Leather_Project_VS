@@ -45,14 +45,14 @@ export class GalleryComponent implements OnInit {
         this.isImageLoad = false;
         this.route.queryParamMap.subscribe(params => {
           this.category = params.get('Category');
-          if (this.category) {
+          // if (this.category) {
             this.reversePipe.transform(this.filteredCategories = (this.category) ?
               this.posts.filter(post => post.post_category === this.category) : this.posts);
             this.pageNumber = Number(this.route.snapshot.paramMap.get('pageNumber') ? this.route.snapshot.paramMap.get('pageNumber') : 1);
-          }
-          else {
-            this.pageNumber = Number(this.route.snapshot.paramMap.get('pageNumber') ? this.route.snapshot.paramMap.get('pageNumber') : 1);
-          }
+          // }
+          // else {
+          //   this.pageNumber = Number(this.route.snapshot.paramMap.get('pageNumber') ? this.route.snapshot.paramMap.get('pageNumber') : 1);
+          // }
         });
         this.isLoadingProductCategory = false;
         this.scrollToTop();

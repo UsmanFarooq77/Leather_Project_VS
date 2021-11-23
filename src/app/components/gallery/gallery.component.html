@@ -48,7 +48,7 @@
 </div> -->
   <div *ngIf="!isImageLoad" class="container">
     <ng-container
-      *ngFor="let post of filteredCategories | reverse | paginate:{itemsPerPage:3, currentPage: pageNumber}; let i = index">
+      *ngFor="let post of filteredCategories | reverse | paginate:{itemsPerPage:6, currentPage: pageNumber}; let i = index">
       <span class="images">
         <!-- <div class="row"> -->
         <div class="col-md-4 gallery_image">

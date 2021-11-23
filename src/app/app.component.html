@@ -12,6 +12,14 @@
   <app-slider *ngIf="router.url == '/'"></app-slider>
   
   <router-outlet></router-outlet>
+
+  <section>
+    <app-offer></app-offer>
+  </section>
+
+  <section>
+    <app-upcoming></app-upcoming>
+  </section>
   <!--Footer-->
   <footer>
   <app-footer></app-footer>
@@ -30,11 +38,16 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <!-- <div class="modal-body">
           We're glad to see you. You will get a savings of Rs. 50 on each product. You can compare prices with our
           Facebook and Instagram pages. We are supplying our products all over Pakistan through Cash on Delivery. Our
           service is available 24/7.
           You can contact us at any time. <a style="color: blue; text-decoration: underline;" routerLink="/contact"
+            routerLinkActive="active">Contact Us</a>
+        </div> -->
+        <div class="modal-body">
+         Welcome! We hope you will love our products.
+          <a style="color: blue; text-decoration: underline;" routerLink="/contact"
             routerLinkActive="active">Contact Us</a>
         </div>
         <div class="modal-footer">

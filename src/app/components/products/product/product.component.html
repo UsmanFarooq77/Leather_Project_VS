@@ -116,7 +116,6 @@
                 <h5 style="display: inline;"><del>{{ 'Rs ' + post.post_actual_price}}</del></h5>
                 <h5 style="display: inline;">Rs {{post.post_special_price}}</h5>
               </span>
-
               <ng-template #onlyActualPrice>
                 <h5 style="display: inline;">{{ 'Rs ' + post.post_actual_price}}</h5>
               </ng-template>
@@ -124,7 +123,7 @@
               <a style="color: blue; font-family: cursive;" class="btn"
                 [routerLink]="['/product-detail',post.post_category , post.$key]" routerLinkActive="Active">Read More
                 <span class="glyphicon glyphicon-chevron-right"></span></a>
-              <a style="font-family: cursive;" class="btn" [routerLink]="['/booking' , post.$key]">Buy Now
+              <a *ngIf="post.post_status==true" style="font-family: cursive;" class="btn" [routerLink]="['/booking' , post.$key]">Buy Now
                 <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
             </div>
           </div>

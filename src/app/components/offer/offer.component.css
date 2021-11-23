@@ -1,0 +1,41 @@
+.offer_section {
+  background-image: url("../../../assets/images/coming-soon.png");
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.py-5 {
+  padding-top: 8rem !important;
+  padding-bottom: 8rem !important;
+}
+
+.upcoming-events {
+  margin: 10px 0px 20px 0px;
+}
+
+@media (min-width: 375px) and (max-width: 768px) {
+  .offer_section {
+    background-attachment: unset;
+    background-position: center;
+  }
+  .promo_text h2 {
+    font-size: 24px;
+  }
+  #date-countdown {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 374px) {
+  .offer_section {
+    background-position: center;
+    background-attachment: unset;
+    height: 338px;
+  }
+  .promo_text h2 {
+    font-size: 24px;
+  }
+  #date-countdown {
+    font-size: 9px;
+  }
+}

@@ -78,19 +78,12 @@ input[type="text"]:focus {
   z-index: 1;
 }
 
-/* .catlink {
-  color: #f23a2e;
-  text-decoration: none;
-  background-color: transparent;
-} */
-
 .col-3 {
   margin-left: 120px;
   display: inline;
 }
 
 .search_result {
-  /* font-family: "Times New Roman", Times, serif; */
   color: black;
 }
 
@@ -110,13 +103,11 @@ input[type="text"]:focus {
 .clear_all_result {
   color: crimson;
   font-size: 12px;
-  /* font-family: "Times New Roman", Times, serif; */
   margin-left: 12px;
   cursor: pointer;
 }
 
 .pagination {
-  /* font-family: "Times New Roman", Times, serif; */
   font-weight: bold;
   font-size: 20px;
 }
