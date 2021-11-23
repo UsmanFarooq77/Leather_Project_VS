@@ -104,6 +104,20 @@
 }
 
 .whatsapp_chat .icon-whatsapp{
-  font-size: 52px;
+  font-size: 50px;
   color: #0bc80b;
+  width: 48px;
+  display: inline-block;
+}
+.whatsapp_chat a .chat_text {
+  opacity: 0;
+  transform: translateX(-90px);
+}
+.whatsapp_chat:hover a .chat_text{
+  font-weight: 500;
+  display:block;
+  width: 91px;
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 1s linear;
 }

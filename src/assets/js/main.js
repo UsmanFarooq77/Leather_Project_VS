@@ -314,6 +314,7 @@ jQuery(document).ready(function($) {
 	var windowScrolled = function() {
 
 		var arrow_top_dom_reference = document.getElementById('arrowTop');
+		var whatsapp_chat_scroll_reference = document.getElementById('whatsapp_chat_scroll');
 		$(window).scroll(function() {
 
 			var $w = $(this), st = $w.scrollTop(), navbar = $('.js-site-navbar') ;
@@ -328,9 +329,11 @@ jQuery(document).ready(function($) {
 			} else {
 				arrow_top_dom_reference.style.display = 'none';
 			}
-			
+			whatsapp_chat_scroll_reference.style.display = 'none';
 		})
-
+		$(window).scroll($.debounce( 1000, function(){
+			whatsapp_chat_scroll_reference.style.display = 'inline-block';
+		}));
 	}
 	windowScrolled();
 

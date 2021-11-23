@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header *ngIf="router.url != '/'"></app-header>
 <app-slider *ngIf="router.url != '/'"></app-slider>
 <div class="site-section bg-white">
   <div class="container">

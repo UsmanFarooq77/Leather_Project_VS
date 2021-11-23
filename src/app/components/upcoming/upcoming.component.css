@@ -1,13 +1,22 @@
+
+/* .bg_color {
+
+} */
 .upcoming_section {
   margin: 50px 0px 50px 0px;
 }
 
+.upComing_product_heading{
+  margin-bottom: 20px;
+}
 .upComing_product_heading h2 {
   text-align: center;
   color: crimson;
+  font-family: "Playfair Display";
+  font-size: xxx-large;
 }
 
-img {
+.swiper-container .swiper-wrapper .swiper-slide img {
   width: 300px !important;
   min-height: 300px;
 }
@@ -19,5 +28,8 @@ img {
   .swiper-container .swiper-button-prev,
   .swiper-button-next {
     display: none !important;
+  }
+  .upComing_product_heading h2 {
+    font-size: xx-large;
   }
 }

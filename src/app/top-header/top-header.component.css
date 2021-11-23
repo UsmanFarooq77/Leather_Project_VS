@@ -58,7 +58,7 @@
   min-height: 39px;
 }
 .contact_section_top_header .top_header_logo {
-  font-size: 19px;
+  font-size: 18px;
 }
 .icon-facebook,
 .icon-instagram,
@@ -90,5 +90,10 @@
 @media (max-width: 768px) {
   .scroll_left_top_header p {
     min-width: 625px !important;
+  }
+}
+@media (max-width: 330px) {
+  .contact_section_top_header .top_header_logo {
+    font-size: 15px;
   }
 }

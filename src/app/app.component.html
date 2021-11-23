@@ -14,11 +14,11 @@
   <router-outlet></router-outlet>
 
   <section>
-    <app-offer></app-offer>
+    <app-offer *ngIf="router.url == '/'"></app-offer>
   </section>
 
   <section>
-    <app-upcoming></app-upcoming>
+    <app-upcoming *ngIf="router.url == '/'"></app-upcoming>
   </section>
   <!--Footer-->
   <footer>
