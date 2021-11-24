@@ -1,0 +1,25 @@
+.news_letter {
+  margin-top: 15px;
+}
+
+.news_letter h5 {
+  color: #fff;
+}
+.news_letter .form_field {
+  display: flex;
+  border: 1px solid white;
+}
+
+.news_letter .form_field input {
+  padding: 6px;
+  background: #000;
+  color: white;
+  border: 0px solid #000;
+  width: 100%;
+  outline: #000;
+}
+.news_letter .form_field button {
+  border: 0px;
+  background: #000;
+  color: white;
+}

@@ -1,0 +1,13 @@
+<div class="news_letter">
+  <span class="text-white h2 d-block"><i class="fa fa-envelope-square"></i></span>
+  <h5>Receive Special Offers and Promotions</h5>
+  <form #newsLetter="ngForm" (ngSubmit)="addNewsLetterForm(newsLetter)">
+    <div class="form_field">
+      <input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Example@gmail.com"
+        [(ngModel)]="newsLetterModel.email" required>
+      <button type="submit" [disabled]="newsLetter.invalid">
+        <span><i [style.color]="newsLetter.invalid ? '#ffffff' : 'crimson'"
+            [style.cursor]="newsLetter.invalid ? 'none' : 'pointer'" class="fa fa-paper-plane"></i></span></button>
+    </div>
+  </form>
+</div>

@@ -17,6 +17,7 @@ import { CommentsComponent } from './comments/comments.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { MaterialModule } from '../shared/material.module';
 import { OwlModule } from 'ngx-owl-carousel';
+import { NewsletterComponent } from './newsletter/newsletter.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -33,7 +34,8 @@ import { OwlModule } from 'ngx-owl-carousel';
       ProductComponent,
       AboutComponent,
       GalleryComponent,
-      MobileMenuComponent
+      MobileMenuComponent,
+      NewsletterComponent
     ],
   declarations:
     [HeaderComponent,
@@ -46,7 +48,8 @@ import { OwlModule } from 'ngx-owl-carousel';
       RoomDetailsComponent,
       BookingFormComponent,
       CommentsComponent,
-      ReviewsComponent
+      ReviewsComponent,
+      NewsletterComponent
     ],
     providers: [ReversePipe]
 })

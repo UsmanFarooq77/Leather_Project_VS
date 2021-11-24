@@ -88,4 +88,8 @@ export class AdminserviceService {
   getReviews(): FirebaseListObservable<Review[]> {
     return this.db.list('/addReview');
   }
+  addNewsLetter(newsLetter){
+    const newsLetterRef = this.db.list('/newsletter').push(newsLetter);
+    return newsLetterRef.key;
+  }
 }
