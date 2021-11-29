@@ -42,7 +42,7 @@
     </div>
     <div class="row">
       <div class="col-md-8 mb-4">
-        <input type="text" placeholder="Search SF Leathers products." name="search" [(ngModel)]="searchText">
+        <input type="text" placeholder="Search SF Leathers products here" name="search" [(ngModel)]="searchText">
       </div>
       <div class="col-md-4 mb-4">
         <!-- <ng-container *ngFor="let cat of Categories$ | async" style="display: inline-block;">
@@ -101,10 +101,10 @@
             </a>
             <div class="hotel-room-body" style="background-color: #eee;">
               <div class="product_stock_offer">
-                <img *ngIf="post.post_status==false" class="product_stock_out_img" src="../../../assets/images/sold-out.png"
-                  width="60px" height="45px">
-                <img *ngIf="post.post_status==true" class="product_stock_in_img" src="../../../assets/images/in-stock.JPG"
-                  width="60px" height="45px">
+                <img *ngIf="post.post_status==false" class="product_stock_out_img"
+                  src="../../../assets/images/sold-out.png" width="60px" height="45px">
+                <img *ngIf="post.post_status==true" class="product_stock_in_img"
+                  src="../../../assets/images/in-stock.JPG" width="60px" height="45px">
                 <h3 class="post_category">{{post.post_category}}</h3>
                 <img class="special_offer" *ngIf="post.post_actual_price" src="../../../assets/images/offer.png"
                   width="50px" height="50px">
@@ -123,7 +123,8 @@
               <a style="color: blue; font-family: cursive;" class="btn"
                 [routerLink]="['/product-detail',post.post_category , post.$key]" routerLinkActive="Active">Read More
                 <span class="glyphicon glyphicon-chevron-right"></span></a>
-              <a *ngIf="post.post_status==true" style="font-family: cursive;" class="btn" [routerLink]="['/booking' , post.$key]">Buy Now
+              <a *ngIf="post.post_status==true" style="font-family: cursive;" class="btn"
+                [routerLink]="['/booking' , post.$key]">Buy Now
                 <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
             </div>
           </div>
@@ -143,7 +144,9 @@
       <div class="row">
         <div class="col-md-12 text-center">
           <div class="d-inline-block" style="padding-right: 43px;">
-            <pagination-controls class="pagination" (pageChange)="pageChanged(pageNumber = $event, scroll)">
+            <pagination-controls class="pagination" (pageChange)="pageChanged(pageNumber = $event, scroll)"
+              autoHide="true" previousLabel="" nextLabel="" screenReaderPaginationLabel="Pagination"
+              screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page">
             </pagination-controls>
           </div>
         </div>

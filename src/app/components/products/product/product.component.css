@@ -46,7 +46,7 @@ input[type="text"] {
 input[type="text"]:focus {
   width: 100%;
   outline: none !important;
-  border: 2px solid black;
+  border: 2px solid crimson;
 }
 
 .mat-form-field {

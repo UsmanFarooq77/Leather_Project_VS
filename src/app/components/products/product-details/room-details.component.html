@@ -17,16 +17,16 @@
         <div class="product_details_title_section">
           <h2>{{ post.post_title }}</h2>
           <h3 *ngIf="post.post_actual_price">
-            Actual Price Rs:
+            Actual Price Rs
             <del>{{ post.post_actual_price }}</del>
           </h3>
           <h3 style="display: inline-block;">
-            Price Rs:
+            Price Rs
             {{ post.post_tags }}
           </h3>
           <img *ngIf="post.post_actual_price" src="../../../assets/images/offer.png" width="62px">
           <h4 style="font-family: cursive;">
-            Category:
+            Category
             {{ post.post_category }}
           </h4>
           <p style="font-weight: bold; color: black">

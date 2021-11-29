@@ -99,7 +99,9 @@
     <div class="d-block">
       <div class="col-md-12 text-center">
         <div class="d-inline-block" style="padding-right: 43px;">
-          <pagination-controls class="pagination" (pageChange)="pageChanged(pageNumber = $event)"></pagination-controls>
+          <pagination-controls class="pagination" (pageChange)="pageChanged(pageNumber = $event)" autoHide="true"
+            previousLabel="" nextLabel="" screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page"
+            screenReaderCurrentLabel="You're on page"></pagination-controls>
         </div>
       </div>
     </div>
