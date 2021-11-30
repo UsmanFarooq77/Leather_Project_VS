@@ -55,7 +55,7 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
             loop: true,
             margin: 28,
             items: 4,
-            // autoplay: true,
+            autoplay: true,
             smartSpeed: 1000,
             // navText: ['<span class="icon-arrow_back"></span>', '<span class="icon-arrow_forward"> </span>'],
             responsiveClass: true,
@@ -68,11 +68,11 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
                 items: 2,
                 nav: false
               },
-              1024: {
+              1080: {
                 items: 3,
                 nav: false
               },
-              1140: {
+              1439: {
 
               }
             }

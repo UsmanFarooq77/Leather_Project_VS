@@ -21,6 +21,11 @@
   min-height: 300px;
 }
 
+.swiper-container .swiper-pagination /deep/ .swiper-pagination-bullet-active {
+  opacity: 1;
+  background: crimson !important;
+}
+
 @media (max-width: 991px) {
   .swiper-container .swiper-wrapper .swiper-slide {
     text-align: center;

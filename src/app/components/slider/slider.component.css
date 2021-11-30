@@ -11,6 +11,10 @@
   overflow: hidden;
 }
 
+#slider_video{
+  background-color: #eee ;
+}
+
 .slider_section video {
   width: 100%;
   /* height: 100vh; */
