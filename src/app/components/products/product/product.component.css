@@ -166,6 +166,7 @@ input[type="text"]:focus {
 .hotel-room .hotel-room-body .product_stock_offer .post_category {
   word-break: break-word;
   width: 35%;
+  white-space: pre;
 }
 
 @media (max-width: 767px) {
@@ -183,6 +184,7 @@ input[type="text"]:focus {
     display: inline-block;
     word-break: break-word;
     width: 35%;
+    white-space: pre;
   }
   .money_back_guarantee {
     margin-top: 28px;

@@ -22,7 +22,7 @@
           </h3>
           <h3 style="display: inline-block;">
             Price Rs
-            {{ post.post_tags }}
+            {{ post.post_special_price }}
           </h3>
           <img *ngIf="post.post_actual_price" src="../../../assets/images/offer.png" width="62px">
           <h4 style="font-family: cursive;">
@@ -105,10 +105,10 @@
           <div class="room-description">
             <div class="product_sku_discount_section">
               <h6>
-                SKU: {{ post.post_address }}
+                SKU {{ post.post_sku }}
               </h6>
               <h6>
-                Discount %
+                Discount {{post.post_discount |  number: '1.0-0' }}%
               </h6>
             </div>
             <h3 class="description_heading">

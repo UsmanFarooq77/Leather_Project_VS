@@ -1,3 +1,9 @@
+.booking_image {
+  width: 100%;
+  max-width: 160px;
+  height: 140px;
+  border-radius: 8px;
+}
 .input-group-addon {
   border: 1px solid darkred;
   padding: 0px 10px 0px 10px;
