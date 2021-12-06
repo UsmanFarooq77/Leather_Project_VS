@@ -48,7 +48,7 @@
                     <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                       <input id="inputSuccess" id="inputWarning" name="user_firstname" type="text" class="form-control"
-                        placeholder="Firstname" [(ngModel)]="bookings.user_firstname" #first="ngModel" required
+                        placeholder="First Name" [(ngModel)]="bookings.user_firstname" #first="ngModel" required
                         minlength="3" />
                       <span *ngIf="first.errors?.required && first.touched"
                         class="glyphicon glyphicon-remove form-control-feedback"></span>
@@ -69,7 +69,7 @@
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                      <input name="user_lastname" type="text" class="form-control" placeholder="Lastname"
+                      <input name="user_lastname" type="text" class="form-control" placeholder="Last Name"
                         [(ngModel)]="bookings.user_lastname" #last="ngModel" required minlength="3" />
                       <span *ngIf="last.errors?.required && last.touched"
                         class="glyphicon glyphicon-remove form-control-feedback"></span>
@@ -105,7 +105,7 @@
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-                      <input name="user_phone" type="tel" class="form-control" placeholder="Phone"
+                      <input name="user_phone" type="tel" class="form-control" placeholder="Phone #"
                         [(ngModel)]="bookings.user_phone" #phone="ngModel" required
                         pattern="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"
                         onkeypress=" return (event.charCode >= 48 && event.charCode <=57 )" />

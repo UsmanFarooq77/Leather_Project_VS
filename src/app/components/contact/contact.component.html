@@ -34,7 +34,7 @@
               <div class="form-group has-success has-feedback">
                 <div class="form-group">
                   <div class="input-group">
-                    <input style="border-radius: 15px;" type="text" name="fullname" class="form-control"
+                    <input style="border-radius: 8px;" type="text" name="fullname" class="form-control"
                       placeholder="Full Name" [(ngModel)]="contact.fullname" required #first='ngModel' minlength="3">
                   </div>
                   <span *ngIf="first.errors?.required && first.touched"
@@ -59,7 +59,7 @@
               <div class="form-group has-success has-feedback">
                 <div class="form-group">
                   <div class="input-group">
-                    <input style="border-radius: 15px;" type="email" name="email" class="form-control"
+                    <input style="border-radius: 8px;" type="email" name="email" class="form-control"
                       placeholder="Email Address" [(ngModel)]="contact.email"
                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" #emailCheck='ngModel'>
                   </div>
@@ -79,7 +79,7 @@
               <div class="form-group has-success has-feedback">
                 <div class="form-group">
                   <div class="input-group">
-                    <input style="border-radius: 15px;" type="tel" name="phone" class="form-control"
+                    <input style="border-radius: 8px;" type="tel" name="phone" class="form-control"
                       placeholder="Phone #" [(ngModel)]="contact.phone" required
                       pattern="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]" #phoneCheck='ngModel'
                       onkeypress=" return (event.charCode >= 48 && event.charCode <=57 )">
@@ -104,7 +104,7 @@
               <div class="form-group has-success has-feedback">
                 <div class="form-group">
                   <div class="input-group">
-                    <textarea style="border-radius: 15px;" name="message" cols="30" rows="5" class="form-control"
+                    <textarea style="border-radius: 8px;" name="message" cols="30" rows="5" class="form-control"
                       placeholder="Write message here," minlength="10" #last='ngModel' [(ngModel)]="contact.message"
                       required></textarea>
                   </div>
