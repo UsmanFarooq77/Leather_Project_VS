@@ -6,6 +6,7 @@ import { AdminserviceService } from '../../../services/admin/adminservice.servic
 import { NgForm } from '@angular/forms';
 import { ReversePipe } from 'ngx-pipes';
 import { comments } from '../../../models/comment-model';
+import { product } from '../../../models/product-model';
 declare var $: any;
 
 @Component({
@@ -25,6 +26,8 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
   filteredPostsByCategory: Product[];
   postIdSubscription : Subscription;
   postsSubscription : Subscription;
+  stars : number[];
+  
   
   constructor(
     private route: ActivatedRoute,
@@ -36,13 +39,18 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
     this.category = this.route.snapshot.paramMap.get("category");
     this.IdLower = this.id.substr(0, this.id.length);
     this.filteredPostsByCategory = [];
+    this.stars = [];
   }
   ngOnInit() {
+    this.stars.length = 5;
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
-    this.postIdSubscription = this.adservice.getIdObject(this.id).subscribe((post) => this.Post$ = post);
+    this.postIdSubscription = this.adservice.getIdObject(this.id).subscribe((post) => 
+    {this.Post$ = post
+    console.log(post.$key)
+    });
     this.postsSubscription = this.adservice.getPost().subscribe((posts) => {
       this.filteredPostsByCategory = posts.filter((post) => this.category == post.post_category && this.id !== post.$key);
       
@@ -95,7 +103,7 @@ export class RoomDetailsComponent implements OnInit, OnDestroy {
     this.router.navigate(['/product-detail', this.Post$.post_category, key]);
   }
   ngOnDestroy() {
-    this.postIdSubscription.unsubscribe();
+    // this.postIdSubscription.unsubscribe();
     this.postsSubscription.unsubscribe();
   }
 }

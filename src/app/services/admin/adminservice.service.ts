@@ -1,3 +1,4 @@
+import { product } from './../../models/product-model';
 import { booking } from '../../interfaces/booking';
 import { comment } from '../../interfaces/comment';
 import { Product } from '../../interfaces/Product';
@@ -5,6 +6,11 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { contact } from '../../interfaces/contact';
 import { Review } from '../../interfaces/review';
+import { map } from 'rxjs/operators/map';
+import { p } from '@angular/core/src/render3';
+import { of } from 'rxjs/observable/of';
+import { Observable } from 'rxjs/Observable';
+
 @Injectable()
 export class AdminserviceService {
   constructor(private db: AngularFireDatabase) { }
@@ -37,8 +43,13 @@ export class AdminserviceService {
   updatePostStatus(key, Status) {
     return this.db.object('/addpost/' + key).update({ post_status: Status });
   }
-  getIdObject(idObject): FirebaseObjectObservable<Product> {
-    return this.db.object('/addpost/' + idObject);
+  getIdObject(idObject): Observable<Product> {
+    return this.db.object('/addpost/' + idObject).pipe(map(
+      (response) => {
+        console.log(response)
+        return new product(response);
+      }
+    ));
   }
   // addBooking(booking, key){
   //   const toSend= this.db.object('/booking/'+key);
@@ -88,7 +99,7 @@ export class AdminserviceService {
   getReviews(): FirebaseListObservable<Review[]> {
     return this.db.list('/addReview');
   }
-  addNewsLetter(newsLetter){
+  addNewsLetter(newsLetter) {
     const newsLetterRef = this.db.list('/newsletter').push(newsLetter);
     return newsLetterRef.key;
   }

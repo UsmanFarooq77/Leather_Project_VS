@@ -105,18 +105,23 @@
           <div class="room-description">
             <div class="product_sku_discount_section">
               <h6>
-                SKU {{ post.post_sku }}
+                SKU: {{ post.post_sku }}
               </h6>
               <h6>
-                Discount {{post.post_discount |  number: '1.0-0' }}%
+                Discount: {{ post.post_discount |  number: '1.0-0' }}%
               </h6>
             </div>
-            <h3 class="description_heading">
-              Description
-            </h3>
+            <div class="product_color_review_section">
+              <h6>Color: {{post.post_color}}</h6>
+              <h6>Reviews:  
+                <span class="review_stars" *ngFor="let star of stars">
+                  <i class="fa fa-star"></i>
+                </span>
+              </h6>
+            </div>
             <div class="description-content" [innerText]="post.post_content">
             </div>
-            <a *ngIf="post.post_status==true" style="font-size: 21px;" class="btn" [routerLink]="['/booking', post.$key]">Buy Now <span
+            <a *ngIf="post.post_status==true" style="font-size: 21px;" class="btn" [routerLink]="['/booking', id]">Buy Now <span
                 class="fa fa-shopping-cart"></span></a>
           </div>
         </div>

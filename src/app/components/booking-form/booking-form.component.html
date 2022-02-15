@@ -5,7 +5,8 @@
   <p>
     <span style="color: red;">Note:</span> Congratulation you will save <span style="color: blue;">50 $</span>
     on buying the product
-    from here.The product will be delivered to you in 2-3 working days in Pakistan and 7-15 working days outside Pakistan.
+    from here.The product will be delivered to you in 2-3 working days in Pakistan and 7-15 working days outside
+    Pakistan.
   </p>
 </div>
 <div class="container w3-animate-left">
@@ -28,9 +29,10 @@
             </div>
             <!-- <h3><i class="fa fa-user fa-4x"></i></h3> -->
             <h3 style="padding-top: 10px;">
-              <img *ngIf="filteredPosts.length" class="booking_image"
-                [src]="filteredPosts[0].image1" alt="No Image Found." />
-                <span><img *ngIf="!filteredPosts.length" src="../../../assets/images/loading_dots.gif" width="15%" style="min-width: 100px;"></span>
+              <img *ngIf="filteredPosts.length" class="booking_image" [src]="filteredPosts[0].image1"
+                alt="No Image Found." />
+              <span><img *ngIf="!filteredPosts.length" src="../../../assets/images/loading_dots.gif" width="15%"
+                  style="min-width: 100px;"></span>
             </h3>
             <div class="sf_logo_booking w3-red">
               <button type="button" class="subtract_cart" (click)="subtractCart()">-</button>
@@ -153,8 +155,9 @@
                   </div>
                 </div>
                 <div style="padding: 13px;" class="form-group">
-                  <input style="font-weight: 700;" class="btn btn-lg btn-outline-primary btn-block" value="Request To Buy" type="submit"
-                    [disabled]="book.invalid" [style.color]="book.invalid ? '#000' : 'white'"
+                  <input style="font-weight: 700;" class="btn btn-lg btn-outline-primary btn-block"
+                    value="Request To Buy" type="submit" [disabled]="book.invalid"
+                    [style.color]="book.invalid ? '#000' : 'white'"
                     [style.background-color]="book.invalid ? 'white' : 'crimson'" />
                 </div>
               </form>

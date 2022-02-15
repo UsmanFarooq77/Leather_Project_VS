@@ -106,14 +106,17 @@
   }
 }
 
-.product_sku_discount_section {
+.product_sku_discount_section, .product_color_review_section{
   display: flex;
   background-color: #f5f5f5;
   padding: 10px;
   margin-bottom: 5px;
 }
-.product_sku_discount_section h6 {
+.product_sku_discount_section h6, .product_color_review_section h6 {
   width: 50%;
+}
+.product_color_review_section .review_stars .fa {
+  color: crimson;
 }
 
 .room-description {
@@ -290,10 +293,10 @@
     height: 235px;
     max-width: 100%;
   }
-  .product_sku_discount_section {
+  .product_sku_discount_section, .product_color_review_section {
     flex-direction: column;
   }
-  .product_sku_discount_section h6 {
+  .product_sku_discount_section h6, .product_color_review_section h6 {
     width: 100%;
   }
   .room-description {
