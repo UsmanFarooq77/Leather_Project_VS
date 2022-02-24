@@ -1,0 +1,75 @@
+.modal-header {
+    text-align: center;
+  }
+  .modal{
+    top : 74px;
+  }
+  .site-wrap {
+    margin-top: 70px;
+  }
+  .sf_logo {
+    width: 75px;
+    height: 65px;
+  }
+  .login_google {
+    color: black;
+    text-decoration: underline;
+    background-color: #eee;
+    padding: 15px;
+    font-family: cursive;
+  }
+  
+  .google_icon {
+    width: 38px;
+    margin-left: -31px;
+    margin-right: 9px;
+  }
+  
+  .facebook_icon {
+    width: 37px;
+    margin-left: -16px;
+    margin-right: 10px;
+  }
+  
+  .social_buttons {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 0px;
+  }
+  
+  .main_login_section {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    height: 60px;
+    /* display: flex;
+    justify-content: flex-end; */
+  }
+  
+  .main_login_section .main_login_button_beside_pop_up {
+    font-size: 35px;
+    line-height: 54px;
+    font-family: ui-monospace;
+    color: crimson;
+    font-weight: 700;
+    padding: 0px 24px 0px 24px;
+    border-radius: 50px;
+    border: 1px solid crimson;
+  }
+  
+  @media (max-width: 767px) {
+    .site-wrap {
+      margin-top: 120px;
+    }
+    .social_buttons {
+      width: 100%;
+    }
+    .modal{
+      top : 90px;
+    }
+  }
+  
+  
+  
+  
