@@ -49,13 +49,6 @@ export class HeaderComponent implements OnInit {
       
       
   }
-
-  initializePopUp(){
-    $(document).ready(function () {
-      $('#loginModalCenter').modal('show');
-    });
-    alert('Please enter Email and Password.');
-  }
   
   
 }

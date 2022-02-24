@@ -1,9 +1,22 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Routes, RouterModule } from '@angular/router';
+import { LoginModelComponent } from '../@membership/login-model/login-model.component';
+import { LoginComponent } from '../@membership/login/login.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
+const routes : Routes = [
+  {
+    path: 'login', component: LoginModelComponent
+  },
+  { path: '**', component: PageNotFoundComponent }
+
+]
 @NgModule({
   imports: [
-    CommonModule
+    RouterModule.forChild(routes)
+  ],
+  exports: [
+    RouterModule
   ],
   declarations: []
 })

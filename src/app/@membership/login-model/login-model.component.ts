@@ -23,6 +23,9 @@ export class LoginModelComponent implements OnInit {
     this.isLoginLoading = false;
     this.isGoogleLogin = false;
     this.isFacebookLogin = false;
+    $(document).ready(function () {
+      $('#loginModalCenter').modal('show');
+    });
    }
 
   ngOnInit() {
