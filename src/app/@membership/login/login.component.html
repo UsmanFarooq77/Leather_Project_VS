@@ -1,0 +1,28 @@
+<div class="login_form">
+  <form [formGroup]="registerForm" (ngSubmit)="signIn(registerForm.value)" class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email" placeholder="Ex. pat@example.com" required>
+      <mat-error>
+        <span *ngIf="registerForm.get('email').invalid && registerForm.get('email').dirty">
+          Please enter a valid email address
+        </span>
+      </mat-error>
+      <mat-error>
+        <span *ngIf="registerForm.get('email').pristine">
+          Email is <strong>required</strong>
+        </span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password" placeholder="Ex. 123456" required>
+      <mat-error>
+        Password is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <button [disabled]="registerForm.invalid" mat-raised-button color="primary">Log In
+      <i *ngIf="isSignedIn" class="fa fa-spinner fa-spin" style="font-size:20px"></i>
+    </button>
+  </form>
+</div>

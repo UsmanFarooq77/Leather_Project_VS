@@ -5,7 +5,7 @@ import { AboutComponent } from './about/about.component';
 import { ProductComponent } from './products/product/product.component';
 import { RoomDetailsComponent } from './products/product-details/room-details.component';
 import { BookingFormComponent } from './booking-form/booking-form.component';
-import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from '../@core/page-not-found/page-not-found.component';
 // import { IndexComponent } from '../admin/index/index.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { ReviewsComponent } from './reviews/reviews.component';

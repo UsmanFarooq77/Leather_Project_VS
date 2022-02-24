@@ -1,6 +1,6 @@
 import { Subscription } from 'rxjs/Subscription';
-import { Product } from './../../interfaces/Product';
-import { bookings } from './../../models/booking-model';
+import { Product } from '../../interfaces/Product';
+import { bookings } from '../../models/booking-model';
 import { Component, OnInit } from '@angular/core';
 import { AdminserviceService } from '../../services/admin/adminservice.service';
 import { ActivatedRoute } from '@angular/router';

@@ -1,4 +1,4 @@
-import { contacts } from './../../models/contact-model';
+import { contacts } from '../../models/contact-model';
 import { Component, OnInit } from '@angular/core';
 import { AdminserviceService } from '../../services/admin/adminservice.service';
 import { NgForm } from '@angular/forms';

@@ -1,3 +1,4 @@
+import { CoreModule } from './@core/core.module';
 import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -9,26 +10,23 @@ import { NgPipesModule } from 'ngx-pipes';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
-import { ComponentsModule } from './components/components.module';
+import { ComponentsModule } from './@components/components.module';
 import { AdminserviceService } from './services/admin/adminservice.service';
 import { AuthService } from './services/auth/auth.service';
 import { GuardsGuard } from './guards/guards.guard';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { FooterComponent } from './footer/footer.component';
-import { TopHeaderComponent } from './top-header/top-header.component';
 import { OwlModule } from 'ngx-owl-carousel';
-import { OfferComponent } from './components/offer/offer.component';
-import { UpcomingComponent } from './components/upcoming/upcoming.component';
+import { OfferComponent } from './@components/offer/offer.component';
+import { UpcomingComponent } from './@components/upcoming/upcoming.component';
 import { SwiperModule } from 'ngx-swiper-wrapper';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from './shared/material.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    TopHeaderComponent,
-    FooterComponent,
-    PageNotFoundComponent,
     OfferComponent,
-    UpcomingComponent
+    UpcomingComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +40,9 @@ import { SwiperModule } from 'ngx-swiper-wrapper';
     NgPipesModule,
     OwlModule,
     SwiperModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    CoreModule
   ],
   providers: [AdminserviceService, AuthService, GuardsGuard],
   bootstrap: [AppComponent]

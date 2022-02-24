@@ -1,8 +1,8 @@
+import { CoreModule } from '../@core/core.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ComponentsRoutingModule } from './components-routing.module';
-import { HeaderComponent } from './header/header.component';
 import { SliderComponent } from './slider/slider.component';
 import { ProductComponent } from './products/product/product.component';
 import { AboutComponent } from './about/about.component';
@@ -17,7 +17,7 @@ import { CommentsComponent } from './comments/comments.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { MaterialModule } from '../shared/material.module';
 import { OwlModule } from 'ngx-owl-carousel';
-import { NewsletterComponent } from './newsletter/newsletter.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -26,19 +26,19 @@ import { NewsletterComponent } from './newsletter/newsletter.component';
     NgxPaginationModule,
     NgPipesModule,
     MaterialModule,
-    OwlModule
+    OwlModule,
+    CoreModule
   ],
   exports:
-    [HeaderComponent,
+    [
       SliderComponent,
       ProductComponent,
       AboutComponent,
       GalleryComponent,
       MobileMenuComponent,
-      NewsletterComponent
     ],
   declarations:
-    [HeaderComponent,
+    [
       SliderComponent,
       ProductComponent,
       AboutComponent,
@@ -49,7 +49,6 @@ import { NewsletterComponent } from './newsletter/newsletter.component';
       BookingFormComponent,
       CommentsComponent,
       ReviewsComponent,
-      NewsletterComponent
     ],
     providers: [ReversePipe]
 })

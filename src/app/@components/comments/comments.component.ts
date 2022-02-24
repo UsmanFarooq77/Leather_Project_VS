@@ -1,5 +1,5 @@
 import { Subscription } from 'rxjs/Subscription';
-import { comment } from './../../interfaces/comment';
+import { comment } from '../../interfaces/comment';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AdminserviceService } from '../../services/admin/adminservice.service';
