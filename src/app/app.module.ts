@@ -15,8 +15,6 @@ import { AdminserviceService } from './services/admin/adminservice.service';
 import { AuthService } from './services/auth/auth.service';
 import { GuardsGuard } from './guards/guards.guard';
 import { OwlModule } from 'ngx-owl-carousel';
-import { OfferComponent } from './@components/offer/offer.component';
-import { UpcomingComponent } from './@components/upcoming/upcoming.component';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './shared/material.module';
@@ -25,13 +23,9 @@ import { MaterialModule } from './shared/material.module';
 @NgModule({
   declarations: [
     AppComponent,
-    OfferComponent,
-    UpcomingComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    ComponentsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
@@ -42,7 +36,9 @@ import { MaterialModule } from './shared/material.module';
     SwiperModule,
     ReactiveFormsModule,
     MaterialModule,
-    CoreModule
+    CoreModule,
+    ComponentsModule,
+    AppRoutingModule
   ],
   providers: [AdminserviceService, AuthService, GuardsGuard],
   bootstrap: [AppComponent]

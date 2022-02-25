@@ -44,11 +44,6 @@ export class HeaderComponent implements OnInit {
       // } else {
       //   $dropdown.off("mouseenter mouseleave");
       // }
-    });
-   
-      
-      
+    });   
   }
-  
-  
 }

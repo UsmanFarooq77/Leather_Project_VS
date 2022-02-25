@@ -1,3 +1,4 @@
+import { ComponentsModule } from './../@components/components.module';
 import { CoreRoutingModule } from './core-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -9,6 +10,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NewsletterComponent } from './newsletter/newsletter.component';
 import { TopHeaderComponent } from './top-header/top-header.component';
+import { HomeComponent } from './home/home.component';
+import { SwiperModule } from 'ngx-swiper-wrapper';
 
 
 @NgModule({
@@ -18,14 +21,16 @@ import { TopHeaderComponent } from './top-header/top-header.component';
     FormsModule,
     CoreRoutingModule,
     MembershipModule,
-    MaterialModule
+    MaterialModule,
+    ComponentsModule,
   ],
   declarations: [
     HeaderComponent,
     FooterComponent,
     NewsletterComponent,
     TopHeaderComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    HomeComponent
   ],
   exports: [
     HeaderComponent,
