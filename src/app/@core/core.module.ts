@@ -14,6 +14,7 @@ import { NewsletterComponent } from './newsletter/newsletter.component';
 import { TopHeaderComponent } from './top-header/top-header.component';
 import { HomeComponent } from './home/home.component';
 import { SwiperModule } from 'ngx-swiper-wrapper';
+import { CoreComponent } from './core/core.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { SwiperModule } from 'ngx-swiper-wrapper';
     NewsletterComponent,
     TopHeaderComponent,
     PageNotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    CoreComponent
   ],
   exports: [
     // HeaderComponent,
