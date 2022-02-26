@@ -8,11 +8,11 @@ import { ReviewsComponent } from './reviews/reviews.component';
 import { BookingFormComponent } from './booking-form/booking-form.component';
 
 const routes: Routes = [
-  { path: 'gallery/:pageNumber', component: GalleryComponent },
-  { path: 'contact', component: ContactComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'reviews', component: ReviewsComponent },
-  { path: 'booking/:id', component: BookingFormComponent },
+  // { path: 'gallery/:pageNumber', component: GalleryComponent },
+  // { path: 'contact', component: ContactComponent },
+  // { path: 'about', component: AboutComponent },
+  // { path: 'reviews', component: ReviewsComponent },
+  // { path: 'booking/:id', component: BookingFormComponent },
 ];
 
 @NgModule({

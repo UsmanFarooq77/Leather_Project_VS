@@ -18,28 +18,16 @@ import { BookingFormComponent } from './booking-form/booking-form.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { UpcomingComponent } from './upcoming/upcoming.component';
 import { OfferComponent } from './offer/offer.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
-    NgxPaginationModule,
-    NgPipesModule,
     MaterialModule,
-    OwlModule,
-    SwiperModule,
+    SharedModule,
     ComponentsRoutingModule,
   ],
-  exports:
-    [
-      SliderComponent,
-      AboutComponent,
-      GalleryComponent,
-      MobileMenuComponent,
-      OfferComponent,
-      UpcomingComponent,
-    ],
   declarations:
     [
       SliderComponent,
@@ -51,6 +39,12 @@ import { OfferComponent } from './offer/offer.component';
       ReviewsComponent,
       OfferComponent,
       UpcomingComponent
+    ],
+    exports:
+    [
+      SliderComponent,
+      OfferComponent,
+      UpcomingComponent,
     ],
   providers: [ReversePipe]
 })
