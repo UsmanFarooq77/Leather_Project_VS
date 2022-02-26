@@ -1,8 +1,6 @@
 import { SharedModule } from './../shared/shared.module';
-import { ProductModule } from './../@product/product.module';
 import { ComponentsModule } from './../@components/components.module';
 import { CoreRoutingModule } from './core-routing.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './../shared/material.module';
 import { MembershipModule } from '../@membership/membership.module';
 import { NgModule } from '@angular/core';
@@ -12,18 +10,15 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NewsletterComponent } from './newsletter/newsletter.component';
 import { TopHeaderComponent } from './top-header/top-header.component';
-import { HomeComponent } from './home/home.component';
 import { CoreComponent } from './core/core.component';
 
 
 @NgModule({
   imports: [
-    CommonModule,
     SharedModule,
     CoreRoutingModule,
     MembershipModule,
     MaterialModule,
-    ProductModule,
     ComponentsModule
   ],
   declarations: [
@@ -31,7 +26,6 @@ import { CoreComponent } from './core/core.component';
     FooterComponent,
     NewsletterComponent,
     TopHeaderComponent,
-    HomeComponent,
     CoreComponent
   ],
   exports: []

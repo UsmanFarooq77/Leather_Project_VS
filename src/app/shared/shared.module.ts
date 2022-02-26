@@ -19,6 +19,7 @@ import { SwiperModule } from 'ngx-swiper-wrapper';
     FormsModule
   ],
   exports: [
+    CommonModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
     NgPipesModule,

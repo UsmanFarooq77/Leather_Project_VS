@@ -19,17 +19,20 @@ import { ReviewsComponent } from './reviews/reviews.component';
 import { UpcomingComponent } from './upcoming/upcoming.component';
 import { OfferComponent } from './offer/offer.component';
 import { SharedModule } from '../shared/shared.module';
+import { HomeComponent } from './home/home.component';
+import { ProductModule } from '../@product/product.module';
 
 
 @NgModule({
   imports: [
-    CommonModule,
     MaterialModule,
     SharedModule,
+    ProductModule,
     ComponentsRoutingModule,
   ],
   declarations:
     [
+      HomeComponent,
       SliderComponent,
       AboutComponent,
       GalleryComponent,
@@ -41,11 +44,7 @@ import { SharedModule } from '../shared/shared.module';
       UpcomingComponent
     ],
     exports:
-    [
-      SliderComponent,
-      OfferComponent,
-      UpcomingComponent,
-    ],
+    [],
   providers: [ReversePipe]
 })
 export class ComponentsModule { }
