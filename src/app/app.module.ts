@@ -17,11 +17,13 @@ import { OwlModule } from 'ngx-owl-carousel';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './shared/material.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

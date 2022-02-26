@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CoreComponent } from './core/core.component';
 import { HomeComponent } from './home/home.component';
 import { LoginModelComponent } from '../@membership/login-model/login-model.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -17,7 +17,7 @@ const routes: Routes = [
     ]
   },
   { path: 'login', component: LoginModelComponent },
-  { path: '**', component: PageNotFoundComponent }
+  
 
 ]
 @NgModule({

@@ -2,7 +2,7 @@ import { ProductModule } from './../@product/product.module';
 import { ComponentsModule } from './../@components/components.module';
 
 import { CoreRoutingModule } from './core-routing.module';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './../shared/material.module';
 import { MembershipModule } from '../@membership/membership.module';
@@ -33,14 +33,9 @@ import { CoreComponent } from './core/core.component';
     FooterComponent,
     NewsletterComponent,
     TopHeaderComponent,
-    PageNotFoundComponent,
     HomeComponent,
     CoreComponent
   ],
-  exports: [
-    // HeaderComponent,
-    // FooterComponent,
-    // TopHeaderComponent
-  ]
+  exports: []
 })
 export class CoreModule { }
