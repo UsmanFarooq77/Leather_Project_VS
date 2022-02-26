@@ -10,7 +10,6 @@ import { NgPipesModule } from 'ngx-pipes';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
-import { ComponentsModule } from './@components/components.module';
 import { AdminserviceService } from './services/admin/adminservice.service';
 import { AuthService } from './services/auth/auth.service';
 import { GuardsGuard } from './guards/guards.guard';
@@ -37,7 +36,6 @@ import { MaterialModule } from './shared/material.module';
     ReactiveFormsModule,
     MaterialModule,
     CoreModule,
-    ComponentsModule,
     AppRoutingModule
   ],
   providers: [AdminserviceService, AuthService, GuardsGuard],

@@ -1,4 +1,6 @@
+import { ProductModule } from './../@product/product.module';
 import { ComponentsModule } from './../@components/components.module';
+
 import { CoreRoutingModule } from './core-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -22,7 +24,7 @@ import { SwiperModule } from 'ngx-swiper-wrapper';
     CoreRoutingModule,
     MembershipModule,
     MaterialModule,
-    ComponentsModule,
+    ProductModule
   ],
   declarations: [
     HeaderComponent,
@@ -33,9 +35,9 @@ import { SwiperModule } from 'ngx-swiper-wrapper';
     HomeComponent
   ],
   exports: [
-    HeaderComponent,
-    FooterComponent,
-    TopHeaderComponent
+    // HeaderComponent,
+    // FooterComponent,
+    // TopHeaderComponent
   ]
 })
 export class CoreModule { }

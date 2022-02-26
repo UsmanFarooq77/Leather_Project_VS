@@ -7,8 +7,15 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 const routes : Routes = [
   {
-    path: '', component: HomeComponent
+    path: '', component: HomeComponent,
+    // children: [
+    //   {
+    //     path: '',
+    //     loadChildren: './../@components/components.module#ComponentsModule'
+    //   },
+    // ]
   },
+  
   {
     path: 'login', component: LoginModelComponent
   },
