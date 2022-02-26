@@ -8,7 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CommonModule } from '@angular/common';
 
-import { RoomDetailsComponent } from './products/product-details/room-details.component';
+import { ProductDetailsComponent } from './products/product-details/product-details.component';
 import { MaterialModule } from '../shared/material.module';
 import { CommentsComponent } from './comments/comments.component';
 
@@ -26,12 +26,12 @@ import { CommentsComponent } from './comments/comments.component';
   ],
   declarations: [
     ProductComponent,
-    RoomDetailsComponent,
+    ProductDetailsComponent,
     CommentsComponent
   ],
   exports: [
     ProductComponent,
-    RoomDetailsComponent
+    ProductDetailsComponent
   ],
   providers: [
     ReversePipe

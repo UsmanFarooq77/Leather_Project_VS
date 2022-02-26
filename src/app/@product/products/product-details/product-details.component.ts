@@ -10,12 +10,12 @@ import { product } from '../../../models/product-model';
 declare var $: any;
 
 @Component({
-  selector: "app-room-details",
-  templateUrl: "./room-details.component.html",
-  styleUrls: ["./room-details.component.css"],
+  selector: "app-product-details",
+  templateUrl: "./product-details.component.html",
+  styleUrls: ["./product-details.component.css"],
   providers: [ReversePipe],
 })
-export class RoomDetailsComponent implements OnInit, OnDestroy {
+export class ProductDetailsComponent implements OnInit, OnDestroy {
   id: string;
   Post$: Product;
   IdLower: string;
