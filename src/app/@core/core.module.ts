@@ -25,7 +25,8 @@ import { CoreComponent } from './core/core.component';
     CoreRoutingModule,
     MembershipModule,
     MaterialModule,
-    ProductModule
+    ProductModule,
+    ComponentsModule
   ],
   declarations: [
     HeaderComponent,
