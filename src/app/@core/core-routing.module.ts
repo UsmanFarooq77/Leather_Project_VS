@@ -17,8 +17,8 @@ const routes: Routes = [
     path: '', component: CoreComponent,
     children: [
       { path: '', component: HomeComponent },
-      { path: 'Products/:pageNumber', component: ProductComponent },
-      { path: 'Products', component: ProductComponent },
+      { path: 'products/:pageNumber', component: ProductComponent },
+      { path: 'products', component: ProductComponent },
       { path: 'product-detail/:category/:id', component: ProductDetailsComponent },
       { path: 'gallery/:pageNumber', component: GalleryComponent },
       { path: 'contact', component: ContactComponent },

@@ -45,7 +45,7 @@
       </div>
       <div class="col-md-4 mb-4">
         <!-- <ng-container *ngFor="let cat of Categories$ | async" style="display: inline-block;">
-          <a routerLink="/Products" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+          <a routerLink="/products" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
             true}" [queryParams]="{Category: cat.$key}">
             <button type="button" class="btn btn-lg res_screen">
               <span class="text-center" style="padding: 20px;">{{cat.name}}</span>
@@ -54,7 +54,7 @@
         </ng-container> -->
         <mat-form-field>
           <mat-select placeholder="Search By Category" [(ngModel)]="category">
-            <a *ngFor="let category of Categories$ | async" routerLink="/Products" routerLinkActive="active-link"
+            <a *ngFor="let category of Categories$ | async" routerLink="/products" routerLinkActive="active-link"
               [routerLinkActiveOptions]="{exact:
               true}" [queryParams]="{Category: category.$key}">
               <mat-option [value]="category.name">

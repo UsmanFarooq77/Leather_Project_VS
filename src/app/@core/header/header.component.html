@@ -22,7 +22,7 @@
               Categories
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" *ngFor="let category of Categories$ | async" routerLink="/Products"
+              <a class="dropdown-item" *ngFor="let category of Categories$ | async" routerLink="/products"
                 routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
               true}" [queryParams]="{Category: category.$key}">
                 {{category.name}}

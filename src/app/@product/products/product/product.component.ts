@@ -99,10 +99,10 @@ export class ProductComponent implements OnInit {
     // this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.scrollToView();
     if (this.category) {
-      this.router.navigate(['/Products'], { queryParams: { Category: this.category, pageNumber } });
+      this.router.navigate(['/products'], { queryParams: { Category: this.category, pageNumber } });
     }
     else {
-      this.router.navigate(['/Products', pageNumber]);
+      this.router.navigate(['/products', pageNumber]);
     }
   }
   ngOnDestroy() {
