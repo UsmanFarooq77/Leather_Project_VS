@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { ComponentsRoutingModule } from './components-routing.module';
 import { MaterialModule } from '../shared/material.module';
-import { ReversePipe } from 'ngx-pipes';
 
 import { AboutComponent } from './about/about.component';
 import { GalleryComponent } from './gallery/gallery.component';
@@ -37,6 +36,6 @@ import { ProductModule } from '../@product/product.module';
     ],
     exports:
     [],
-  providers: [ReversePipe]
+  providers: []
 })
 export class ComponentsModule { }

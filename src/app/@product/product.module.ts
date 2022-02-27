@@ -1,5 +1,3 @@
-
-import { ReversePipe } from 'ngx-pipes';
 import { RouterModule } from '@angular/router';
 import { ProductComponent } from './products/product/product.component';
 import { ProductRoutingModule } from './product-routing.module';
@@ -27,8 +25,6 @@ import { SharedModule } from '../shared/shared.module';
     ProductComponent,
     ProductDetailsComponent
   ],
-  providers: [
-    ReversePipe
-  ]
+  providers: []
 })
 export class ProductModule { }

@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { OwlModule } from 'ngx-owl-carousel';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { NgPipesModule } from 'ngx-pipes';
+import { NgPipesModule, ReversePipe } from 'ngx-pipes';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SliderComponent } from './slider/slider.component';
 
@@ -32,6 +32,9 @@ import { SliderComponent } from './slider/slider.component';
   ],
   declarations: [
     SliderComponent
+  ],
+  providers: [
+    ReversePipe
   ]
 })
 export class SharedModule { }
