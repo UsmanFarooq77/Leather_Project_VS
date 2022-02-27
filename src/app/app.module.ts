@@ -16,13 +16,15 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AdminserviceService } from './services/admin/adminservice.service';
 import { AuthService } from './services/auth/auth.service';
 import { GuardsGuard } from './guards/guards.guard';
+import { MainModalComponent } from './main-modal/main-modal.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    MainModalComponent
   ],
   imports: [
     BrowserModule,

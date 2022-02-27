@@ -21,9 +21,6 @@ export class CoreComponent implements OnInit {
     //     this.router.navigateByUrl(returnUrl);
     //   }
     // })
-    $(document).ready(function () {
-      $('#exampleModalCenter').modal('show');
-    });
   }
 
 }
