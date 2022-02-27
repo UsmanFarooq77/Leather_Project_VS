@@ -6,6 +6,7 @@ import { OwlModule } from 'ngx-owl-carousel';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgPipesModule } from 'ngx-pipes';
 import { SwiperModule } from 'ngx-swiper-wrapper';
+import { SliderComponent } from './slider/slider.component';
 
 @NgModule({
   imports: [
@@ -26,8 +27,11 @@ import { SwiperModule } from 'ngx-swiper-wrapper';
     OwlModule,
     SwiperModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    SliderComponent
   ],
-  declarations: []
+  declarations: [
+    SliderComponent
+  ]
 })
 export class SharedModule { }

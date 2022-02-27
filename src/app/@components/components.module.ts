@@ -1,15 +1,8 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { ComponentsRoutingModule } from './components-routing.module';
 import { MaterialModule } from '../shared/material.module';
-import { OwlModule } from 'ngx-owl-carousel';
-import { SwiperModule } from 'ngx-swiper-wrapper';
-import { NgxPaginationModule } from 'ngx-pagination'
-import { NgPipesModule, ReversePipe } from 'ngx-pipes';
+import { ReversePipe } from 'ngx-pipes';
 
-
-import { SliderComponent } from './slider/slider.component';
 import { AboutComponent } from './about/about.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { MobileMenuComponent } from './mobile-menu/mobile-menu.component';
@@ -33,7 +26,6 @@ import { ProductModule } from '../@product/product.module';
   declarations:
     [
       HomeComponent,
-      SliderComponent,
       AboutComponent,
       GalleryComponent,
       MobileMenuComponent,
