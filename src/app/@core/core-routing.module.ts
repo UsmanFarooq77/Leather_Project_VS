@@ -9,12 +9,17 @@ import { BookingFormComponent } from '../@components/booking-form/booking-form.c
 import { ContactComponent } from '../@components/contact/contact.component';
 import { GalleryComponent } from '../@components/gallery/gallery.component';
 import { ReviewsComponent } from '../@components/reviews/reviews.component';
+import { ProductDetailsComponent } from '../@product/products/product-details/product-details.component';
+import { ProductComponent } from '../@product/products/product/product.component';
 
 const routes: Routes = [
   {
     path: '', component: CoreComponent,
     children: [
       { path: '', component: HomeComponent },
+      { path: 'Products/:pageNumber', component: ProductComponent },
+      { path: 'Products', component: ProductComponent },
+      { path: 'product-detail/:category/:id', component: ProductDetailsComponent },
       { path: 'gallery/:pageNumber', component: GalleryComponent },
       { path: 'contact', component: ContactComponent },
       { path: 'about', component: AboutComponent },

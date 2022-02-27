@@ -305,11 +305,11 @@ a {
           opacity: 1; }
 
 .site-navbar-wrap {
-  background: transparent !important;
+  background: rgb(151, 116, 116) !important;
   position: fixed;
   z-index: 99;
   width: 100%;
-  padding: 20px 0;
+  padding: 0px 0;
   margin-bottom: 113px;
   left: 0;
   -webkit-transition: .3s all ease;
