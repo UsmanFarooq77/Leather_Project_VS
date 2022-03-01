@@ -26,9 +26,8 @@ const routes: Routes = [
       { path: 'reviews', component: ReviewsComponent },
       { path: 'booking/:id', component: BookingFormComponent },
     ]
-  },
-  { path: 'login', component: LoginModelComponent },
-]
+  }
+];
 @NgModule({
   imports: [
     RouterModule.forChild(routes)

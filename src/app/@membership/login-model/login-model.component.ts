@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminserviceService } from '../../services/admin/adminservice.service';
 import { AuthService } from '../../services/auth/auth.service';
+import { LoginService } from '../../services/login/login.service';
 declare var $: any;
 
 @Component({
@@ -18,17 +19,19 @@ export class LoginModelComponent implements OnInit {
   isGoogleLogin: boolean;
   isFacebookLogin: boolean;
 
-  constructor(private adService : AdminserviceService,
-    public router: Router, public authService: AuthService) {
+  constructor(private adService: AdminserviceService,
+    public router: Router, public authService: AuthService,
+    public loginService: LoginService) {
     this.isLoginLoading = false;
     this.isGoogleLogin = false;
     this.isFacebookLogin = false;
     $(document).ready(function () {
       $('#loginModalCenter').modal('show');
     });
-   }
+  }
 
   ngOnInit() {
+
     if (localStorage.getItem('google')) {
       this.isGoogleLogin = true;
     }
@@ -58,9 +61,14 @@ export class LoginModelComponent implements OnInit {
       top: 0,
       behavior: 'smooth'
     });
-  
+
+    $('#loginModalCenter').on('hidden.bs.modal', () => {
+      this.loginService.pushOpenLoginModal(false);
+    })
+
   }
-  socialLogin(value : string) {
+  
+  socialLogin(value: string) {
     if (value === 'google') {
       this.isGoogleLogin = true;
       localStorage.setItem('google', value);
@@ -74,10 +82,11 @@ export class LoginModelComponent implements OnInit {
     //   this.isLoginLoading = false;
     // }
   }
-  hideModel(){
+  hideModel() {
     $(document).ready(function () {
       $('#loginModalCenter').modal('hide');
     });
+    this.loginService.pushOpenLoginModal(false);
   }
   logout() {
     this.isGoogleLogin = false;
@@ -85,6 +94,4 @@ export class LoginModelComponent implements OnInit {
     this.isAdmin = false;
     this.authService.logout();
   }
-
-
 }

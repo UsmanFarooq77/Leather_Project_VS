@@ -1,22 +1,23 @@
-<div #mainModel class="modal fade" id="loginModalCenter" tabindex="-1" role="dialog"
-aria-labelledby="loginModelTitle" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered" role="document">
-  <div class="modal-content">  
-    <div class="modal-header">
-     <img class="sf_logo" src="../assets/images/SF-Leathers.png" width="47px" height="auto">
-      <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<div class="modal fade" id="loginModalCenter" tabindex="-1" role="dialog" aria-labelledby="loginModelTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <img class="sf_logo" src="../assets/images/SF-Leathers.png" width="47px" height="auto">
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button> -->
-      <!-- <button style="float: right;" mat-raised-button color="accent" (click)="logout()">
+        <!-- <button style="float: right;" mat-raised-button color="accent" (click)="logout()">
         <span style="margin-bottom: 5px;" class="glyphicon glyphicon-log-out"></span> Log out</button> -->
-        <h2 style="font-weight: bold; text-align: center; font-family: 'FontAwesome';" class="modal-title" id="exampleModalLongTitle">SF Leathers</h2>
-   
+        <h2 style="font-weight: bold; text-align: center; font-family: 'FontAwesome';" class="modal-title"
+          id="exampleModalLongTitle">SF Leathers</h2>
+
       </div>
-    
-    <div class="modal-body">
-      <app-login></app-login>
-      <!-- Important comment For hide the Admin User Name -->
-      <!-- <div *ngIf="isAdmin">
+
+      <div class="modal-body">
+        <app-login></app-login>
+        <!-- Important comment For hide the Admin User Name -->
+        <!-- <div *ngIf="isAdmin">
         <a style="
             color: black;
             font-family: Playfair Display;
@@ -27,33 +28,34 @@ aria-labelledby="loginModelTitle" aria-hidden="true">
           <a routerLink="/dashboard" routerLinkActive="Active" data-dismiss="modal">DashBoard</a>
         </div>
       </div> -->
-      <!-- <span *ngIf="isLoginLoading" class="fa fa-spinner fa-spin"></span> -->
-      <h4 *ngIf="isGoogleLogin && !isAdmin" class="login_google"> Check Google Verification...
-        <span style="color: crimson;" class="fa fa-spinner fa-spin fa-1x"></span>
-        <!-- <div style="width: 10px; height: 10px; display: inline-block;"><mat-spinner></mat-spinner></div> -->
-      </h4>
-      <h4 *ngIf="isFacebookLogin && !isAdmin" class="login_google"> Check Facebook Verification...
-        <span style="color: blue;" class="fa fa-spinner fa-spin fa-1x"></span>
-        <!-- <div style="width: 10px; height: 10px; display: inline-block;"><mat-spinner></mat-spinner></div> -->
-      </h4>
-      <!-- <li class="nav-item">
+        <!-- <span *ngIf="isLoginLoading" class="fa fa-spinner fa-spin"></span> -->
+        <h4 *ngIf="isGoogleLogin && !isAdmin" class="login_google"> Check Google Verification...
+          <span style="color: crimson;" class="fa fa-spinner fa-spin fa-1x"></span>
+          <!-- <div style="width: 10px; height: 10px; display: inline-block;"><mat-spinner></mat-spinner></div> -->
+        </h4>
+        <h4 *ngIf="isFacebookLogin && !isAdmin" class="login_google"> Check Facebook Verification...
+          <span style="color: blue;" class="fa fa-spinner fa-spin fa-1x"></span>
+          <!-- <div style="width: 10px; height: 10px; display: inline-block;"><mat-spinner></mat-spinner></div> -->
+        </h4>
+        <!-- <li class="nav-item">
           <a class="nav-link login_google" (click)="login()">Login With Google</a>
         </li> -->
-      <div class="social_buttons">
-        <button style="margin: 28px; width: 207px; " mat-raised-button color="warn" (click)="socialLogin('google')" disabled>
-          <!-- <span class="glyphicon glyphicon-log-out"></span> -->
-         <img class="google_icon" src="../assets/images/google_icon.png"> Continue With Google
-        </button>
-     
-        <button  mat-raised-button color="primary" (click)="socialLogin('facebook')" disabled>
-         <img class="facebook_icon" src="../assets/images/facebook_icon.JPG"> Continue With Facebook
-        </button>
-        <!-- When we used the google and facebook buttons then this disabled code will be used. [disabled]="isAdmin" -->
+        <div class="social_buttons">
+          <button style="margin: 28px; width: 207px; " mat-raised-button color="warn" (click)="socialLogin('google')"
+            disabled>
+            <!-- <span class="glyphicon glyphicon-log-out"></span> -->
+            <img class="google_icon" src="../assets/images/google_icon.png"> Continue With Google
+          </button>
+
+          <button mat-raised-button color="primary" (click)="socialLogin('facebook')" disabled>
+            <img class="facebook_icon" src="../assets/images/facebook_icon.JPG"> Continue With Facebook
+          </button>
+          <!-- When we used the google and facebook buttons then this disabled code will be used. [disabled]="isAdmin" -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="hideModel()">Close</button>
       </div>
     </div>
-    <div class="modal-footer">
-      <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-    </div>
   </div>
-</div>
 </div>

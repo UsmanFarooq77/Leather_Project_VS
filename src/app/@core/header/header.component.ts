@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, UrlSegment } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AdminserviceService } from '../../services/admin/adminservice.service';
 import { AuthService } from '../../services/auth/auth.service';
+import { LoginService } from '../../services/login/login.service';
+import { Location } from '@angular/common';
 declare var $;
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -11,13 +14,16 @@ declare var $;
 })
 export class HeaderComponent implements OnInit {
   Categories$: Observable<any>;
-
-  
+  // location: Location;
 
   constructor(private adService : AdminserviceService,
-    public router: Router, public authService: AuthService) {
-    
+    public router: Router,
+    private route: ActivatedRoute, 
+    public authService: AuthService,
+    public loginService : LoginService,
+    private location: Location) {
   }
+
   ngOnInit() {
     this.Categories$ = this.adService.getCategories();
     
@@ -45,5 +51,8 @@ export class HeaderComponent implements OnInit {
       //   $dropdown.off("mouseenter mouseleave");
       // }
     });   
+  }
+  login(){    
+    this.loginService.pushOpenLoginModal(true);
   }
 }

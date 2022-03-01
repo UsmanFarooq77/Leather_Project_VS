@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../../services/login/login.service';
 declare var $: any;
 
 @Component({
@@ -8,7 +9,11 @@ declare var $: any;
 })
 export class CoreComponent implements OnInit {
 
-  constructor() { }
+  isOpenLoginModal: boolean;
+
+  constructor(private loginService: LoginService) {
+    this.isOpenLoginModal = false;
+  }
 
   ngOnInit() {
     window.scrollTo({
@@ -21,6 +26,10 @@ export class CoreComponent implements OnInit {
     //     this.router.navigateByUrl(returnUrl);
     //   }
     // })
+    this.loginService.pullOpenLoginModal()
+      .subscribe((value: boolean) => {
+        this.isOpenLoginModal = value ? true : false;
+      })
   }
 
 }
