@@ -3,6 +3,7 @@ import { AngularFireAuth } from 'angularfire2/auth'
 import * as firebase  from 'firebase'
 import { Observable } from 'rxjs/Observable';
 import { Router, ActivatedRoute } from '@angular/router';
+
 @Injectable()
 export class AuthService {
   User$: Observable<firebase.User>
@@ -20,6 +21,7 @@ export class AuthService {
       this.afAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider());
     }
   }
+
   doRegister(value){
     return new Promise<any>((resolve, reject) => {
       firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
@@ -28,6 +30,7 @@ export class AuthService {
       }, err => reject(err))
     })
   }
+
   signIn(value){
     return new Promise<any>((resolve, reject) => {
       firebase.auth().signInWithEmailAndPassword(value.email, value.password)
@@ -36,6 +39,7 @@ export class AuthService {
       }, err => reject(err))
     })
   }
+  
   logout(){
     localStorage.clear();
     this.afAuth.auth.signOut(); 

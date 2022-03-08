@@ -1,6 +1,11 @@
 .modal-header {
   text-align: center;
 }
+
+.modal-body{
+  padding: 0rem 0rem 1rem 0rem !important;
+}
+
 .site-wrap {
   margin-top: 70px;
 }
@@ -8,6 +13,23 @@
   width: 75px;
   height: 65px;
 }
+
+/* Login/Register Sections  */
+
+.login-register-buttons{
+  display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.btn-lg {
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  border-radius: 0;
+  width: 50%;
+}
+
 .login_google {
   color: black;
   text-decoration: underline;

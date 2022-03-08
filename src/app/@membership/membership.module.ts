@@ -4,6 +4,7 @@ import { LoginModelComponent } from './login-model/login-model.component';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { CommonModule } from '@angular/common';
   ],
   declarations: [
     LoginComponent,
-    LoginModelComponent
+    LoginModelComponent,
+    RegisterComponent
   ],
   exports: [
     LoginComponent,

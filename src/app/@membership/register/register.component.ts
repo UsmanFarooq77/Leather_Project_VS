@@ -6,11 +6,11 @@ import { AuthService } from '../../services/auth/auth.service';
 declare var $: any;
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
   errorMessage: string;

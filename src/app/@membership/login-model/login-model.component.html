@@ -15,8 +15,15 @@
 
       <div class="modal-body">
 
-        <app-login></app-login>
-        
+        <div class="login-register-section">
+          <div class="login-register-buttons">
+            <button class="btn btn-lg" (click)="openLoginForm()">Log In</button>
+            <button class="btn btn-lg" (click)="openRegisterForm()">Sign Up</button>
+          </div>
+          <app-login *ngIf="isLoginFormOpen"></app-login>
+          <app-register *ngIf="!isLoginFormOpen"></app-register>
+        </div>
+
         <!-- Important comment For hide the Admin User Name -->
         <!-- <div *ngIf="isAdmin">
         <a style="
@@ -28,7 +35,7 @@
         <div>
           <a routerLink="/dashboard" routerLinkActive="Active" data-dismiss="modal">DashBoard</a>
         </div>
-      </div> -->
+        </div> -->
         <!-- <span *ngIf="isLoginLoading" class="fa fa-spinner fa-spin"></span> -->
         <h4 *ngIf="isGoogleLogin && !isAdmin" class="login_google"> Check Google Verification...
           <span style="color: crimson;" class="fa fa-spinner fa-spin fa-1x"></span>

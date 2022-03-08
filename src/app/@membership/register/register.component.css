@@ -1,0 +1,15 @@
+.login_form {
+    text-align: center;
+    width: 45%;
+    margin: 0 auto;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  @media (min-width: 320px) and (max-width: 425px) {
+    .login_form {
+      text-align: center;
+      width: 70%;
+      margin: 0 auto;
+    }
+  }
+  

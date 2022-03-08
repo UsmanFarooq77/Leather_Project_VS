@@ -12,6 +12,7 @@ declare var $: any;
 })
 export class LoginModelComponent implements OnInit {
 
+  isLoginFormOpen: boolean;
   isLoginLoading: boolean;
   userName: void;
   isAdmin: boolean;
@@ -22,6 +23,7 @@ export class LoginModelComponent implements OnInit {
   constructor(private adService: AdminserviceService,
     public router: Router, public authService: AuthService,
     public loginService: LoginService) {
+    this.isLoginFormOpen = true;
     this.isLoginLoading = false;
     this.isGoogleLogin = false;
     this.isFacebookLogin = false;
@@ -67,7 +69,15 @@ export class LoginModelComponent implements OnInit {
     })
 
   }
-  
+
+  openLoginForm() {
+    this.isLoginFormOpen = true;
+  }
+
+  openRegisterForm() {
+    this.isLoginFormOpen = false;
+  }
+
   socialLogin(value: string) {
     if (value === 'google') {
       this.isGoogleLogin = true;
