@@ -2,30 +2,33 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth.service';
-declare var $ : any;
+declare var $: any;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
   registerForm: FormGroup;
   errorMessage: string;
   successMessage: string;
   EMAIL_REGEXP = /^[^@]+@([^@\.]+\.)+[^@\.]+$/i;
-  isSignedIn : boolean;
+  isSignedIn: boolean;
+
   constructor(private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router : Router) { 
-      this.isSignedIn = false;
-    }
+    private router: Router) {
+    this.isSignedIn = false;
+  }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      'password': [null, Validators.required],
-      'email': [null, [Validators.required, Validators.pattern(this.EMAIL_REGEXP)]]
-    })
+      'email': [null, [Validators.required, Validators.pattern(this.EMAIL_REGEXP)]],
+      'password': [null, Validators.required]
+    });
   }
+  
   signUp(value) {
     this.authService.doRegister(value)
       .then(res => {
@@ -36,6 +39,7 @@ export class LoginComponent implements OnInit {
         this.successMessage = "";
       })
   }
+
   signIn(value) {
     this.isSignedIn = true;
     this.authService.signIn(value)

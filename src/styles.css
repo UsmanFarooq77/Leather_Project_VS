@@ -6,6 +6,7 @@
 body {
   font-family: 'Playfair Display', Times, serif;
   color: black !important;
+  padding-right: 0px !important;
 }
 .site-navbar-wrap.scrolled {
   background: rgb(151, 116, 116) !important;
