@@ -1,5 +1,33 @@
 <div class="login_form">
-  <form [formGroup]="registerForm" (ngSubmit)="signIn(registerForm.value)" class="example-form">
+  <form [formGroup]="registerForm" (ngSubmit)="signUp(registerForm.value)" class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>First Name</mat-label>
+      <input matInput type="email" formControlName="firstName" required>
+      <mat-error>
+        <span *ngIf="registerForm.get('firstName').invalid && registerForm.get('firstName').dirty">
+          Please enter at least 3 letters.
+        </span>
+      </mat-error>
+      <mat-error>
+        <span *ngIf="registerForm.get('firstName').pristine">
+          First Name is <strong>required</strong>
+        </span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Last Name</mat-label>
+      <input matInput type="email" formControlName="lastName" required>
+      <mat-error>
+        <span *ngIf="registerForm.get('lastName').invalid && registerForm.get('lastName').dirty">
+          Please enter at least 3 letters.
+        </span>
+      </mat-error>
+      <mat-error>
+        <span *ngIf="registerForm.get('lastName').pristine">
+         Last Name is <strong>required</strong>
+        </span>
+      </mat-error>
+    </mat-form-field>
     <mat-form-field class="example-full-width">
       <mat-label>Email/Phone</mat-label>
       <input matInput type="email" formControlName="emailOrPhone" required>
@@ -21,7 +49,7 @@
         Password is <strong>required</strong>
       </mat-error>
     </mat-form-field>
-    <button [disabled]="registerForm.invalid" mat-raised-button color="primary">Log In
+    <button [disabled]="registerForm.invalid" mat-raised-button color="primary">Sign Up
       <i *ngIf="isSignedIn" class="fa fa-spinner fa-spin" style="font-size:20px"></i>
     </button>
   </form>
