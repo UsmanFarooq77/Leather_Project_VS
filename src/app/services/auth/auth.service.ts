@@ -23,17 +23,22 @@ export class AuthService {
   }
 
   doRegister(value){
-    return new Promise<any>((resolve, reject) => {
-      firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
-      .then(res => {
-        resolve(res);
-      }, err => reject(err))
-    })
+    // return new Promise<any>((resolve, reject) => {
+    //   firebase.auth().createUserWithEmailAndPassword(value.emailOrPhone, value.password)
+    //   .then(res => {
+    //     console.log(res);
+    //     resolve(res);
+    //   }, err => reject(err))
+    // })
+    this.afAuth.auth.createUserWithEmailAndPassword(value.emailOrPhone, value.password).then(
+      (res) => console.log(res)
+    )
+    // this.afAuth.auth.signInWithPhoneNumber
   }
 
   signIn(value){
     return new Promise<any>((resolve, reject) => {
-      firebase.auth().signInWithEmailAndPassword(value.email, value.password)
+      firebase.auth().signInWithEmailAndPassword(value.emailOrPhone, value.password)
       .then(res => {
         resolve(res);
       }, err => reject(err))

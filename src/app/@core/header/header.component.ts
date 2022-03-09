@@ -55,4 +55,7 @@ export class HeaderComponent implements OnInit {
   login(){    
     this.loginService.pushOpenLoginModal(true);
   }
+  logout(){
+    this.authService.logout()
+  }
 }

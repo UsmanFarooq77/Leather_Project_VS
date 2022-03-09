@@ -34,13 +34,13 @@ export class LoginComponent implements OnInit {
   
   signUp(value) {
     this.authService.doRegister(value)
-      .then(res => {
-        this.errorMessage = "";
-        this.successMessage = "Your account has been created";
-      }, err => {
-        this.errorMessage = err.message;
-        this.successMessage = "";
-      })
+      // .then(res => {
+      //   this.errorMessage = "";
+      //   this.successMessage = "Your account has been created";
+      // }, err => {
+      //   this.errorMessage = err.message;
+      //   this.successMessage = "";
+      // })
   }
 
   signIn(value) {
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
       .then(res => {
         this.isSignedIn = false;
         alert("Your email and password has been verified.");
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/']);
         $(document).ready(function () {
           $('#loginModalCenter').modal('hide');
         });

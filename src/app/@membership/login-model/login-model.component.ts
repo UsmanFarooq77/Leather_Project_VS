@@ -1,8 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { AdminserviceService } from '../../services/admin/adminservice.service';
 import { AuthService } from '../../services/auth/auth.service';
 import { LoginService } from '../../services/login/login.service';
+
 declare var $: any;
 
 @Component({
@@ -20,9 +22,11 @@ export class LoginModelComponent implements OnInit {
   isGoogleLogin: boolean;
   isFacebookLogin: boolean;
 
-  constructor(private adService: AdminserviceService,
-    public router: Router, public authService: AuthService,
-    public loginService: LoginService) {
+  constructor(
+    private adService: AdminserviceService,
+    public router: Router,
+    public authService: AuthService,
+    public loginService: LoginService ) {
     this.isLoginFormOpen = true;
     this.isLoginLoading = false;
     this.isGoogleLogin = false;
@@ -50,7 +54,7 @@ export class LoginModelComponent implements OnInit {
         // let returnUrl = localStorage.getItem('returnUrl');
         // this.router.navigateByUrl(returnUrl);
         this.hideModel();
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/']);
       }
       else {
         this.isAdmin = false;
@@ -92,12 +96,14 @@ export class LoginModelComponent implements OnInit {
     //   this.isLoginLoading = false;
     // }
   }
+
   hideModel() {
     $(document).ready(function () {
       $('#loginModalCenter').modal('hide');
     });
     this.loginService.pushOpenLoginModal(false);
   }
+  
   logout() {
     this.isGoogleLogin = false;
     this.isFacebookLogin = false;

@@ -10,6 +10,10 @@ export class LoginService {
   constructor() {
     
    }
+   get windowRef() {
+    return window
+  }
+  
    public pushOpenLoginModal(value: boolean){
     this._openLoginModal.next(value);
    }
