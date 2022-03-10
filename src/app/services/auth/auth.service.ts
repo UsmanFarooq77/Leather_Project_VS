@@ -3,6 +3,7 @@ import { AngularFireAuth } from 'angularfire2/auth'
 import * as firebase  from 'firebase'
 import { Observable } from 'rxjs/Observable';
 import { Router, ActivatedRoute } from '@angular/router';
+import { from } from 'rxjs/observable/from';
 
 @Injectable()
 export class AuthService {
@@ -22,7 +23,7 @@ export class AuthService {
     }
   }
 
-  doRegister(value){
+  doRegisterWithEmail(value){
     // return new Promise<any>((resolve, reject) => {
     //   firebase.auth().createUserWithEmailAndPassword(value.emailOrPhone, value.password)
     //   .then(res => {
@@ -34,6 +35,17 @@ export class AuthService {
       (res) => console.log(res)
     )
     // this.afAuth.auth.signInWithPhoneNumber
+  }
+
+  doRegisterWithPhone(value, appVerifier){
+    return from(this.afAuth.auth.signInWithPhoneNumber(value.emailOrPhone, appVerifier))
+    // firebase.auth().signInWithPhoneNumber(value.emailOrPhone, appVerifier)
+    // .then(result => {
+    //   console.log(result)
+    //   // this.windowRef.confirmationResult = result;
+
+    // })
+    // .catch(error => console.log(error));
   }
 
   signIn(value){

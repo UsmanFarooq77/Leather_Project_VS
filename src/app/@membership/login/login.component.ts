@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   }
   
   signUp(value) {
-    this.authService.doRegister(value)
+    // this.authService.doRegister(value)
       // .then(res => {
       //   this.errorMessage = "";
       //   this.successMessage = "Your account has been created";

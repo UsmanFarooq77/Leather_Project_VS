@@ -1,5 +1,5 @@
 <div class="login_form">
-  <form [formGroup]="registerForm" (ngSubmit)="sendLoginCode(registerForm.value)" class="example-form">
+  <form [formGroup]="registerForm" (ngSubmit)="signUp(registerForm.value)" class="example-form">
     <mat-form-field class="example-full-width">
       <mat-label>First Name</mat-label>
       <input matInput type="email" formControlName="firstName" required>
@@ -31,11 +31,11 @@
     <mat-form-field class="example-full-width">
       <mat-label>Email/Phone</mat-label>
       <input matInput type="email" formControlName="emailOrPhone" required>
-      <!-- <mat-error>
+      <mat-error>
         <span *ngIf="registerForm.get('emailOrPhone').invalid && registerForm.get('emailOrPhone').dirty">
           Please enter a valid Email Address/Phone number.
         </span>
-      </mat-error> -->
+      </mat-error>
       <mat-error>
         <span *ngIf="registerForm.get('emailOrPhone').pristine">
           Email/Phone is <strong>required</strong>
