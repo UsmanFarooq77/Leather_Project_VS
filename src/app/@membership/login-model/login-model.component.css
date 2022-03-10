@@ -1,8 +1,9 @@
 .modal-header {
+  display: block;
   text-align: center;
 }
 
-.modal-body{
+.modal-body {
   padding: 0rem 0rem 1rem 0rem !important;
 }
 
@@ -16,10 +17,10 @@
 
 /* Login/Register Sections  */
 
-.login-register-buttons{
+.login-register-buttons {
   display: flex;
-    justify-content: space-around;
-    align-items: center;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .btn-lg {

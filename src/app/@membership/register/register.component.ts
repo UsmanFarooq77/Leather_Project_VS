@@ -32,6 +32,7 @@ export class RegisterComponent implements OnInit {
   ) {
     this.isSignedIn = false;
     this.reCAPTCHAVerified = null;
+    this.verificationCode = null;
     this.isRecaptchaContainerId = false;
   }
 
@@ -105,8 +106,8 @@ export class RegisterComponent implements OnInit {
       .then((result) => {
         console.log(result);
         this.user = result.user;
-        if (this.user) alert('You have successfully created an account with your phone number!');
+        if (this.user) alert('You have successfully created an account!');
       })
-      .catch((error) => console.log(error, "Incorrect code entered?"));
+      .catch((error) => alert('Please enter correct otp code or code has been expired!.'));
   }
 }
