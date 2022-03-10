@@ -7,17 +7,16 @@ export class LoginService {
 
   public _openLoginModal = new BehaviorSubject(false);
 
-  constructor() {
-    
-   }
-   get windowRef() {
+  constructor() {}
+  
+  get windowRef() {
     return window
   }
-  
-   public pushOpenLoginModal(value: boolean){
+
+  public pushOpenLoginModal(value: boolean) {
     this._openLoginModal.next(value);
-   }
-   public pullOpenLoginModal(): Observable<boolean>{
-     return this._openLoginModal.asObservable();
-   }
+  }
+  public pullOpenLoginModal(): Observable<boolean> {
+    return this._openLoginModal.asObservable();
+  }
 }

@@ -1,13 +1,10 @@
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-
-import * as firebase from 'firebase'
 
 import { AuthService } from '../../services/auth/auth.service';
 import { LoginService } from '../../services/login/login.service';
 
-declare var $: any;
+import * as firebase from 'firebase'
 
 @Component({
   selector: "app-register",
@@ -15,6 +12,7 @@ declare var $: any;
   styleUrls: ["./register.component.css"],
 })
 export class RegisterComponent implements OnInit {
+
   registerForm: FormGroup;
   errorMessage: string;
   successMessage: string;
@@ -24,14 +22,17 @@ export class RegisterComponent implements OnInit {
   windowRef: any;
   verificationCode: string;
   user: any;
+  reCAPTCHAVerified: any;
+  isRecaptchaContainerId: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router,
     private loginService: LoginService,
   ) {
     this.isSignedIn = false;
+    this.reCAPTCHAVerified = null;
+    this.isRecaptchaContainerId = false;
   }
 
   ngOnInit() {
@@ -40,10 +41,22 @@ export class RegisterComponent implements OnInit {
       "recaptcha-container",
       {
         size: "normal",
+        'callback': (response) => {
+          // reCAPTCHA solved, allow signInWithPhoneNumber.
+          this.reCAPTCHAVerified = response;
+        },
+        'expired-callback': (response) => {
+          // Response expired. Ask user to solve reCAPTCHA again.
+        }
       }
     );
 
-    this.windowRef.recaptchaVerifier.render();
+    this.windowRef.recaptchaVerifier
+      .render()
+      .then((recaptchaContainerId) => {
+        this.isRecaptchaContainerId = true;
+      })
+      .catch((error) => alert(error.message));
 
     this.registerForm = this.formBuilder.group({
       firstName: ["usman", [Validators.required, Validators.minLength(3)]],
@@ -57,19 +70,22 @@ export class RegisterComponent implements OnInit {
   }
 
   signUp(value) {
+    if (this.reCAPTCHAVerified == null) alert("Are you a human being? Please check the box I'm not a robot.");
     if (value.emailOrPhone.includes("@")) {
       this.authService.doRegisterWithEmail(value);
     } else {
       const appVerifier = this.windowRef.recaptchaVerifier;
       if (value.emailOrPhone.includes("+")) {
-        this.authService.doRegisterWithPhone(value, appVerifier);
+        this.authService.doRegisterWithPhone(value, appVerifier)
+          .subscribe((result) => (this.windowRef.confirmationResult = result));;
       } else {
         let countryCode = "+92";
         let extractPhoneNumber = value.emailOrPhone.substring(1);
         value.emailOrPhone = countryCode + extractPhoneNumber;
         this.authService
           .doRegisterWithPhone(value, appVerifier)
-          .subscribe((result) => (this.windowRef.confirmationResult = result));
+          .subscribe((result) => (this.windowRef.confirmationResult = result),
+            (error) => alert(error.message));
       }
     }
     console.log(value);
@@ -83,12 +99,13 @@ export class RegisterComponent implements OnInit {
     // })
   }
 
-  verifyLoginCode() {
+  verifyOtpCode() {
     this.windowRef.confirmationResult
       .confirm(this.verificationCode)
       .then((result) => {
         console.log(result);
         this.user = result.user;
+        if (this.user) alert('You have successfully created an account with your phone number!');
       })
       .catch((error) => console.log(error, "Incorrect code entered?"));
   }

@@ -24,7 +24,7 @@
       </mat-error>
       <mat-error>
         <span *ngIf="registerForm.get('lastName').pristine">
-         Last Name is <strong>required</strong>
+          Last Name is <strong>required</strong>
         </span>
       </mat-error>
     </mat-form-field>
@@ -49,22 +49,27 @@
         Password is <strong>required</strong>
       </mat-error>
     </mat-form-field>
+
+    <div>
+      <span><img *ngIf="!isRecaptchaContainerId" src="../../../assets/images/loading_dots.gif" width="15%"
+          style="min-width: 100px;"></span>
+    </div>
     <div id="recaptcha-container"></div>
+
     <button [disabled]="registerForm.invalid" mat-raised-button color="primary">Sign Up
       <i *ngIf="isSignedIn" class="fa fa-spinner fa-spin" style="font-size:20px"></i>
     </button>
   </form>
-  <div *ngIf="windowRef.confirmationResult">
-    <hr>
-    <label for="code">Enter your Verification Code Here</label><br>
-    <input type="text" name="code" [(ngModel)]="verificationCode">
 
-    <button (click)="verifyLoginCode()">Verify</button>
+  <div *ngIf="windowRef.confirmationResult">
+    <label for="code">Enter your Verification Code Here</label>
+    <input type="text" name="code" [(ngModel)]="verificationCode">
+    <button (click)="verifyOtpCode()">Verify</button>
   </div>
-  <div *ngIf="user">
+  <!-- <div *ngIf="user">
     You have successfully logged in with your phone number!
-  
+
     UserId: {{ user?.uid }}
-  
-  </div>
+
+  </div> -->
 </div>

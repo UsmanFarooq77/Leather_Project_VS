@@ -34,18 +34,10 @@ export class AuthService {
     this.afAuth.auth.createUserWithEmailAndPassword(value.emailOrPhone, value.password).then(
       (res) => console.log(res)
     )
-    // this.afAuth.auth.signInWithPhoneNumber
   }
 
   doRegisterWithPhone(value, appVerifier){
-    return from(this.afAuth.auth.signInWithPhoneNumber(value.emailOrPhone, appVerifier))
-    // firebase.auth().signInWithPhoneNumber(value.emailOrPhone, appVerifier)
-    // .then(result => {
-    //   console.log(result)
-    //   // this.windowRef.confirmationResult = result;
-
-    // })
-    // .catch(error => console.log(error));
+    return from(this.afAuth.auth.signInWithPhoneNumber(value.emailOrPhone, appVerifier));
   }
 
   signIn(value){
