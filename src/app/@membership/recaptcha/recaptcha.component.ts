@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import { AuthService } from '../../services/auth/auth.service';
 import { LoginService } from '../../services/login/login.service';
 
@@ -19,8 +20,8 @@ export class RecaptchaComponent implements OnInit {
   reCAPTCHAVerified: boolean;
   isRecaptchaContainerId: boolean;
 
-    constructor(private formBuilder: FormBuilder,
-    private authService: AuthService,
+  constructor(private formBuilder: FormBuilder,
+    public authService: AuthService,
     private router: Router,
     private loginService: LoginService) { }
 
@@ -45,11 +46,13 @@ export class RecaptchaComponent implements OnInit {
       .then((recaptchaContainerId) => {
         this.isRecaptchaContainerId = true;
       })
-      .catch((error) => {return});
+      .catch((error) => { return });
+
+    this.authService.appVerifier = this.windowRef.recaptchaVerifier;
   }
 
   verifyOtpCode() {
-    this.windowRef.confirmationResult
+    this.authService.confirmationResult
       .confirm(this.verificationCode)
       .then((result) => {
         console.log(result);

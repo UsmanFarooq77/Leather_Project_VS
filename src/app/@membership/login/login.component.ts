@@ -75,8 +75,9 @@ export class LoginComponent implements OnInit {
   }
 
   signIn(value) {
+    // if (this.reCAPTCHAVerified == false) alert("Are you a human being? Please check the box I'm not a robot.");
     this.isSignedIn = true;
-    // this.authService.signIn(value)
+    this.authService.signIn(value)
     //   .then(res => {
     //     this.isSignedIn = false;
     //     alert("Your email and password has been verified.");

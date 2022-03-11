@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { RegisterComponent } from './register/register.component';
 import { SharedModule } from '../shared/shared.module';
 import { RecaptchaComponent } from './recaptcha/recaptcha.component';
+import { VerifyOtpComponent } from './verify-otp/verify-otp.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { RecaptchaComponent } from './recaptcha/recaptcha.component';
     LoginComponent,
     LoginModelComponent,
     RegisterComponent,
-    RecaptchaComponent
+    RecaptchaComponent,
+    VerifyOtpComponent
   ],
   exports: [
     LoginComponent,

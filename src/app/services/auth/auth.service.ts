@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth'
-import * as firebase  from 'firebase'
+import * as firebase from 'firebase'
 import { Observable } from 'rxjs/Observable';
 import { Router, ActivatedRoute } from '@angular/router';
 import { from } from 'rxjs/observable/from';
@@ -8,22 +8,25 @@ import { from } from 'rxjs/observable/from';
 @Injectable()
 export class AuthService {
   User$: Observable<firebase.User>
-  constructor(private afAuth: AngularFireAuth, private router:Router, private route:ActivatedRoute ) { 
+  appVerifier: any;
+  confirmationResult: any;
+
+  constructor(private afAuth: AngularFireAuth, private router: Router, private route: ActivatedRoute) {
     this.User$ = this.afAuth.authState;
     // this.afAuth.authState.subscribe();
   }
-  login(value){
+  login(value) {
     // let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
     // localStorage.setItem('returnUrl',returnUrl);
-    if(value === 'google'){
-    this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+    if (value === 'google') {
+      this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
     }
-    else{
+    else {
       this.afAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider());
     }
   }
 
-  doRegisterWithEmail(value){
+  doRegisterWithEmail(value) {
     // return new Promise<any>((resolve, reject) => {
     //   firebase.auth().createUserWithEmailAndPassword(value.emailOrPhone, value.password)
     //   .then(res => {
@@ -37,11 +40,16 @@ export class AuthService {
     )
   }
 
-  doRegisterWithPhone(value, appVerifier){
+  doRegisterWithPhone(value, appVerifier) {
     return from(this.afAuth.auth.signInWithPhoneNumber(value.emailOrPhone, appVerifier));
   }
 
-  signIn(value){
+  signInWithEmailAndPassword(value) {
+    this.afAuth.auth.signInWithEmailAndPassword(value.emailOrPhone, value.password).
+    then((res) => console.log(res));
+  }
+
+  signIn(value) {
     // return new Promise<any>((resolve, reject) => {
     //   firebase.auth().signInWithEmailAndPassword(value.emailOrPhone, value.password)
     //   .then(res => {
@@ -49,27 +57,31 @@ export class AuthService {
     //   }, err => reject(err))
     // })
 
-    // if (value.emailOrPhone.includes("@")) {
-    //   this.doRegisterWithEmail(value);
-    // } else {
-    //   const appVerifier = this.windowRef.recaptchaVerifier;
-    //   if (value.emailOrPhone.includes("+")) {
-    //     this.doRegisterWithPhone(value, appVerifier)
-    //       .subscribe((result) => (this.windowRef.confirmationResult = result));;
-    //   } else {
-    //     let countryCode = "+92";
-    //     let extractPhoneNumber = value.emailOrPhone.substring(1);
-    //     value.emailOrPhone = countryCode + extractPhoneNumber;
-    //     this
-    //       .doRegisterWithPhone(value, appVerifier)
-    //       .subscribe((result) => (this.windowRef.confirmationResult = result),
-    //         (error) => alert(error.message));
-    //   }
-    // }
+    if (value.emailOrPhone.includes("@")) {
+      this.signInWithEmailAndPassword(value);
+    } else {
+
+      if (value.emailOrPhone.includes("+")) {
+        console.log(this.appVerifier);
+        this.doRegisterWithPhone(value, this.appVerifier)
+          .subscribe((result) => (this.confirmationResult = result));
+          // .subscribe((result) => (console.log(result)));
+      } else {
+        let countryCode = "+92";
+        let extractPhoneNumber = value.emailOrPhone.substring(1);
+        value.emailOrPhone = countryCode + extractPhoneNumber;
+        console.log(this.appVerifier);
+        this
+          .doRegisterWithPhone(value, this.appVerifier)
+          .subscribe((result) => (this.confirmationResult = result),
+          // .subscribe((result) => (result),
+            (error) => alert(error.message));
+      }
+    }
   }
-  
-  logout(){
+
+  logout() {
     localStorage.clear();
-    this.afAuth.auth.signOut(); 
+    this.afAuth.auth.signOut();
   }
 }
