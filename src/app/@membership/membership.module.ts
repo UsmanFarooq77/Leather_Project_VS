@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegisterComponent } from './register/register.component';
 import { SharedModule } from '../shared/shared.module';
+import { RecaptchaComponent } from './recaptcha/recaptcha.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     LoginComponent,
     LoginModelComponent,
-    RegisterComponent
+    RegisterComponent,
+    RecaptchaComponent
   ],
   exports: [
     LoginComponent,

@@ -32,7 +32,8 @@ export class AuthService {
     //   }, err => reject(err))
     // })
     this.afAuth.auth.createUserWithEmailAndPassword(value.emailOrPhone, value.password).then(
-      (res) => console.log(res)
+      (res) => console.log(res),
+      (error) => alert(error.message)
     )
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AdminserviceService } from '../../services/admin/adminservice.service';
@@ -31,12 +31,16 @@ export class LoginModelComponent implements OnInit {
     this.isLoginLoading = false;
     this.isGoogleLogin = false;
     this.isFacebookLogin = false;
-    $(document).ready(function () {
-      $('#loginModalCenter').modal('show');
-    });
+    // $(document).ready(function () {
+    //   $('#loginModalCenter').modal('show');
+    // });
   }
 
   ngOnInit() {
+
+    $(document).ready(function () {
+      $('#loginModalCenter').modal('show');
+    });
 
     if (localStorage.getItem('google')) {
       this.isGoogleLogin = true;
@@ -44,9 +48,6 @@ export class LoginModelComponent implements OnInit {
     if (localStorage.getItem('facebook')) {
       this.isFacebookLogin = true;
     }
-    $(document).ready(function () {
-      $('#loginModalCenter').modal('show');
-    });
     this.authService.User$.subscribe(admin => {
       if (admin) {
         this.admin = admin;
@@ -54,7 +55,7 @@ export class LoginModelComponent implements OnInit {
         // let returnUrl = localStorage.getItem('returnUrl');
         // this.router.navigateByUrl(returnUrl);
         this.hideModel();
-        this.router.navigate(['/']);
+        // this.router.navigate(['/']);
       }
       else {
         this.isAdmin = false;
@@ -98,10 +99,9 @@ export class LoginModelComponent implements OnInit {
   }
 
   hideModel() {
-    $(document).ready(function () {
+    $(document).ready( function() {
       $('#loginModalCenter').modal('hide');
     });
-    this.loginService.pushOpenLoginModal(false);
   }
   
   logout() {

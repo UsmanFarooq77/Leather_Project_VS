@@ -2,7 +2,7 @@
   <form [formGroup]="registerForm" (ngSubmit)="signUp(registerForm.value)" class="example-form">
     <mat-form-field class="example-full-width">
       <mat-label>First Name</mat-label>
-      <input matInput type="email" formControlName="firstName" required>
+      <input matInput type="text" formControlName="firstName" required>
       <mat-error>
         <span *ngIf="registerForm.get('firstName').invalid && registerForm.get('firstName').dirty">
           Please enter at least 3 letters.
@@ -16,7 +16,7 @@
     </mat-form-field>
     <mat-form-field class="example-full-width">
       <mat-label>Last Name</mat-label>
-      <input matInput type="email" formControlName="lastName" required>
+      <input matInput type="text" formControlName="lastName" required>
       <mat-error>
         <span *ngIf="registerForm.get('lastName').invalid && registerForm.get('lastName').dirty">
           Please enter at least 3 letters.

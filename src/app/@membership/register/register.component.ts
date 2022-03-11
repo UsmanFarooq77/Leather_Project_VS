@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
   windowRef: any;
   verificationCode: string;
   user: any;
-  reCAPTCHAVerified: any;
+  reCAPTCHAVerified: boolean;
   isRecaptchaContainerId: boolean;
 
   constructor(
@@ -31,8 +31,8 @@ export class RegisterComponent implements OnInit {
     private loginService: LoginService,
   ) {
     this.isSignedIn = false;
-    this.reCAPTCHAVerified = null;
-    this.verificationCode = null;
+    this.reCAPTCHAVerified = false;
+    this.verificationCode = '';
     this.isRecaptchaContainerId = false;
   }
 
@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
         size: "normal",
         'callback': (response) => {
           // reCAPTCHA solved, allow signInWithPhoneNumber.
-          this.reCAPTCHAVerified = response;
+          this.reCAPTCHAVerified = true;
         },
         'expired-callback': (response) => {
           // Response expired. Ask user to solve reCAPTCHA again.
@@ -52,12 +52,6 @@ export class RegisterComponent implements OnInit {
       }
     );
 
-    this.windowRef.recaptchaVerifier
-      .render()
-      .then((recaptchaContainerId) => {
-        this.isRecaptchaContainerId = true;
-      })
-      .catch((error) => alert(error.message));
 
     this.registerForm = this.formBuilder.group({
       firstName: ["usman", [Validators.required, Validators.minLength(3)]],
@@ -70,8 +64,19 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit(): void {
+    if (this.windowRef.recaptchaVerifier) {
+      this.windowRef.recaptchaVerifier
+        .render()
+        .then((recaptchaContainerId) => {
+          this.isRecaptchaContainerId = true;
+        })
+        .catch((error) => { return });
+    }
+  }
+
   signUp(value) {
-    if (this.reCAPTCHAVerified == null) alert("Are you a human being? Please check the box I'm not a robot.");
+    if (this.reCAPTCHAVerified == false) alert("Are you a human being? Please check the box I'm not a robot.");
     if (value.emailOrPhone.includes("@")) {
       this.authService.doRegisterWithEmail(value);
     } else {
