@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: "app-register",
@@ -9,14 +10,13 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
-  errorMessage: string;
-  successMessage: string;
   // EMAIL_REGEXP = /^[^@]+@([^@\.]+\.)+[^@\.]+$/i;
   EMAILORPHONE_REGEXP = /^(?:\d{11}|\+[1-9]{1}[0-9]{3,14}|\w+@\w+\.\w{2,3})$/i;
   isSignedIn: boolean;
 
   constructor(
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private authService: AuthService) {
     this.isSignedIn = false;
   }
 
@@ -33,16 +33,7 @@ export class RegisterComponent implements OnInit {
   }
 
   signUp(value) {
-    // if (this.reCAPTCHAVerified == false) alert("Are you a human being? Please check the box I'm not a robot.");
-    console.log(value);
-
-    // .then(res => {
-    //   this.errorMessage = "";
-    //   this.successMessage = "Your account has been created";
-    // }, err => {
-    //   this.errorMessage = err.message;
-    //   this.successMessage = "";
-    // })
+   this.authService.signUp(value);
   }
 
 }

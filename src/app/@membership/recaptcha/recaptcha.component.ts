@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
 
 import { AuthService } from '../../services/auth/auth.service';
 import { LoginService } from '../../services/login/login.service';
 
-import * as firebase from 'firebase'
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-recaptcha',
@@ -15,13 +13,11 @@ import * as firebase from 'firebase'
 export class RecaptchaComponent implements OnInit {
 
   windowRef: any;
-  reCAPTCHAVerified: boolean;
   isRecaptchaContainerId: boolean;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(
     public authService: AuthService,
-    private router: Router,
-    private loginService: LoginService) { }
+    private loginService: LoginService ) { }
 
   ngOnInit() {
     this.windowRef = this.loginService.windowRef;
@@ -31,7 +27,7 @@ export class RecaptchaComponent implements OnInit {
         size: "normal",
         'callback': (response) => {
           // reCAPTCHA solved, allow signInWithPhoneNumber.
-          this.reCAPTCHAVerified = response;
+          this.authService.reCAPTCHAVerified = true;
         },
         'expired-callback': (response) => {
           // Response expired. Ask user to solve reCAPTCHA again.

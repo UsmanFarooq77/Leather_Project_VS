@@ -28,7 +28,6 @@ export class CoreComponent implements OnInit {
     // })
     this.loginService.pullOpenLoginModal()
       .subscribe((value: boolean) => {
-        console.log(value);
         this.isOpenLoginModal = value ? true : false;
       })
   }

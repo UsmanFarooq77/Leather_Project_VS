@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AdminserviceService } from '../../services/admin/adminservice.service';
 import { AuthService } from '../../services/auth/auth.service';
 import { LoginService } from '../../services/login/login.service';
+
+import * as firebase from 'firebase';
 
 declare var $: any;
 

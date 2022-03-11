@@ -1,12 +1,9 @@
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth.service';
-import { LoginService } from '../../services/login/login.service';
 
 declare var $: any;
 
-import * as firebase from 'firebase'
 
 @Component({
   selector: 'app-login',

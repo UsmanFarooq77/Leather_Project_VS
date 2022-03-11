@@ -46,7 +46,6 @@ export class AdminserviceService {
   getIdObject(idObject): Observable<Product> {
     return this.db.object('/addpost/' + idObject).pipe(map(
       (response) => {
-        console.log(response)
         return new product(response);
       }
     ));

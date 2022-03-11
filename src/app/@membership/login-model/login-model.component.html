@@ -40,9 +40,13 @@
         </div> -->
         <!-- <span *ngIf="isLoginLoading" class="fa fa-spinner fa-spin"></span> -->
 
+        <div class="recaptcha">
         <app-recaptcha></app-recaptcha>
+        </div>
 
+        <div class="verify_otp">
         <app-verify-otp *ngIf="this.authService.confirmationResult"></app-verify-otp>
+        </div>
 
         <h4 *ngIf="isGoogleLogin && !isAdmin" class="login_google"> Check Google Verification...
           <span style="color: crimson;" class="fa fa-spinner fa-spin fa-1x"></span>

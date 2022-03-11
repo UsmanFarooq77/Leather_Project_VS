@@ -20,7 +20,6 @@ export class VerifyOtpComponent implements OnInit {
     this.authService.confirmationResult
       .confirm(this.verificationCode)
       .then((result) => {
-        console.log(result);
         this.user = result.user;
         if (this.user) alert('You have successfully created an account!');
       })

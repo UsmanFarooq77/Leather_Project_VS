@@ -24,11 +24,11 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   public comment = new comments();
   category: string;
   filteredPostsByCategory: Product[];
-  postIdSubscription : Subscription;
-  postsSubscription : Subscription;
-  stars : number[];
-  
-  
+  postIdSubscription: Subscription;
+  postsSubscription: Subscription;
+  stars: number[];
+
+
   constructor(
     private route: ActivatedRoute,
     private adservice: AdminserviceService,
@@ -47,13 +47,12 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
       top: 0,
       behavior: 'smooth'
     });
-    this.postIdSubscription = this.adservice.getIdObject(this.id).subscribe((post) => 
-    {this.Post$ = post
-    console.log(post.$key)
+    this.postIdSubscription = this.adservice.getIdObject(this.id).subscribe((post) => {
+      this.Post$ = post
     });
     this.postsSubscription = this.adservice.getPost().subscribe((posts) => {
       this.filteredPostsByCategory = posts.filter((post) => this.category == post.post_category && this.id !== post.$key);
-      
+
       if (this.filteredPostsByCategory.length) {
         $(document).ready(function () {
           var owl = $("#slider");
@@ -95,10 +94,10 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
       }
     });
   }
-  relatedPostDetails(key : any) {
+  relatedPostDetails(key: any) {
     this.reInitComponent(key);
   }
-  reInitComponent(key : any) {
+  reInitComponent(key: any) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.navigate(['/product-detail', this.Post$.post_category, key]);
   }
