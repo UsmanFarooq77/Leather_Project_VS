@@ -42,12 +42,30 @@ export class AuthService {
   }
 
   signIn(value){
-    return new Promise<any>((resolve, reject) => {
-      firebase.auth().signInWithEmailAndPassword(value.emailOrPhone, value.password)
-      .then(res => {
-        resolve(res);
-      }, err => reject(err))
-    })
+    // return new Promise<any>((resolve, reject) => {
+    //   firebase.auth().signInWithEmailAndPassword(value.emailOrPhone, value.password)
+    //   .then(res => {
+    //     resolve(res);
+    //   }, err => reject(err))
+    // })
+
+    // if (value.emailOrPhone.includes("@")) {
+    //   this.doRegisterWithEmail(value);
+    // } else {
+    //   const appVerifier = this.windowRef.recaptchaVerifier;
+    //   if (value.emailOrPhone.includes("+")) {
+    //     this.doRegisterWithPhone(value, appVerifier)
+    //       .subscribe((result) => (this.windowRef.confirmationResult = result));;
+    //   } else {
+    //     let countryCode = "+92";
+    //     let extractPhoneNumber = value.emailOrPhone.substring(1);
+    //     value.emailOrPhone = countryCode + extractPhoneNumber;
+    //     this
+    //       .doRegisterWithPhone(value, appVerifier)
+    //       .subscribe((result) => (this.windowRef.confirmationResult = result),
+    //         (error) => alert(error.message));
+    //   }
+    // }
   }
   
   logout(){

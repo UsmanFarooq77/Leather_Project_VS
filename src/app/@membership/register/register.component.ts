@@ -37,20 +37,20 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.windowRef = this.loginService.windowRef;
-    this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
-      "recaptcha-container",
-      {
-        size: "normal",
-        'callback': (response) => {
-          // reCAPTCHA solved, allow signInWithPhoneNumber.
-          this.reCAPTCHAVerified = true;
-        },
-        'expired-callback': (response) => {
-          // Response expired. Ask user to solve reCAPTCHA again.
-        }
-      }
-    );
+    // this.windowRef = this.loginService.windowRef;
+    // this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+    //   "recaptcha-container",
+    //   {
+    //     size: "normal",
+    //     'callback': (response) => {
+    //       // reCAPTCHA solved, allow signInWithPhoneNumber.
+    //       this.reCAPTCHAVerified = true;
+    //     },
+    //     'expired-callback': (response) => {
+    //       // Response expired. Ask user to solve reCAPTCHA again.
+    //     }
+    //   }
+    // );
 
 
     this.registerForm = this.formBuilder.group({
@@ -64,36 +64,36 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  ngAfterViewInit(): void {
-    if (this.windowRef.recaptchaVerifier) {
-      this.windowRef.recaptchaVerifier
-        .render()
-        .then((recaptchaContainerId) => {
-          this.isRecaptchaContainerId = true;
-        })
-        .catch((error) => { return });
-    }
-  }
+  // ngAfterViewInit(): void {
+  //   if (this.windowRef.recaptchaVerifier) {
+  //     this.windowRef.recaptchaVerifier
+  //       .render()
+  //       .then((recaptchaContainerId) => {
+  //         this.isRecaptchaContainerId = true;
+  //       })
+  //       .catch((error) => { return });
+  //   }
+  // }
 
   signUp(value) {
     if (this.reCAPTCHAVerified == false) alert("Are you a human being? Please check the box I'm not a robot.");
-    if (value.emailOrPhone.includes("@")) {
-      this.authService.doRegisterWithEmail(value);
-    } else {
-      const appVerifier = this.windowRef.recaptchaVerifier;
-      if (value.emailOrPhone.includes("+")) {
-        this.authService.doRegisterWithPhone(value, appVerifier)
-          .subscribe((result) => (this.windowRef.confirmationResult = result));;
-      } else {
-        let countryCode = "+92";
-        let extractPhoneNumber = value.emailOrPhone.substring(1);
-        value.emailOrPhone = countryCode + extractPhoneNumber;
-        this.authService
-          .doRegisterWithPhone(value, appVerifier)
-          .subscribe((result) => (this.windowRef.confirmationResult = result),
-            (error) => alert(error.message));
-      }
-    }
+    // if (value.emailOrPhone.includes("@")) {
+    //   this.authService.doRegisterWithEmail(value);
+    // } else {
+    //   const appVerifier = this.windowRef.recaptchaVerifier;
+    //   if (value.emailOrPhone.includes("+")) {
+    //     this.authService.doRegisterWithPhone(value, appVerifier)
+    //       .subscribe((result) => (this.windowRef.confirmationResult = result));;
+    //   } else {
+    //     let countryCode = "+92";
+    //     let extractPhoneNumber = value.emailOrPhone.substring(1);
+    //     value.emailOrPhone = countryCode + extractPhoneNumber;
+    //     this.authService
+    //       .doRegisterWithPhone(value, appVerifier)
+    //       .subscribe((result) => (this.windowRef.confirmationResult = result),
+    //         (error) => alert(error.message));
+    //   }
+    // }
     console.log(value);
 
     // .then(res => {
@@ -105,14 +105,14 @@ export class RegisterComponent implements OnInit {
     // })
   }
 
-  verifyOtpCode() {
-    this.windowRef.confirmationResult
-      .confirm(this.verificationCode)
-      .then((result) => {
-        console.log(result);
-        this.user = result.user;
-        if (this.user) alert('You have successfully created an account!');
-      })
-      .catch((error) => alert('Please enter correct otp code or code has been expired!.'));
-  }
+  // verifyOtpCode() {
+  //   this.windowRef.confirmationResult
+  //     .confirm(this.verificationCode)
+  //     .then((result) => {
+  //       console.log(result);
+  //       this.user = result.user;
+  //       if (this.user) alert('You have successfully created an account!');
+  //     })
+  //     .catch((error) => alert('Please enter correct otp code or code has been expired!.'));
+  // }
 }
