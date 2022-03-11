@@ -15,8 +15,6 @@ import * as firebase from 'firebase'
 export class RecaptchaComponent implements OnInit {
 
   windowRef: any;
-  verificationCode: string;
-  user: any;
   reCAPTCHAVerified: boolean;
   isRecaptchaContainerId: boolean;
 
@@ -49,17 +47,6 @@ export class RecaptchaComponent implements OnInit {
       .catch((error) => { return });
 
     this.authService.appVerifier = this.windowRef.recaptchaVerifier;
-  }
-
-  verifyOtpCode() {
-    this.authService.confirmationResult
-      .confirm(this.verificationCode)
-      .then((result) => {
-        console.log(result);
-        this.user = result.user;
-        if (this.user) alert('You have successfully created an account!');
-      })
-      .catch((error) => alert('Please enter correct otp code or code has been expired!.'));
   }
 
 }

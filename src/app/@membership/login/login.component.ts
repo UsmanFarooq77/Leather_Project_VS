@@ -22,57 +22,20 @@ export class LoginComponent implements OnInit {
   // EMAILORPHONE_REGEXP = /^(?:\d{11}|\w+@\w+\.\w{2,3})$/i;
   EMAILORPHONE_REGEXP = /^(?:\d{11}|\+[1-9]{1}[0-9]{3,14}|\w+@\w+\.\w{2,3})$/i;
   isSignedIn: boolean;
-  // windowRef: any;
-  // verificationCode: string;
-  // user: any;
-  // reCAPTCHAVerified: boolean;
-  // isRecaptchaContainerId: boolean;
 
   constructor(private formBuilder: FormBuilder,
-    private authService: AuthService,
-    private router: Router,
-    private loginService: LoginService) {
+    private authService: AuthService ) {
     this.isSignedIn = false;
   }
 
   ngOnInit() {
-    //     this.windowRef = this.loginService.windowRef;
-    // this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
-    //   "recaptcha-container-login",
-    //   {
-    //     size: "normal",
-    //     'callback': (response) => {
-    //       // reCAPTCHA solved, allow signInWithPhoneNumber.
-    //       this.reCAPTCHAVerified = response;
-    //     },
-    //     'expired-callback': (response) => {
-    //       // Response expired. Ask user to solve reCAPTCHA again.
-    //     }
-    //   }
-    // );
-
-    // this.windowRef.recaptchaVerifier
-    //   .render()
-    //   .then((recaptchaContainerId) => {
-    //     this.isRecaptchaContainerId = true;
-    //   })
-    //   .catch((error) => {return});
     this.registerForm = this.formBuilder.group({
       'emailOrPhone': [null, [Validators.required, Validators.pattern(this.EMAILORPHONE_REGEXP)]],
       'password': [null, Validators.required]
     });
   }
   
-  signUp(value) {
-    // this.authService.doRegister(value)
-      // .then(res => {
-      //   this.errorMessage = "";
-      //   this.successMessage = "Your account has been created";
-      // }, err => {
-      //   this.errorMessage = err.message;
-      //   this.successMessage = "";
-      // })
-  }
+
 
   signIn(value) {
     // if (this.reCAPTCHAVerified == false) alert("Are you a human being? Please check the box I'm not a robot.");
@@ -90,23 +53,6 @@ export class LoginComponent implements OnInit {
     //     this.isSignedIn = false;
     //     alert(err);
     //   })
-      // if (value.emailOrPhone.includes("@")) {
-      //   this.authService.doRegisterWithEmail(value);
-      // } else {
-      //   const appVerifier = this.windowRef.recaptchaVerifier;
-      //   if (value.emailOrPhone.includes("+")) {
-      //     this.authService.doRegisterWithPhone(value, appVerifier)
-      //       .subscribe((result) => (this.windowRef.confirmationResult = result));;
-      //   } else {
-      //     let countryCode = "+92";
-      //     let extractPhoneNumber = value.emailOrPhone.substring(1);
-      //     value.emailOrPhone = countryCode + extractPhoneNumber;
-      //     this.authService
-      //       .doRegisterWithPhone(value, appVerifier)
-      //       .subscribe((result) => (this.windowRef.confirmationResult = result),
-      //         (error) => alert(error.message));
-      //   }
-      // }
   }
 
 

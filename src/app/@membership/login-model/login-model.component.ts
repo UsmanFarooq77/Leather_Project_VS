@@ -23,10 +23,10 @@ export class LoginModelComponent implements OnInit {
   isFacebookLogin: boolean;
 
   constructor(
-    private adService: AdminserviceService,
     public router: Router,
     public authService: AuthService,
-    public loginService: LoginService ) {
+    public loginService: LoginService) {
+
     this.isLoginFormOpen = true;
     this.isLoginLoading = false;
     this.isGoogleLogin = false;
@@ -99,11 +99,11 @@ export class LoginModelComponent implements OnInit {
   }
 
   hideModel() {
-    $(document).ready( function() {
+    $(document).ready(function () {
       $('#loginModalCenter').modal('hide');
     });
   }
-  
+
   logout() {
     this.isGoogleLogin = false;
     this.isFacebookLogin = false;

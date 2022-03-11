@@ -17,8 +17,10 @@
 
         <div class="login-register-section">
           <div class="login-register-buttons">
-            <button class="btn btn-lg" [style.border-top]="isLoginFormOpen ? '3px solid crimson' : '3px solid #eee'" (click)="openLoginForm()">Log In</button>
-            <button class="btn btn-lg" [style.border-top]="!isLoginFormOpen ? '3px solid crimson' : '3px solid #eee'" (click)="openRegisterForm()">Sign Up</button>
+            <button class="btn btn-lg" [style.border-top]="isLoginFormOpen ? '3px solid crimson' : '3px solid #eee'"
+              (click)="openLoginForm()">Log In</button>
+            <button class="btn btn-lg" [style.border-top]="!isLoginFormOpen ? '3px solid crimson' : '3px solid #eee'"
+              (click)="openRegisterForm()">Sign Up</button>
           </div>
           <app-login *ngIf="isLoginFormOpen"></app-login>
           <app-register *ngIf="!isLoginFormOpen"></app-register>
@@ -39,7 +41,9 @@
         <!-- <span *ngIf="isLoginLoading" class="fa fa-spinner fa-spin"></span> -->
 
         <app-recaptcha></app-recaptcha>
-        
+
+        <app-verify-otp *ngIf="this.authService.confirmationResult"></app-verify-otp>
+
         <h4 *ngIf="isGoogleLogin && !isAdmin" class="login_google"> Check Google Verification...
           <span style="color: crimson;" class="fa fa-spinner fa-spin fa-1x"></span>
           <!-- <div style="width: 10px; height: 10px; display: inline-block;"><mat-spinner></mat-spinner></div> -->
@@ -52,8 +56,8 @@
           <a class="nav-link login_google" (click)="login()">Login With Google</a>
         </li> -->
         <div class="social_buttons">
-          <button style="margin-bottom: 28px ; width: 207px; " mat-raised-button color="warn" (click)="socialLogin('google')"
-            disabled>
+          <button style="margin-bottom: 28px ; width: 207px; " mat-raised-button color="warn"
+            (click)="socialLogin('google')" disabled>
             <!-- <span class="glyphicon glyphicon-log-out"></span> -->
             <img class="google_icon" src="../assets/images/google_icon.png"> Continue With Google
           </button>
