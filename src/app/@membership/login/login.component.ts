@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+
 import { AuthService } from '../../services/auth/auth.service';
+import { LoginService } from '../../services/login/login.service';
 
 declare var $: any;
-
 
 @Component({
   selector: 'app-login',
@@ -21,36 +22,19 @@ export class LoginComponent implements OnInit {
   isSignedIn: boolean;
 
   constructor(private formBuilder: FormBuilder,
-    private authService: AuthService ) {
+    private authService: AuthService,
+    public loginService: LoginService) {
     this.isSignedIn = false;
   }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      'emailOrPhone': [null, [Validators.required, Validators.pattern(this.EMAILORPHONE_REGEXP)]],
-      'password': [null, Validators.required]
+      'emailOrPhone': ['usman1@gmail.com', [Validators.required, Validators.pattern(this.EMAILORPHONE_REGEXP)]],
+      'password': ['123456', Validators.required]
     });
   }
-  
-
 
   signIn(value) {
-    // if (this.reCAPTCHAVerified == false) alert("Are you a human being? Please check the box I'm not a robot.");
-    this.isSignedIn = true;
     this.authService.signIn(value)
-    //   .then(res => {
-    //     this.isSignedIn = false;
-    //     alert("Your email and password has been verified.");
-    //     // this.loginService.pushOpenLoginModal(false);
-    //     // this.router.navigate(['/']);
-    //     // $(document).ready(function () {
-    //     //   $('#loginModalCenter').modal('hide');
-    //     // });
-    //   }, err => {
-    //     this.isSignedIn = false;
-    //     alert(err);
-    //   })
   }
-
-
 }

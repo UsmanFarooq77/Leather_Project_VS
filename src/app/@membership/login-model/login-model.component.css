@@ -31,12 +31,6 @@
   width: 50%;
 }
 
-.recaptcha {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
-}
-
 .verify_otp {
   display: flex;
   justify-content: center;

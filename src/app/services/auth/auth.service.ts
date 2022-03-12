@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { AngularFireAuth } from 'angularfire2/auth'
+import { LoginService } from '../login/login.service';
 
 import * as firebase from 'firebase';
 
 import { Observable } from 'rxjs/Observable';
-import { from } from 'rxjs/observable/from';
+import { switchAll, switchMap } from 'rxjs/operators';
 
 @Injectable()
 export class AuthService {
@@ -15,13 +16,18 @@ export class AuthService {
   appVerifier: any;
   confirmationResult: any;
   reCAPTCHAVerified: boolean;
+  isSignedLoading: boolean;
 
-  constructor(private afAuth: AngularFireAuth, private router: Router, private route: ActivatedRoute) {
+  constructor(private afAuth: AngularFireAuth,
+    private router: Router,
+    private route: ActivatedRoute,
+    private loginService: LoginService) {
     this.User$ = this.afAuth.authState;
     this.reCAPTCHAVerified = false;
+    this.isSignedLoading = false;
     // this.afAuth.authState.subscribe();
   }
-  
+
   login(value) {
     // let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
     // localStorage.setItem('returnUrl',returnUrl);
@@ -36,7 +42,7 @@ export class AuthService {
   signUp(value) {
     if (this.reCAPTCHAVerified) {
       if (value.emailOrPhone.includes("@")) {
-        this.doRegisterWithEmail(value);
+        this.loginService.doRegisterWithEmail(value);
       } else {
         this.signInWithPhoneNumber(value);
       }
@@ -49,7 +55,7 @@ export class AuthService {
   signIn(value) {
     if (this.reCAPTCHAVerified) {
       if (value.emailOrPhone.includes("@")) {
-        this.signInWithEmailAndPassword(value);
+        this.loginService.signInWithEmailAndPassword(value);
       } else {
         this.signInWithPhoneNumber(value);
       }
@@ -70,32 +76,21 @@ export class AuthService {
 
   private signInWithPhoneNumber(value) {
     if (value.emailOrPhone.includes("+")) {
-      this.doRegisterWithPhone(value, this.appVerifier)
-        .subscribe((result) => (this.confirmationResult = result));
+      this.loginService.doRegisterWithPhone(value, this.appVerifier).
+      pipe(
+        switchMap((re) => re )
+      ).subscribe((res) => console.log(this.confirmationResult = res))
+     
+      
+      // .subscribe((res) => console.log(res));
+        // .subscribe((result) => (this.confirmationResult = result));
     } else {
       let countryCode = "+92";
       let extractPhoneNumber = value.emailOrPhone.substring(1);
       value.emailOrPhone = countryCode + extractPhoneNumber;
-      this
-        .doRegisterWithPhone(value, this.appVerifier)
+      this.loginService.doRegisterWithPhone(value, this.appVerifier)
         .subscribe((result) => (this.confirmationResult = result),
           (error) => alert(error.message));
     }
-  }
-
-  private doRegisterWithEmail(value) {
-    this.afAuth.auth.createUserWithEmailAndPassword(value.emailOrPhone, value.password).then(
-      (res) => console.log(res),
-      (error) => alert(error.message)
-    )
-  }
-
-  private doRegisterWithPhone(value, appVerifier) {
-    return from(this.afAuth.auth.signInWithPhoneNumber(value.emailOrPhone, appVerifier));
-  }
-
-  private signInWithEmailAndPassword(value) {
-    this.afAuth.auth.signInWithEmailAndPassword(value.emailOrPhone, value.password).
-      then((res) => console.log(res));
   }
 }

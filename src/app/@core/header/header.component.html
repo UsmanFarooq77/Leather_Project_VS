@@ -41,11 +41,19 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/reviews" routerLinkActive="Active">Reviews</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="!user">
             <a class="nav-link nav_login_link" (click)="login()">Login</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link nav_login_link" (click)="logout()">Logout</a>
+          <li class="nav-item dropdown" *ngIf="user">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{user}}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" (click)="logout()">
+                Logout
+              </a>
+            </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/" routerLinkActive="Active">

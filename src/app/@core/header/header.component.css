@@ -28,6 +28,7 @@
 .collapse .navbar-nav .nav-item .dropdown-menu .dropdown-item {
   color: crimson;
   font-weight: 500;
+  cursor: pointer;
 }
 .navbar-brand {
   padding-top: 10px !important;

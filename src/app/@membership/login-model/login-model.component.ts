@@ -32,9 +32,6 @@ export class LoginModelComponent implements OnInit {
     this.isLoginLoading = false;
     this.isGoogleLogin = false;
     this.isFacebookLogin = false;
-    // $(document).ready(function () {
-    //   $('#loginModalCenter').modal('show');
-    // });
   }
 
   ngOnInit() {
@@ -49,7 +46,9 @@ export class LoginModelComponent implements OnInit {
     if (localStorage.getItem('facebook')) {
       this.isFacebookLogin = true;
     }
+    console.log(this.authService.User$);
     this.authService.User$.subscribe(admin => {
+      console.log(admin);
       if (admin) {
         this.admin = admin;
         this.isAdmin = true;
@@ -73,7 +72,6 @@ export class LoginModelComponent implements OnInit {
     $('#loginModalCenter').on('hidden.bs.modal', () => {
       this.loginService.pushOpenLoginModal(false);
     })
-
   }
 
   openLoginForm() {

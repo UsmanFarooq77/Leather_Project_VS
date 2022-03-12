@@ -7,8 +7,7 @@ import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable }
 import { contact } from '../../interfaces/contact';
 import { Review } from '../../interfaces/review';
 import { map } from 'rxjs/operators/map';
-import { p } from '@angular/core/src/render3';
-import { of } from 'rxjs/observable/of';
+
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()

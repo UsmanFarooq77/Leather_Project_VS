@@ -22,7 +22,7 @@
       </mat-error>
     </mat-form-field>
     <button [disabled]="registerForm.invalid" mat-raised-button color="primary">Log In
-      <i *ngIf="isSignedIn" class="fa fa-spinner fa-spin" style="font-size:20px"></i>
+      <i *ngIf="loginService.isSignedLoading" class="fa fa-spinner fa-spin" style="font-size:20px"></i>
     </button>
   </form>
 </div>
