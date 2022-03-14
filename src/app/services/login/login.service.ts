@@ -4,24 +4,26 @@ import { BehaviorSubject } from 'rxjs';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { from } from 'rxjs/observable/from';
-import { of } from 'rxjs/observable/of';
-import { map } from 'rxjs/operators';
 
 @Injectable()
 export class LoginService {
 
   public _openLoginModal = new BehaviorSubject(false);
 
+  appVerifier: any;
+  confirmationResult: any;
+  reCAPTCHAVerified: boolean;
   isSignedLoading: boolean;
 
   constructor(
     private afAuth: AngularFireAuth,
     private db: AngularFireDatabase) {
+    this.reCAPTCHAVerified = false;
     this.isSignedLoading = false;
   }
 
   get windowRef() {
-    return window
+    return window;
   }
 
   public pushOpenLoginModal(value: boolean) {
@@ -54,22 +56,32 @@ export class LoginService {
     )
   }
 
-  doRegisterWithPhone(value, appVerifier) {
-    return from(this.afAuth.auth.signInWithPhoneNumber(value.emailOrPhone, appVerifier)).
-    pipe(
-      map((res) => {
-        this.addUser(res, res.uid)
-        return of(res)
+  signInWithPhoneNumber(value) {
+    if (value.emailOrPhone.includes("+")) {
+      this.doRegisterWithPhone(value, this.appVerifier)
+        .subscribe((result) => (this.confirmationResult = result));
+    } else {
+      let countryCode = "+92";
+      let extractPhoneNumber = value.emailOrPhone.substring(1);
+      value.emailOrPhone = countryCode + extractPhoneNumber;
+      this.doRegisterWithPhone(value, this.appVerifier)
+        .subscribe((result) => (this.confirmationResult = result),
+          (error) => alert(error.message));
+    }
+  }
+
+  verifyOtpCode(verificationCode) {
+    this.confirmationResult
+      .confirm(verificationCode)
+      .then((result) => {
+        // this.user = result.user;
+        // if (this.user) alert('You have successfully created an account!');
       })
-    )
-    // map((res) => {return of(res)})
+      .catch((error) => alert('Please enter correct otp code or code has been expired!.'));
+  }
 
-
-    // .switchMap((res) => {
-    //   console.log(res)
-    //   this.addUser(res, res.uid).then((res) => alert(res))
-    //   return of(res);
-    // });
+  private doRegisterWithPhone(value, appVerifier) {
+    return from(this.afAuth.auth.signInWithPhoneNumber(value.emailOrPhone, appVerifier))
   }
 
   addUser(user, uid) {

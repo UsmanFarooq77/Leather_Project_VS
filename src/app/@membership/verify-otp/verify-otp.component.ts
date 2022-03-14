@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth/auth.service';
+
+import { LoginService } from '../../services/login/login.service';
 
 @Component({
   selector: 'app-verify-otp',
@@ -11,19 +12,12 @@ export class VerifyOtpComponent implements OnInit {
   verificationCode: string;
   user: any;
 
-  constructor(public authService: AuthService) { }
+  constructor(public loginService: LoginService) { }
 
   ngOnInit() {
   }
 
   verifyOtpCode() {
-    this.authService.confirmationResult
-      .confirm(this.verificationCode)
-      .then((result) => {
-        this.user = result.user;
-        if (this.user) alert('You have successfully created an account!');
-      })
-      .catch((error) => alert('Please enter correct otp code or code has been expired!.'));
+    this.loginService.verifyOtpCode(this.verificationCode)
   }
-
 }

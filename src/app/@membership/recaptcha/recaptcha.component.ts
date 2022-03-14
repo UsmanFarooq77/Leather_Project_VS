@@ -42,7 +42,7 @@ export class RecaptchaComponent implements OnInit {
       })
       .catch((error) => { return });
 
-    this.authService.appVerifier = this.windowRef.recaptchaVerifier;
+    this.loginService.appVerifier = this.windowRef.recaptchaVerifier;
   }
 
 }
