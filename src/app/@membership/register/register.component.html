@@ -58,7 +58,7 @@
 
     <button class="signUp_button" type="submit" [disabled]="registerForm.invalid" mat-raised-button color="primary">Sign
       Up
-      <i *ngIf="isSignedIn" class="fa fa-spinner fa-spin" style="font-size:20px"></i>
+      <i *ngIf="loginService.isSignedLoading" class="fa fa-spinner fa-spin" style="font-size:20px"></i>
     </button>
   </form>
 </div>

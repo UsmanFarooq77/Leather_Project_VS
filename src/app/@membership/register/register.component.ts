@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth.service';
+import { LoginService } from '../../services/login/login.service';
 
 @Component({
   selector: "app-register",
@@ -16,7 +17,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService) {
+    private authService: AuthService,
+    public loginService: LoginService) {
     this.isSignedIn = false;
   }
 
@@ -25,7 +27,7 @@ export class RegisterComponent implements OnInit {
       firstName: ["usman", [Validators.required, Validators.minLength(3)]],
       lastName: ["ali", [Validators.required, Validators.minLength(3)]],
       emailOrPhone: [
-        "+923456572721",
+        "test@gmail.com",
         [Validators.required, Validators.pattern(this.EMAILORPHONE_REGEXP)],
       ],
       password: ["123456", Validators.required],

@@ -54,8 +54,8 @@ export class HeaderComponent implements OnInit {
     });
     this.authService.User$.subscribe((user) => {
       if (user) {
-        this.user = user.uid;
-        this.loginService.getUser(this.user).subscribe((user) => console.log(user))
+        this.user = user.displayName;
+        // this.loginService.getUser(this.user).subscribe((user) => console.log(user))
       }
       else {
         this.user = '';

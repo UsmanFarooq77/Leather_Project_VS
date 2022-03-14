@@ -5,6 +5,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { from } from 'rxjs/observable/from';
 
+import * as firebase from 'firebase'
+
 @Injectable()
 export class LoginService {
 
@@ -46,15 +48,7 @@ export class LoginService {
         });
   }
 
-  doRegisterWithEmail(value) {
-    this.afAuth.auth.createUserWithEmailAndPassword(value.emailOrPhone, value.password).then(
-      (res) => {
-        console.log(res)
-        this.addUser(res, res.uid).then((res) => alert(res)),
-          (error) => alert(error.message)
-      }
-    )
-  }
+
 
   signInWithPhoneNumber(value) {
     if (value.emailOrPhone.includes("+")) {
@@ -69,6 +63,41 @@ export class LoginService {
           (error) => alert(error.message));
     }
   }
+
+
+  doRegisterWithEmail(value) {
+    this.isSignedLoading = true;
+    this.afAuth.auth.createUserWithEmailAndPassword(value.emailOrPhone, value.password).then(
+      (result) => {
+        if (result) {
+          this.afAuth.auth.onAuthStateChanged((user) => {
+            if (user.displayName == null) {
+              user.updateProfile({
+                displayName: value.firstName + value.lastName,
+                photoURL: "https://www.w3schools.com/howto/img_forest.jpg"
+              }).then((result) => {
+                this.isSignedLoading = false;
+              }, (error) => {
+                alert(error.message);
+              });
+
+            }
+          });
+        }
+        // this.addUser(res, res.uid).then((res) => alert(res)),
+        (error) => {
+          this.isSignedLoading = false;
+          alert(error.message)
+        }
+
+      }
+    ).catch((error) => {
+      this.isSignedLoading = false;
+      alert(error.message)
+    })
+  }
+
+
 
   verifyOtpCode(verificationCode) {
     this.confirmationResult
