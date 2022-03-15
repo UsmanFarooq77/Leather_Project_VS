@@ -6,22 +6,32 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { from } from 'rxjs/observable/from';
 
 import * as firebase from 'firebase'
+import { user } from '../../models/user-model';
+import { User } from '../../interfaces/user';
 
 @Injectable()
 export class LoginService {
 
   public _openLoginModal = new BehaviorSubject(false);
+  public _currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')))
+
+  public currentUser: Observable<User>;
 
   appVerifier: any;
   confirmationResult: any;
   reCAPTCHAVerified: boolean;
   isSignedLoading: boolean;
+  // currentUser: string;
+  
+  public user = new user();
 
   constructor(
     private afAuth: AngularFireAuth,
     private db: AngularFireDatabase) {
     this.reCAPTCHAVerified = false;
     this.isSignedLoading = false;
+    this.currentUser = this._currentUserSubject.asObservable();
+    // this.currentUser = '';
   }
 
   get windowRef() {
@@ -39,7 +49,6 @@ export class LoginService {
     this.isSignedLoading = true;
     this.afAuth.auth.signInWithEmailAndPassword(value.emailOrPhone, value.password).
       then((res) => {
-        console.log(res)
         this.isSignedLoading = false;
       },
         (error) => {
@@ -77,6 +86,15 @@ export class LoginService {
                 photoURL: "https://www.w3schools.com/howto/img_forest.jpg"
               }).then((result) => {
                 this.isSignedLoading = false;
+                // this.currentUser = user.displayName;
+
+                this.user.id = user.uid;
+                this.user.firstName = value.firstName;
+                this.user.lastName = value.lastName;
+                this.user.password = value.password;
+                
+                localStorage.setItem('currentUser', JSON.stringify(this.user));
+                this._currentUserSubject.next(this.user);
               }, (error) => {
                 alert(error.message);
               });
@@ -114,7 +132,6 @@ export class LoginService {
   }
 
   addUser(user, uid) {
-    console.log(user, uid);
     const toSend = this.db.object('/users/' + uid);
     return toSend.set({ name: 'usman' });
   }

@@ -17,7 +17,7 @@ export class RecaptchaComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
-    private loginService: LoginService ) { }
+    private loginService: LoginService) { }
 
   ngOnInit() {
     this.windowRef = this.loginService.windowRef;

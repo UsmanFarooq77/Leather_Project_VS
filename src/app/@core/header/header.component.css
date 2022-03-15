@@ -9,7 +9,7 @@
 .nav-item {
   margin-left: 12px;
 }
-.navbar-nav .nav-item .nav_login_link{
+.navbar-nav .nav-item .nav_login_link {
   cursor: pointer;
 }
 .dropdown-item.active,

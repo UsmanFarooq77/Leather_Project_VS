@@ -46,9 +46,8 @@ export class LoginModelComponent implements OnInit {
     if (localStorage.getItem('facebook')) {
       this.isFacebookLogin = true;
     }
-    console.log(this.authService.User$);
+
     this.authService.User$.subscribe(admin => {
-      console.log(admin);
       if (admin) {
         this.admin = admin;
         this.isAdmin = true;

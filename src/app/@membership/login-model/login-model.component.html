@@ -43,7 +43,7 @@
         <app-recaptcha></app-recaptcha>
 
         <div class="verify_otp">
-        <app-verify-otp *ngIf="authService.confirmationResult"></app-verify-otp>
+          <app-verify-otp *ngIf="loginService.confirmationResult"></app-verify-otp>
         </div>
 
         <h4 *ngIf="isGoogleLogin && !isAdmin" class="login_google"> Check Google Verification...

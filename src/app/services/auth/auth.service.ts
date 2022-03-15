@@ -14,11 +14,12 @@ export class AuthService {
   User$: Observable<firebase.User>
   reCAPTCHAVerified: boolean;
 
-  constructor(private afAuth: AngularFireAuth,
+  constructor(public afAuth: AngularFireAuth,
     private router: Router,
     private route: ActivatedRoute,
     private loginService: LoginService) {
     this.User$ = this.afAuth.authState;
+    console.log(this.afAuth.auth.currentUser)
     this.reCAPTCHAVerified = false;
     // this.afAuth.authState.subscribe();
   }
@@ -61,7 +62,8 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.clear();
+    localStorage.removeItem('currentUser');
+    this.loginService._currentUserSubject.next(null);
     this.afAuth.auth.signOut();
   }
 
