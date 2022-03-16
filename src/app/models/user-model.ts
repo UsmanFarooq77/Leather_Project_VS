@@ -5,10 +5,11 @@ export class user implements User {
     firstName: string;
     lastName: string;
     password: string;
-    username?: string;
+    photoURL: string;
+    displayName?: string;
     token?: string;
 
-    constructor(value : Object = {}){
-        Object.assign(this,value);
+    constructor(value: Object = {}) {
+        Object.assign(this, value);
     }
 }

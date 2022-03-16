@@ -5,3 +5,15 @@
   align-items: center;
   margin-bottom: 10px;
 }
+
+.recaptcha_section #recaptcha-container-login {
+  max-height: 315px !important;
+}
+
+.recaptcha_section iframe {
+  max-height: 222px !important;
+}
+
+.recaptcha_section iframe .fbc {
+  max-height: 220px !important;
+}

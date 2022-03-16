@@ -14,15 +14,13 @@ export class LoginService {
 
   public _openLoginModal = new BehaviorSubject(false);
   public _currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')))
-
   public currentUser: Observable<User>;
 
   appVerifier: any;
   confirmationResult: any;
   reCAPTCHAVerified: boolean;
   isSignedLoading: boolean;
-  // currentUser: string;
-  
+
   public user = new user();
 
   constructor(
@@ -31,7 +29,6 @@ export class LoginService {
     this.reCAPTCHAVerified = false;
     this.isSignedLoading = false;
     this.currentUser = this._currentUserSubject.asObservable();
-    // this.currentUser = '';
   }
 
   get windowRef() {
@@ -48,16 +45,22 @@ export class LoginService {
   signInWithEmailAndPassword(value) {
     this.isSignedLoading = true;
     this.afAuth.auth.signInWithEmailAndPassword(value.emailOrPhone, value.password).
-      then((res) => {
+      then((user) => {
         this.isSignedLoading = false;
+
+        this.user.id = user.uid;
+        this.user.password = value.password;
+        this.user.photoURL = user.photoURL;
+        this.user.displayName = user.displayName;
+
+        localStorage.setItem('currentUser', JSON.stringify(this.user));
+        this._currentUserSubject.next(this.user);
       },
         (error) => {
           this.isSignedLoading = false;
           alert(error.message);
         });
   }
-
-
 
   signInWithPhoneNumber(value) {
     if (value.emailOrPhone.includes("+")) {
@@ -83,16 +86,16 @@ export class LoginService {
             if (user.displayName == null) {
               user.updateProfile({
                 displayName: value.firstName + value.lastName,
-                photoURL: "https://www.w3schools.com/howto/img_forest.jpg"
+                photoURL: "https://www.pngitem.com/pimgs/m/20-203432_profile-icon-png-image-free-download-searchpng-ville.png"
               }).then((result) => {
                 this.isSignedLoading = false;
                 // this.currentUser = user.displayName;
 
                 this.user.id = user.uid;
-                this.user.firstName = value.firstName;
-                this.user.lastName = value.lastName;
                 this.user.password = value.password;
-                
+                this.user.photoURL = user.photoURL;
+                this.user.displayName = user.displayName;
+
                 localStorage.setItem('currentUser', JSON.stringify(this.user));
                 this._currentUserSubject.next(this.user);
               }, (error) => {
@@ -114,8 +117,6 @@ export class LoginService {
       alert(error.message)
     })
   }
-
-
 
   verifyOtpCode(verificationCode) {
     this.confirmationResult

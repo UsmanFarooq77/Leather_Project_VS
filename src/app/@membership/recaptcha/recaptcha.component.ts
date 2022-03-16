@@ -40,7 +40,7 @@ export class RecaptchaComponent implements OnInit {
       .then((recaptchaContainerId) => {
         this.isRecaptchaContainerId = true;
       })
-      .catch((error) => { return });
+      .catch((error) => { alert(error) });
 
     this.loginService.appVerifier = this.windowRef.recaptchaVerifier;
   }

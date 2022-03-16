@@ -13,6 +13,7 @@ export class AuthService {
 
   User$: Observable<firebase.User>
   reCAPTCHAVerified: boolean;
+  isreCAPTCHAShow: boolean;
 
   constructor(public afAuth: AngularFireAuth,
     private router: Router,

@@ -40,7 +40,7 @@
               <li class="nav-item">
                 <a class="nav-link" routerLink="/reviews" routerLinkActive="Active">Reviews</a>
               </li>
-              <li class="nav-item" *ngIf="!currentUserName">
+              <li class="nav-item" *ngIf="!currentUser">
                 <span *ngIf="loginService.isSignedLoading; else showLogin" class="nav-link">
                   <i class="fa fa-spinner fa-spin" style="font-size:20px"></i>
                 </span>
@@ -48,12 +48,15 @@
                   <a class="nav-link nav_login_link" (click)="login()">Login</a>
                 </ng-template>
               </li>
-              <li class="nav-item dropdown" *ngIf="currentUserName">
+              <li class="nav-item dropdown" *ngIf="currentUser">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">
-                  {{currentUserName}}
+                  {{currentUser.displayName}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">
+                    My Orders
+                  </a>
                   <a class="dropdown-item" (click)="logout()">
                     Logout
                   </a>

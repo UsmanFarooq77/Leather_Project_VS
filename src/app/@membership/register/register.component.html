@@ -50,12 +50,6 @@
       </mat-error>
     </mat-form-field>
 
-    <!-- <div>
-      <span><img *ngIf="!isRecaptchaContainerId" src="../../../assets/images/loading_dots.gif" width="15%"
-          style="min-width: 100px;"></span>
-    </div>
-    <div id="recaptcha-container"></div> -->
-
     <button class="signUp_button" type="submit" [disabled]="registerForm.invalid" mat-raised-button color="primary">Sign
       Up
       <i *ngIf="loginService.isSignedLoading" class="fa fa-spinner fa-spin" style="font-size:20px"></i>

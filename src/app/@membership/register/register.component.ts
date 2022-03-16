@@ -13,13 +13,11 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   // EMAIL_REGEXP = /^[^@]+@([^@\.]+\.)+[^@\.]+$/i;
   EMAILORPHONE_REGEXP = /^(?:\d{11}|\+[1-9]{1}[0-9]{3,14}|\w+@\w+\.\w{2,3})$/i;
-  isSignedIn: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
     public loginService: LoginService) {
-    this.isSignedIn = false;
   }
 
   ngOnInit() {

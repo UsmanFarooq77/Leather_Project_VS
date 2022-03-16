@@ -1,3 +1,7 @@
+.background_opacity {
+  opacity: 0.5;
+}
+
 .modal-header {
   display: block;
   text-align: center;
