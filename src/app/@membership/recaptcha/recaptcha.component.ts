@@ -39,6 +39,7 @@ export class RecaptchaComponent implements OnInit {
       .render()
       .then((recaptchaContainerId) => {
         this.isRecaptchaContainerId = true;
+        this.authService._isreCAPTCHAShowSubject.next(false);
       })
       .catch((error) => { alert(error) });
 

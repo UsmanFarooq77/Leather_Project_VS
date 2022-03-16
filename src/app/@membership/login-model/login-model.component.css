@@ -1,7 +1,16 @@
 .background_opacity {
   opacity: 0.5;
+  pointer-events: none;
 }
 
+.reCAPTCHALoader{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 12%;
+  transform: translate(-50px, -50px);
+  z-index: 9999;
+}
 .modal-header {
   display: block;
   text-align: center;
@@ -89,5 +98,15 @@
   }
   .modal {
     top: 90px;
+  }
+}
+@media (min-width:1025px) {
+  .reCAPTCHALoader{
+    position: fixed;
+    top: 45%;
+    left: 48%;
+    width: 12%;
+    transform: translate(-50px, -50px);
+    z-index: 9999;
   }
 }

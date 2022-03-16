@@ -6,6 +6,9 @@
   margin-bottom: 10px;
 }
 
+.mat-form-field {
+  margin-bottom: 13px;
+}
 .mat-raised-button {
   background-color: crimson;
   color: #ffffff;

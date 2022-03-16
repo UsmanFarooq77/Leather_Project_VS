@@ -7,13 +7,15 @@ import { LoginService } from '../login/login.service';
 import * as firebase from 'firebase';
 
 import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class AuthService {
 
   User$: Observable<firebase.User>
   reCAPTCHAVerified: boolean;
-  isreCAPTCHAShow: boolean;
+  public _isreCAPTCHAShowSubject = new BehaviorSubject(true);
+  public _isreCAPTCHAShow: Observable<boolean>;
 
   constructor(public afAuth: AngularFireAuth,
     private router: Router,
@@ -22,6 +24,7 @@ export class AuthService {
     this.User$ = this.afAuth.authState;
     console.log(this.afAuth.auth.currentUser)
     this.reCAPTCHAVerified = false;
+    this._isreCAPTCHAShow = this._isreCAPTCHAShowSubject.asObservable();
     // this.afAuth.authState.subscribe();
   }
 

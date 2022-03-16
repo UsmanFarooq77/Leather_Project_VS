@@ -23,6 +23,7 @@ export class LoginModelComponent implements OnInit {
   isGoogleLogin: boolean;
   isFacebookLogin: boolean;
   reCaptchaRenderId: number;
+  isreCAPTCHAShow: boolean;
 
   constructor(
     public router: Router,
@@ -34,11 +35,12 @@ export class LoginModelComponent implements OnInit {
     this.isGoogleLogin = false;
     this.isFacebookLogin = false;
     this.reCaptchaRenderId = 0;
+    this.isreCAPTCHAShow = true;
   }
 
   ngOnInit() {
 
-    // this.isreCAPTCHAShow = 
+    this.authService._isreCAPTCHAShow.subscribe((reCAPTCHA) => this.isreCAPTCHAShow = reCAPTCHA ); 
 
     console.log(localStorage.getItem('reCaptchaRenderId'))
 
@@ -76,6 +78,7 @@ export class LoginModelComponent implements OnInit {
 
     $('#loginModalCenter').on('hidden.bs.modal', () => {
       this.loginService.pushOpenLoginModal(false);
+      this.authService._isreCAPTCHAShowSubject.next(true);
     });
     
     if (!localStorage.getItem('reCaptchaRenderId')) {

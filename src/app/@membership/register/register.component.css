@@ -8,6 +8,10 @@
 .signUp_button {
   margin-bottom: 20px;
 }
+
+.mat-form-field {
+  margin-bottom: 13px;
+}
 .mat-raised-button {
   background-color: crimson;
   color: #ffffff;
