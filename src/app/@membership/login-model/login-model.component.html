@@ -1,8 +1,9 @@
-<img *ngIf="!isreCAPTCHAShow" class="reCAPTCHALoader" src="../../../assets/images/loading_dots.gif" width="10%"
-    style="min-width: 100px;">
-    <div class="modal fade" id="loginModalCenter" tabindex="-1" role="dialog" aria-labelledby="loginModelTitle"
+<img *ngIf="isreCAPTCHAShow" class="reCAPTCHALoader" src="../../../assets/images/loading_dots.gif" width="10%"
+  style="min-width: 100px;">
+
+<div class="modal fade" id="loginModalCenter" tabindex="-1" role="dialog" aria-labelledby="loginModelTitle"
   aria-hidden="true" [ngClass]="{'background_opacity': isreCAPTCHAShow}">
-  <div class="modal-dialog modal-dialog-centered"  role="document">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content" [ngClass]="{'background_opacity': isreCAPTCHAShow}">
       <div class="modal-header">
         <img class="sf_logo" src="../assets/images/SF-Leathers.png" width="47px" height="auto">

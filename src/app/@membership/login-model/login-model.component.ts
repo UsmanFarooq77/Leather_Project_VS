@@ -22,7 +22,6 @@ export class LoginModelComponent implements OnInit {
   admin: firebase.User;
   isGoogleLogin: boolean;
   isFacebookLogin: boolean;
-  reCaptchaRenderId: number;
   isreCAPTCHAShow: boolean;
 
   constructor(
@@ -34,15 +33,12 @@ export class LoginModelComponent implements OnInit {
     this.isLoginLoading = false;
     this.isGoogleLogin = false;
     this.isFacebookLogin = false;
-    this.reCaptchaRenderId = 0;
     this.isreCAPTCHAShow = true;
   }
 
   ngOnInit() {
 
-    this.authService._isreCAPTCHAShow.subscribe((reCAPTCHA) => this.isreCAPTCHAShow = reCAPTCHA ); 
-
-    console.log(localStorage.getItem('reCaptchaRenderId'))
+    this.authService._isreCAPTCHAShow.subscribe((reCAPTCHA) => this.isreCAPTCHAShow = reCAPTCHA);
 
     $(document).ready(function () {
       $('#loginModalCenter').modal('show');
@@ -79,14 +75,9 @@ export class LoginModelComponent implements OnInit {
     $('#loginModalCenter').on('hidden.bs.modal', () => {
       this.loginService.pushOpenLoginModal(false);
       this.authService._isreCAPTCHAShowSubject.next(true);
+      this.authService.reCAPTCHAVerified = false;
     });
-    
-    if (!localStorage.getItem('reCaptchaRenderId')) {
-      this.reCaptchaRenderId = 1;
-      localStorage.setItem('reCaptchaRenderId', this.reCaptchaRenderId.toString());
-      console.log(this.reCaptchaRenderId);
-      console.log(localStorage.getItem('reCaptchaRenderId'))
-    }
+
   }
 
   openLoginForm() {
@@ -122,7 +113,6 @@ export class LoginModelComponent implements OnInit {
     this.isGoogleLogin = false;
     this.isFacebookLogin = false;
     this.isAdmin = false;
-    localStorage.removeItem('reCaptchaRenderId');
     this.authService.logout();
   }
 }

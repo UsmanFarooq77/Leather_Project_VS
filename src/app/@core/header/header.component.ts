@@ -67,7 +67,7 @@ export class HeaderComponent implements OnInit {
     // console.log(localStorage.getItem())
     this.loginService.currentUser.subscribe((user) => {
       if (user)
-      this.currentUser = user;
+        this.currentUser = user;
       else {
         this.currentUser = null;
       }

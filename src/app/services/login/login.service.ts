@@ -18,7 +18,7 @@ export class LoginService {
 
   appVerifier: any;
   confirmationResult: any;
-  reCAPTCHAVerified: boolean;
+  // reCAPTCHAVerified: boolean;
   isSignedLoading: boolean;
 
   public user = new user();
@@ -26,7 +26,7 @@ export class LoginService {
   constructor(
     private afAuth: AngularFireAuth,
     private db: AngularFireDatabase) {
-    this.reCAPTCHAVerified = false;
+    // this.reCAPTCHAVerified = false;
     this.isSignedLoading = false;
     this.currentUser = this._currentUserSubject.asObservable();
   }
@@ -46,15 +46,7 @@ export class LoginService {
     this.isSignedLoading = true;
     this.afAuth.auth.signInWithEmailAndPassword(value.emailOrPhone, value.password).
       then((user) => {
-        this.isSignedLoading = false;
-
-        this.user.id = user.uid;
-        this.user.password = value.password;
-        this.user.photoURL = user.photoURL;
-        this.user.displayName = user.displayName;
-
-        localStorage.setItem('currentUser', JSON.stringify(this.user));
-        this._currentUserSubject.next(this.user);
+        this.saveUserToLocalStorage(value, user);
       },
         (error) => {
           this.isSignedLoading = false;
@@ -65,13 +57,19 @@ export class LoginService {
   signInWithPhoneNumber(value) {
     if (value.emailOrPhone.includes("+")) {
       this.doRegisterWithPhone(value, this.appVerifier)
-        .subscribe((result) => (this.confirmationResult = result));
+        .subscribe((result) => {
+          this.confirmationResult = result
+          console.log(result);
+        });
     } else {
       let countryCode = "+92";
       let extractPhoneNumber = value.emailOrPhone.substring(1);
       value.emailOrPhone = countryCode + extractPhoneNumber;
       this.doRegisterWithPhone(value, this.appVerifier)
-        .subscribe((result) => (this.confirmationResult = result),
+        .subscribe((result) => {
+          this.confirmationResult = result
+          console.log(result);
+        },
           (error) => alert(error.message));
     }
   }
@@ -83,25 +81,17 @@ export class LoginService {
       (result) => {
         if (result) {
           this.afAuth.auth.onAuthStateChanged((user) => {
-            if (user.displayName == null) {
-              user.updateProfile({
-                displayName: value.firstName + value.lastName,
-                photoURL: "https://www.pngitem.com/pimgs/m/20-203432_profile-icon-png-image-free-download-searchpng-ville.png"
-              }).then((result) => {
-                this.isSignedLoading = false;
-                // this.currentUser = user.displayName;
-
-                this.user.id = user.uid;
-                this.user.password = value.password;
-                this.user.photoURL = user.photoURL;
-                this.user.displayName = user.displayName;
-
-                localStorage.setItem('currentUser', JSON.stringify(this.user));
-                this._currentUserSubject.next(this.user);
-              }, (error) => {
-                alert(error.message);
-              });
-
+            if (user) {
+              if (user.displayName == null) {
+                user.updateProfile({
+                  displayName: value.firstName + value.lastName,
+                  photoURL: "https://www.pngitem.com/pimgs/m/20-203432_profile-icon-png-image-free-download-searchpng-ville.png"
+                }).then((result) => {
+                  this.saveUserToLocalStorage(value, user);
+                }, (error) => {
+                  alert(error.message);
+                });
+              }
             }
           });
         }
@@ -130,6 +120,18 @@ export class LoginService {
 
   private doRegisterWithPhone(value, appVerifier) {
     return from(this.afAuth.auth.signInWithPhoneNumber(value.emailOrPhone, appVerifier))
+  }
+
+  private saveUserToLocalStorage(value, user) {
+    this.isSignedLoading = false;
+
+    this.user.id = user.uid;
+    this.user.password = value.password;
+    this.user.photoURL = user.photoURL;
+    this.user.displayName = user.displayName;
+
+    localStorage.setItem('currentUser', JSON.stringify(this.user));
+    this._currentUserSubject.next(this.user);
   }
 
   addUser(user, uid) {

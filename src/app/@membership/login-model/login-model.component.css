@@ -3,7 +3,7 @@
   pointer-events: none;
 }
 
-.reCAPTCHALoader{
+.reCAPTCHALoader {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -100,8 +100,8 @@
     top: 90px;
   }
 }
-@media (min-width:1025px) {
-  .reCAPTCHALoader{
+@media (min-width: 1025px) {
+  .reCAPTCHALoader {
     position: fixed;
     top: 45%;
     left: 48%;

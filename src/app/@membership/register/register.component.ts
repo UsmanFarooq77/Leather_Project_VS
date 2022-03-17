@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
       firstName: ["usman", [Validators.required, Validators.minLength(3)]],
       lastName: ["ali", [Validators.required, Validators.minLength(3)]],
       emailOrPhone: [
-        "test@gmail.com",
+        "+923456572721",
         [Validators.required, Validators.pattern(this.EMAILORPHONE_REGEXP)],
       ],
       password: ["123456", Validators.required],
