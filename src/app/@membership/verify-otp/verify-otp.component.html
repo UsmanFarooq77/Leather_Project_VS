@@ -6,5 +6,7 @@
       OTP Code is <strong>required</strong>
     </mat-error>
   </mat-form-field>
-  <button type="button" [disabled]="!verificationCode" mat-raised-button (click)="verifyOtpCode()">Verify</button>
+  <button type="button" [disabled]="!verificationCode" mat-raised-button color="primary" (click)="verifyOtpCode()">Verify
+    <i *ngIf="loginService.isSignedLoading" class="fa fa-spinner fa-spin" style="font-size:20px"></i>
+  </button>
 </div>

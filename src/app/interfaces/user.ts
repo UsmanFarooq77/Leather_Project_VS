@@ -5,5 +5,6 @@ export interface User {
     password: string;
     photoURL: string;
     displayName?: string;
+    emailOrPhone: string;
     token?: string;
 }

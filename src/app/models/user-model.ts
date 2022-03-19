@@ -7,6 +7,7 @@ export class user implements User {
     password: string;
     photoURL: string;
     displayName?: string;
+    emailOrPhone: string;
     token?: string;
 
     constructor(value: Object = {}) {

@@ -22,6 +22,8 @@ export class LoginService {
   isSignedLoading: boolean;
 
   public user = new user();
+  registerFormValues: any;
+  userFiltered: any[];
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -29,6 +31,7 @@ export class LoginService {
     // this.reCAPTCHAVerified = false;
     this.isSignedLoading = false;
     this.currentUser = this._currentUserSubject.asObservable();
+    // this.isUserExist();
   }
 
   get windowRef() {
@@ -55,23 +58,23 @@ export class LoginService {
   }
 
   signInWithPhoneNumber(value) {
-    if (value.emailOrPhone.includes("+")) {
-      this.doRegisterWithPhone(value, this.appVerifier)
-        .subscribe((result) => {
-          this.confirmationResult = result
-          console.log(result);
-        });
-    } else {
+    this.isSignedLoading = true;
+    this.registerFormValues = value;
+    // if (value.emailOrPhone.includes("+")) {
+    //   this.userRegister(value)
+    // } else {
+    //   let countryCode = "+92";
+    //   let extractPhoneNumber = value.emailOrPhone.substring(1);
+    //   value.emailOrPhone = countryCode + extractPhoneNumber;
+    //   this.userRegister(value)
+    // }
+    if (!value.emailOrPhone.includes("+")) {
       let countryCode = "+92";
       let extractPhoneNumber = value.emailOrPhone.substring(1);
       value.emailOrPhone = countryCode + extractPhoneNumber;
-      this.doRegisterWithPhone(value, this.appVerifier)
-        .subscribe((result) => {
-          this.confirmationResult = result
-          console.log(result);
-        },
-          (error) => alert(error.message));
     }
+    this.userRegister(value);
+
   }
 
 
@@ -88,6 +91,7 @@ export class LoginService {
                   photoURL: "https://www.pngitem.com/pimgs/m/20-203432_profile-icon-png-image-free-download-searchpng-ville.png"
                 }).then((result) => {
                   this.saveUserToLocalStorage(value, user);
+                  this.addUserWithId(this.user, user.uid).then((res) => { return });
                 }, (error) => {
                   alert(error.message);
                 });
@@ -109,17 +113,86 @@ export class LoginService {
   }
 
   verifyOtpCode(verificationCode) {
+    this.isSignedLoading = true;
     this.confirmationResult
       .confirm(verificationCode)
       .then((result) => {
-        // this.user = result.user;
+        if (result) {
+          this.afAuth.auth.onAuthStateChanged((user) => {
+            if (user) {
+              if (user.displayName == null) {
+                user.updateProfile({
+                  displayName: this.registerFormValues.firstName + this.registerFormValues.lastName,
+                  photoURL: "https://www.pngitem.com/pimgs/m/20-203432_profile-icon-png-image-free-download-searchpng-ville.png"
+                }).then((result) => {
+                  this.saveUserToLocalStorage(this.registerFormValues, user);
+                  this.addUserWithPhoneNumber(this.user, this.user.emailOrPhone).then((res) => { return });
+                }, (error) => {
+                  alert(error.message);
+                });
+              }
+              else {
+                this.saveUserToLocalStorage(this.registerFormValues, user);
+              }
+
+            }
+          });
+        }
+
+        (error) => {
+          this.isSignedLoading = false;
+          alert(error.message)
+        }
         // if (this.user) alert('You have successfully created an account!');
       })
-      .catch((error) => alert('Please enter correct otp code or code has been expired!.'));
+      .catch((error) => {
+        this.isSignedLoading = false;
+        alert('Please enter correct otp code or code has been expired!.')
+      });
   }
 
   private doRegisterWithPhone(value, appVerifier) {
     return from(this.afAuth.auth.signInWithPhoneNumber(value.emailOrPhone, appVerifier))
+  }
+
+  private userRegister(value) {
+    this.isUserExist(value.emailOrPhone).then((exist) => {
+      if (!exist) {
+        if (this.registerFormValues.firstName) {
+          this.doRegisterWithPhone(value, this.appVerifier)
+            .subscribe((result) => {
+              this.confirmationResult = result
+              console.log(result);
+              this.isSignedLoading = false;
+            },
+              (error) => {
+                this.isSignedLoading = false;
+                alert(error.message)
+              });
+        }
+        else {
+          alert('Please create your an account!');
+          this.isSignedLoading = false;
+        }
+      }
+      else {
+        this.isSignedLoading = false;
+        if (this.registerFormValues.firstName)
+          alert("Already Registered");
+        else {
+          this.doRegisterWithPhone(value, this.appVerifier)
+            .subscribe((result) => {
+              this.confirmationResult = result
+              console.log(result);
+              this.isSignedLoading = false;
+            },
+              (error) => {
+                this.isSignedLoading = false;
+                alert(error.message)
+              });
+        }
+      }
+    });
   }
 
   private saveUserToLocalStorage(value, user) {
@@ -129,17 +202,34 @@ export class LoginService {
     this.user.password = value.password;
     this.user.photoURL = user.photoURL;
     this.user.displayName = user.displayName;
+    this.user.emailOrPhone = value.emailOrPhone;
 
     localStorage.setItem('currentUser', JSON.stringify(this.user));
     this._currentUserSubject.next(this.user);
   }
 
-  addUser(user, uid) {
+  addUserWithId(user, uid) {
     const toSend = this.db.object('/users/' + uid);
-    return toSend.set({ name: 'usman' });
+    return toSend.set(user);
   }
 
-  getUser(uid) {
-    return this.db.object('/users/' + uid)
+  addUserWithPhoneNumber(user, phoneNumber) {
+    const toSend = this.db.object('/usersWithPhoneNumber/' + phoneNumber);
+    return toSend.set(user);
+  }
+
+  getUserById(uid) {
+    return this.db.object('/users/' + uid);
+  }
+  getAllUsers() {
+    return this.db.list('/users/');
+  }
+
+  isUserExist(emailOrPhone) {
+    const dbRef = this.db.database.ref(`/usersWithPhoneNumber/${emailOrPhone}`)
+    return dbRef.once('value').
+      then((snapshot) => {
+        return snapshot.exists();
+      })
   }
 }

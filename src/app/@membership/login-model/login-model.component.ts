@@ -52,6 +52,7 @@ export class LoginModelComponent implements OnInit {
     }
 
     this.authService.User$.subscribe(admin => {
+      console.log(admin)
       if (admin) {
         this.admin = admin;
         this.isAdmin = true;
@@ -76,16 +77,19 @@ export class LoginModelComponent implements OnInit {
       this.loginService.pushOpenLoginModal(false);
       this.authService._isreCAPTCHAShowSubject.next(true);
       this.authService.reCAPTCHAVerified = false;
+      this.loginService.confirmationResult = null;
     });
 
   }
 
   openLoginForm() {
     this.isLoginFormOpen = true;
+    this.loginService.confirmationResult = null;
   }
 
   openRegisterForm() {
     this.isLoginFormOpen = false;
+    this.loginService.confirmationResult = null;
   }
 
   socialLogin(value: string) {
