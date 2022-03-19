@@ -8,6 +8,7 @@ import { from } from 'rxjs/observable/from';
 import * as firebase from 'firebase'
 import { user } from '../../models/user-model';
 import { User } from '../../interfaces/user';
+import { UserService } from '../user.service';
 
 @Injectable()
 export class LoginService {
@@ -27,11 +28,9 @@ export class LoginService {
 
   constructor(
     private afAuth: AngularFireAuth,
-    private db: AngularFireDatabase) {
-    // this.reCAPTCHAVerified = false;
+    private userService: UserService) {
     this.isSignedLoading = false;
     this.currentUser = this._currentUserSubject.asObservable();
-    // this.isUserExist();
   }
 
   get windowRef() {
@@ -46,40 +45,30 @@ export class LoginService {
   }
 
   signInWithEmailAndPassword(value) {
-    this.isSignedLoading = true;
+    this.isLoading(true);
     this.afAuth.auth.signInWithEmailAndPassword(value.emailOrPhone, value.password).
       then((user) => {
         this.saveUserToLocalStorage(value, user);
       },
         (error) => {
-          this.isSignedLoading = false;
+          this.isLoading(false);
           alert(error.message);
         });
   }
 
   signInWithPhoneNumber(value) {
-    this.isSignedLoading = true;
+    this.isLoading(true);
     this.registerFormValues = value;
-    // if (value.emailOrPhone.includes("+")) {
-    //   this.userRegister(value)
-    // } else {
-    //   let countryCode = "+92";
-    //   let extractPhoneNumber = value.emailOrPhone.substring(1);
-    //   value.emailOrPhone = countryCode + extractPhoneNumber;
-    //   this.userRegister(value)
-    // }
     if (!value.emailOrPhone.includes("+")) {
       let countryCode = "+92";
       let extractPhoneNumber = value.emailOrPhone.substring(1);
       value.emailOrPhone = countryCode + extractPhoneNumber;
     }
     this.userRegister(value);
-
   }
 
-
   doRegisterWithEmail(value) {
-    this.isSignedLoading = true;
+    this.isLoading(true);
     this.afAuth.auth.createUserWithEmailAndPassword(value.emailOrPhone, value.password).then(
       (result) => {
         if (result) {
@@ -91,7 +80,7 @@ export class LoginService {
                   photoURL: "https://www.pngitem.com/pimgs/m/20-203432_profile-icon-png-image-free-download-searchpng-ville.png"
                 }).then((result) => {
                   this.saveUserToLocalStorage(value, user);
-                  this.addUserWithId(this.user, user.uid).then((res) => { return });
+                  this.userService.addUserWithId(this.user, user.uid).then((res) => { return });
                 }, (error) => {
                   alert(error.message);
                 });
@@ -99,15 +88,13 @@ export class LoginService {
             }
           });
         }
-        // this.addUser(res, res.uid).then((res) => alert(res)),
         (error) => {
-          this.isSignedLoading = false;
+          this.isLoading(false);
           alert(error.message)
         }
-
       }
     ).catch((error) => {
-      this.isSignedLoading = false;
+      this.isLoading(false);
       alert(error.message)
     })
   }
@@ -126,7 +113,7 @@ export class LoginService {
                   photoURL: "https://www.pngitem.com/pimgs/m/20-203432_profile-icon-png-image-free-download-searchpng-ville.png"
                 }).then((result) => {
                   this.saveUserToLocalStorage(this.registerFormValues, user);
-                  this.addUserWithPhoneNumber(this.user, this.user.emailOrPhone).then((res) => { return });
+                  this.userService.addUserWithPhoneNumber(this.user, this.user.emailOrPhone).then((res) => { return });
                 }, (error) => {
                   alert(error.message);
                 });
@@ -134,19 +121,16 @@ export class LoginService {
               else {
                 this.saveUserToLocalStorage(this.registerFormValues, user);
               }
-
             }
           });
         }
-
         (error) => {
-          this.isSignedLoading = false;
+          this.isLoading(false);
           alert(error.message)
         }
-        // if (this.user) alert('You have successfully created an account!');
       })
       .catch((error) => {
-        this.isSignedLoading = false;
+        this.isLoading(false);
         alert('Please enter correct otp code or code has been expired!.')
       });
   }
@@ -156,27 +140,27 @@ export class LoginService {
   }
 
   private userRegister(value) {
-    this.isUserExist(value.emailOrPhone).then((exist) => {
+    this.userService.isUserExist(value.emailOrPhone).then((exist) => {
       if (!exist) {
         if (this.registerFormValues.firstName) {
           this.doRegisterWithPhone(value, this.appVerifier)
             .subscribe((result) => {
               this.confirmationResult = result
               console.log(result);
-              this.isSignedLoading = false;
+              this.isLoading(false);
             },
               (error) => {
-                this.isSignedLoading = false;
+                this.isLoading(false);
                 alert(error.message)
               });
         }
         else {
           alert('Please create your an account!');
-          this.isSignedLoading = false;
+          this.isLoading(false);
         }
       }
       else {
-        this.isSignedLoading = false;
+        this.isLoading(false);
         if (this.registerFormValues.firstName)
           alert("Already Registered");
         else {
@@ -184,10 +168,10 @@ export class LoginService {
             .subscribe((result) => {
               this.confirmationResult = result
               console.log(result);
-              this.isSignedLoading = false;
+              this.isLoading(false);
             },
               (error) => {
-                this.isSignedLoading = false;
+                this.isLoading(false);
                 alert(error.message)
               });
         }
@@ -196,7 +180,7 @@ export class LoginService {
   }
 
   private saveUserToLocalStorage(value, user) {
-    this.isSignedLoading = false;
+    this.isLoading(false);
 
     this.user.id = user.uid;
     this.user.password = value.password;
@@ -208,28 +192,7 @@ export class LoginService {
     this._currentUserSubject.next(this.user);
   }
 
-  addUserWithId(user, uid) {
-    const toSend = this.db.object('/users/' + uid);
-    return toSend.set(user);
-  }
-
-  addUserWithPhoneNumber(user, phoneNumber) {
-    const toSend = this.db.object('/usersWithPhoneNumber/' + phoneNumber);
-    return toSend.set(user);
-  }
-
-  getUserById(uid) {
-    return this.db.object('/users/' + uid);
-  }
-  getAllUsers() {
-    return this.db.list('/users/');
-  }
-
-  isUserExist(emailOrPhone) {
-    const dbRef = this.db.database.ref(`/usersWithPhoneNumber/${emailOrPhone}`)
-    return dbRef.once('value').
-      then((snapshot) => {
-        return snapshot.exists();
-      })
+  private isLoading(value: boolean){
+    this.isSignedLoading = value;
   }
 }
