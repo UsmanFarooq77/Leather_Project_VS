@@ -5,6 +5,7 @@ import { AuthService } from '../../services/auth/auth.service';
 import { LoginService } from '../../services/login/login.service';
 
 import * as firebase from 'firebase';
+import { RecaptchaService } from '../../services/reCAPTCHA/recaptcha.service';
 
 declare var $: any;
 
@@ -27,7 +28,8 @@ export class LoginModelComponent implements OnInit {
   constructor(
     public router: Router,
     public authService: AuthService,
-    public loginService: LoginService) {
+    public loginService: LoginService,
+    private recaptchaService: RecaptchaService) {
 
     this.isLoginFormOpen = true;
     this.isLoginLoading = false;
@@ -38,7 +40,7 @@ export class LoginModelComponent implements OnInit {
 
   ngOnInit() {
 
-    this.authService._isreCAPTCHAShow.subscribe((reCAPTCHA) => this.isreCAPTCHAShow = reCAPTCHA);
+    this.recaptchaService._isreCAPTCHAShow.subscribe((reCAPTCHA) => this.isreCAPTCHAShow = reCAPTCHA);
 
     $(document).ready(function () {
       $('#loginModalCenter').modal('show');
@@ -74,8 +76,8 @@ export class LoginModelComponent implements OnInit {
 
     $('#loginModalCenter').on('hidden.bs.modal', () => {
       this.loginService.pushOpenLoginModal(false);
-      this.authService._isreCAPTCHAShowSubject.next(true);
-      this.authService.reCAPTCHAVerified = false;
+      this.recaptchaService._isreCAPTCHAShowSubject.next(true);
+      this.recaptchaService.reCAPTCHAVerified = false;
       this.loginService.confirmationResult = null;
     });
 

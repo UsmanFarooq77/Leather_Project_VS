@@ -9,6 +9,7 @@ import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SliderComponent } from './slider/slider.component';
 import { LoginService } from '../services/login/login.service';
 import { UserService } from '../services/user/user.service';
+import { RecaptchaService } from '../services/reCAPTCHA/recaptcha.service';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { UserService } from '../services/user/user.service';
   providers: [
     ReversePipe,
     LoginService,
-    UserService
+    UserService,
+    RecaptchaService
   ]
 })
 export class SharedModule { }

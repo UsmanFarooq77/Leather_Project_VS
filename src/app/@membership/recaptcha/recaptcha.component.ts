@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth/auth.service';
 import { LoginService } from '../../services/login/login.service';
 
 import * as firebase from 'firebase';
+import { RecaptchaService } from '../../services/reCAPTCHA/recaptcha.service';
 
 @Component({
   selector: 'app-recaptcha',
@@ -16,7 +17,7 @@ export class RecaptchaComponent implements OnInit {
   isRecaptchaContainerId: boolean;
 
   constructor(
-    public authService: AuthService,
+    public recaptchaService: RecaptchaService,
     private loginService: LoginService) { }
 
   ngOnInit() {
@@ -27,10 +28,11 @@ export class RecaptchaComponent implements OnInit {
         size: "normal",
         'callback': (response) => {
           // reCAPTCHA solved, allow signInWithPhoneNumber.
-          this.authService.reCAPTCHAVerified = true;
+          this.recaptchaService.reCAPTCHAVerified = true;
         },
         'expired-callback': (response) => {
           // Response expired. Ask user to solve reCAPTCHA again.
+          this.recaptchaService.reCAPTCHAVerified = false;
         }
       }
     );
@@ -39,9 +41,13 @@ export class RecaptchaComponent implements OnInit {
       .render()
       .then((recaptchaContainerId) => {
         this.isRecaptchaContainerId = true;
-        this.authService._isreCAPTCHAShowSubject.next(false);
+        this.recaptchaService._isreCAPTCHAShowSubject.next(false);
       })
-      .catch((error) => { alert(error) });
+      .catch((error) => {
+        setInterval(() => {
+          alert(error.message + ' Please reload your application.');
+        }, 10000);
+      });
 
     this.loginService.appVerifier = this.windowRef.recaptchaVerifier;
   }

@@ -6,6 +6,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { user } from '../../models/user-model';
 import { User } from '../../interfaces/user';
 import { UserService } from '../user/user.service';
+import { AuthService } from '../auth/auth.service';
+import { RecaptchaService } from '../reCAPTCHA/recaptcha.service';
 
 @Injectable()
 export class LoginService {
@@ -24,7 +26,8 @@ export class LoginService {
 
   constructor(
     private afAuth: AngularFireAuth,
-    private userService: UserService) {
+    private userService: UserService,
+    private recaptchaService: RecaptchaService) {
     this.isSignedLoading = false;
     this.currentUser = this._currentUserSubject.asObservable();
   }
@@ -85,6 +88,7 @@ export class LoginService {
   }
 
   verifyOtpCode(verificationCode) {
+    if(!this.recaptchaService.reCAPTCHAVerified) return this.recaptchaService.reCAPTCHAVerifiedMessage(); 
     this.isSignedLoading = true;
     this.confirmationResult
       .confirm(verificationCode)

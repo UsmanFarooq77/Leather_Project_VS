@@ -8,22 +8,20 @@ import * as firebase from 'firebase';
 
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs';
+import { RecaptchaService } from '../reCAPTCHA/recaptcha.service';
 
 @Injectable()
 export class AuthService {
 
   User$: Observable<firebase.User>
-  reCAPTCHAVerified: boolean;
-  public _isreCAPTCHAShowSubject = new BehaviorSubject(true);
-  public _isreCAPTCHAShow: Observable<boolean>;
+
 
   constructor(public afAuth: AngularFireAuth,
     private router: Router,
     private route: ActivatedRoute,
-    private loginService: LoginService) {
+    private loginService: LoginService,
+    private recaptchaService: RecaptchaService) {
     this.User$ = this.afAuth.authState;
-    this.reCAPTCHAVerified = false;
-    this._isreCAPTCHAShow = this._isreCAPTCHAShowSubject.asObservable();
     // this.afAuth.authState.subscribe();
   }
 
@@ -39,7 +37,7 @@ export class AuthService {
   }
 
   signUp(value) {
-    if (this.reCAPTCHAVerified) {
+    if (this.recaptchaService.reCAPTCHAVerified) {
       if (value.emailOrPhone.includes("@")) {
         this.loginService.doRegisterWithEmail(value);
       } else {
@@ -47,12 +45,12 @@ export class AuthService {
       }
     }
     else {
-      this.reCAPTCHAVerifiedMessage();
+      this.recaptchaService.reCAPTCHAVerifiedMessage();
     }
   }
 
   signIn(value) {
-    if (this.reCAPTCHAVerified) {
+    if (this.recaptchaService.reCAPTCHAVerified) {
       if (value.emailOrPhone.includes("@")) {
         this.loginService.signInWithEmailAndPassword(value);
       } else {
@@ -60,7 +58,7 @@ export class AuthService {
       }
     }
     else {
-      this.reCAPTCHAVerifiedMessage();
+      this.recaptchaService.reCAPTCHAVerifiedMessage();
     }
   }
 
@@ -68,9 +66,5 @@ export class AuthService {
     localStorage.removeItem('currentUser');
     this.loginService._currentUserSubject.next(null);
     this.afAuth.auth.signOut();
-  }
-
-  private reCAPTCHAVerifiedMessage() {
-    alert("Are you a human being? Please check the box I'm not a robot.");
   }
 }
