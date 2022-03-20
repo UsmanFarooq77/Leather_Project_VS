@@ -88,22 +88,22 @@ export class LoginService {
   }
 
   verifyOtpCode(verificationCode) {
-    if(!this.recaptchaService.reCAPTCHAVerified) return this.recaptchaService.reCAPTCHAVerifiedMessage(); 
+    if (!this.recaptchaService.reCAPTCHAVerified) return this.recaptchaService.reCAPTCHAVerifiedMessage();
     this.isSignedLoading = true;
     this.confirmationResult
       .confirm(verificationCode)
       .then((result) => {
         if (result) {
-          if(this.registerFormValues.firstName){
-          this.authStateChanged(this.registerFormValues, result.user);
+          if (this.registerFormValues.firstName) {
+            this.authStateChanged(this.registerFormValues, result.user);
           }
           else {
             this.userService.getUserWithPhoneNumber(result.user.phoneNumber).subscribe((user) => {
-              this.saveUserToLocalStorage(result.user.phoneNumber , user)
+              this.saveUserToLocalStorage(result.user.phoneNumber, user)
             },
-            (error) => {
-              alert(error.message);
-            });
+              (error) => {
+                alert(error.message);
+              });
           }
         }
         (error) => {
@@ -113,7 +113,7 @@ export class LoginService {
       })
       .catch((error) => {
         this.isLoading(false);
-        alert(error.message+'Please enter correct otp code or code has been expired.')
+        alert(error.message + 'Please enter correct otp code or code has been expired.')
       });
   }
 
@@ -146,21 +146,21 @@ export class LoginService {
           alert("The phone number is already in use by another account.");
         else {
           this.passwordVerify(value).
-          then((verification) => {
-            if(verification){
-              this.doRegisterWithPhone(value, this.appVerifier);
-            }
-            else {
-              alert('Please enter correct password.');
-              return;
-            }
-          });
+            then((verification) => {
+              if (verification) {
+                this.doRegisterWithPhone(value, this.appVerifier);
+              }
+              else {
+                alert('Please enter correct password.');
+                return;
+              }
+            });
         }
       }
     });
   }
 
-  private passwordVerify(value){
+  private passwordVerify(value) {
     return this.userService.userPasswordVerify(value.emailOrPhone, value.password)
   }
 
@@ -191,7 +191,7 @@ export class LoginService {
 
     this.user.id = user.uid ? user.uid : user.id;
     this.user.firstName = value.firstName ? value.firstName : user.firstName;
-    this.user.lastName = value.lastName? value.lastName : user.lastName;
+    this.user.lastName = value.lastName ? value.lastName : user.lastName;
     this.user.emailOrPhone = value.emailOrPhone ? value.emailOrPhone : value;
 
     localStorage.setItem('currentUser', JSON.stringify(this.user));

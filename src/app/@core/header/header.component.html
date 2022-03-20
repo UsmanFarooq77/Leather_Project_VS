@@ -54,7 +54,7 @@
                   {{currentUser.firstName ? currentUser.firstName : 'Hi, User'}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">
+                  <a class="dropdown-item" routerLink="/my-orders" routerLinkActive="Active">
                     My Orders
                   </a>
                   <a class="dropdown-item" (click)="logout()">

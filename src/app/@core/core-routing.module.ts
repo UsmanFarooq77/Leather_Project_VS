@@ -1,3 +1,4 @@
+import { GuardsGuard } from './../guards/guards.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -11,6 +12,7 @@ import { GalleryComponent } from '../@components/gallery/gallery.component';
 import { ReviewsComponent } from '../@components/reviews/reviews.component';
 import { ProductDetailsComponent } from '../@product/products/product-details/product-details.component';
 import { ProductComponent } from '../@product/products/product/product.component';
+import { MyOrdersComponent } from '../@orders/my-orders/my-orders.component';
 
 const routes: Routes = [
   {
@@ -24,6 +26,10 @@ const routes: Routes = [
       { path: 'contact', component: ContactComponent },
       { path: 'about', component: AboutComponent },
       { path: 'reviews', component: ReviewsComponent },
+      {
+        path: 'my-orders',
+        loadChildren: 'app/@orders/orders.module#OrdersModule', canActivate: [GuardsGuard]
+      },
       { path: 'booking/:id', component: BookingFormComponent },
     ]
   }

@@ -11,9 +11,9 @@ export class RecaptchaService {
   constructor() {
     this.reCAPTCHAVerified = false;
     this._isreCAPTCHAShow = this._isreCAPTCHAShowSubject.asObservable();
-   }
+  }
 
-   reCAPTCHAVerifiedMessage() {
+  reCAPTCHAVerifiedMessage() {
     alert("Are you a human being? Please check the box I'm not a robot.");
   }
 

@@ -64,7 +64,9 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('returnUrl');
     this.loginService._currentUserSubject.next(null);
     this.afAuth.auth.signOut();
+    this.router.navigate(['/']);
   }
 }

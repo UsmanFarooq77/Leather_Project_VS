@@ -1,5 +1,7 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login/login.service';
+import { AuthService } from '../../services/auth/auth.service';
 declare var $: any;
 
 @Component({
@@ -11,7 +13,9 @@ export class CoreComponent implements OnInit {
 
   isOpenLoginModal: boolean;
 
-  constructor(private loginService: LoginService) {
+  constructor(private loginService: LoginService,
+    private router: Router,
+    private authService: AuthService) {
     this.isOpenLoginModal = false;
   }
 

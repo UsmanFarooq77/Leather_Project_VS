@@ -20,7 +20,7 @@ export class UserService {
     return this.db.object('/users/' + uid);
   }
 
-  getUserWithPhoneNumber(phoneNumber){
+  getUserWithPhoneNumber(phoneNumber) {
     return this.db.object('/usersWithPhoneNumber/' + phoneNumber);
   }
   getAllUsers() {
@@ -35,13 +35,13 @@ export class UserService {
       });
   }
 
-  userPasswordVerify(emailOrPhone,password){
+  userPasswordVerify(emailOrPhone, password) {
     const dbRef = this.db.database.ref(`/usersWithPhoneNumber/${emailOrPhone}`)
     return dbRef.once('value').
       then((snapshot) => {
-        if(snapshot.exists()){
+        if (snapshot.exists()) {
           const currentUser = snapshot.val();
-          if(currentUser.password === password){
+          if (currentUser.password === password) {
             return true;
           }
           else {

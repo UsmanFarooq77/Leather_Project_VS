@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { AuthService } from '../../services/auth/auth.service';
 import { LoginService } from '../../services/login/login.service';
@@ -27,6 +27,7 @@ export class LoginModelComponent implements OnInit {
 
   constructor(
     public router: Router,
+    private route: ActivatedRoute,
     public authService: AuthService,
     public loginService: LoginService,
     private recaptchaService: RecaptchaService) {
@@ -39,6 +40,9 @@ export class LoginModelComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || this.router.url;
+    localStorage.setItem('returnUrl',returnUrl);
 
     this.recaptchaService._isreCAPTCHAShow.subscribe((reCAPTCHA) => this.isreCAPTCHAShow = reCAPTCHA);
 
@@ -57,8 +61,8 @@ export class LoginModelComponent implements OnInit {
       if (admin) {
         this.admin = admin;
         this.isAdmin = true;
-        // let returnUrl = localStorage.getItem('returnUrl');
-        // this.router.navigateByUrl(returnUrl);
+        let returnUrl = localStorage.getItem('returnUrl');
+        this.router.navigateByUrl(returnUrl);
         this.hideModel();
         // this.router.navigate(['/']);
       }
