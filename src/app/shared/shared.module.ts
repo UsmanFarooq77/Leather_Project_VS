@@ -8,6 +8,7 @@ import { NgPipesModule, ReversePipe } from 'ngx-pipes';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SliderComponent } from './slider/slider.component';
 import { LoginService } from '../services/login/login.service';
+import { UserService } from '../services/user/user.service';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { LoginService } from '../services/login/login.service';
   ],
   providers: [
     ReversePipe,
-    LoginService
+    LoginService,
+    UserService
   ]
 })
 export class SharedModule { }

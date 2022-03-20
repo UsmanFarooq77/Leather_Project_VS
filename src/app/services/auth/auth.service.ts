@@ -22,7 +22,6 @@ export class AuthService {
     private route: ActivatedRoute,
     private loginService: LoginService) {
     this.User$ = this.afAuth.authState;
-    console.log(this.afAuth.auth.currentUser)
     this.reCAPTCHAVerified = false;
     this._isreCAPTCHAShow = this._isreCAPTCHAShowSubject.asObservable();
     // this.afAuth.authState.subscribe();

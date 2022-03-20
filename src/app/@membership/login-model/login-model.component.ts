@@ -52,7 +52,6 @@ export class LoginModelComponent implements OnInit {
     }
 
     this.authService.User$.subscribe(admin => {
-      console.log(admin)
       if (admin) {
         this.admin = admin;
         this.isAdmin = true;

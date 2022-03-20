@@ -51,7 +51,7 @@
               <li class="nav-item dropdown" *ngIf="currentUser">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">
-                  {{currentUser.displayName}}
+                  {{currentUser.firstName ? currentUser.firstName : 'Hi, User'}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="#">
