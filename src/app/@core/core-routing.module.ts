@@ -18,9 +18,13 @@ const routes: Routes = [
   {
     path: '', component: CoreComponent,
     children: [
-      { path: '', component: HomeComponent },
-      { path: 'products/:pageNumber', component: ProductComponent },
-      { path: 'products', component: ProductComponent },
+      {
+        path: '', component: HomeComponent,
+        children: [
+          { path: '', component: ProductComponent },
+          { path: 'products/:pageNumber', component: ProductComponent },
+          { path: 'products', component: ProductComponent }]
+      },
       { path: 'product-detail/:category/:id', component: ProductDetailsComponent },
       { path: 'gallery/:pageNumber', component: GalleryComponent },
       { path: 'contact', component: ContactComponent },
