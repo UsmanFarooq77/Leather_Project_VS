@@ -19,6 +19,10 @@ export class UserService {
   getUserById(uid) {
     return this.db.object('/users/' + uid);
   }
+
+  getUserWithPhoneNumber(phoneNumber){
+    return this.db.object('/usersWithPhoneNumber/' + phoneNumber);
+  }
   getAllUsers() {
     return this.db.list('/users/');
   }

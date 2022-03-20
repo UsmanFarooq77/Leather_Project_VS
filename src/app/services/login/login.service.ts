@@ -90,7 +90,17 @@ export class LoginService {
       .confirm(verificationCode)
       .then((result) => {
         if (result) {
+          if(this.registerFormValues.firstName){
           this.authStateChanged(this.registerFormValues, result.user);
+          }
+          else {
+            this.userService.getUserWithPhoneNumber(result.user.phoneNumber).subscribe((user) => {
+              this.saveUserToLocalStorage(result.user.phoneNumber , user)
+            },
+            (error) => {
+              alert(error.message);
+            });
+          }
         }
         (error) => {
           this.isLoading(false);
@@ -163,7 +173,7 @@ export class LoginService {
     this.user.id = user.uid ? user.uid : user.id;
     this.user.firstName = value.firstName ? value.firstName : user.firstName;
     this.user.lastName = value.lastName? value.lastName : user.lastName;
-    this.user.emailOrPhone = value.emailOrPhone;
+    this.user.emailOrPhone = value.emailOrPhone ? value.emailOrPhone : value;
 
     localStorage.setItem('currentUser', JSON.stringify(this.user));
     this._currentUserSubject.next(this.user);

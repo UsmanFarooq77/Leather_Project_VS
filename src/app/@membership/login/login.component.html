@@ -21,8 +21,8 @@
         Password is <strong>required</strong>
       </mat-error>
     </mat-form-field>
-    <button [disabled]="registerForm.invalid" mat-raised-button color="primary">Log In
-      <i *ngIf="loginService.isSignedLoading" class="fa fa-spinner fa-spin" style="font-size:20px"></i>
+    <button [disabled]="registerForm.invalid || !!loginService.confirmationResult" mat-raised-button color="primary">Log In
+      <i *ngIf="loginService.isSignedLoading && !loginService.confirmationResult" class="fa fa-spinner fa-spin" style="font-size:20px"></i>
     </button>
   </form>
 </div>
