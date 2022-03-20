@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       'emailOrPhone': ['usman1@gmail.com', [Validators.required, Validators.pattern(this.EMAILORPHONE_REGEXP)]],
-      'password': ['123456', Validators.required]
+      'password': ['123456', [Validators.required, Validators.minLength(6)]]
     });
   }
 

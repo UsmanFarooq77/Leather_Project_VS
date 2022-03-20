@@ -141,14 +141,28 @@ export class LoginService {
         if (this.registerFormValues.firstName)
           alert("The phone number is already in use by another account.");
         else {
-          this.doRegisterWithPhone(value, this.appVerifier);
+          this.passwordVerify(value).
+          then((verification) => {
+            if(verification){
+              this.doRegisterWithPhone(value, this.appVerifier);
+            }
+            else {
+              alert('Please enter correct password.');
+              return;
+            }
+          });
         }
       }
     });
   }
 
+  private passwordVerify(value){
+    return this.userService.userPasswordVerify(value.emailOrPhone, value.password)
+  }
+
   private authStateChanged(value, user) {
     this.saveUserToLocalStorage(value, user);
+    this.user.password = value.password;
     if (value.emailOrPhone.includes('@')) {
       this.userService.addUserWithId(this.user, user.uid).then((res) => {
         alert('Congratulation! ' + value.firstName + ' You has been successfully registered.');
@@ -158,6 +172,7 @@ export class LoginService {
         });
     }
     else {
+      this.user.password = value.password;
       this.userService.addUserWithPhoneNumber(this.user, this.user.emailOrPhone).then((res) => {
         alert('Congratulation! ' + value.firstName + ' You has been successfully registered.');
       },

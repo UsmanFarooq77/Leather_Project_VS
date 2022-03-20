@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
         "+923456572721",
         [Validators.required, Validators.pattern(this.EMAILORPHONE_REGEXP)],
       ],
-      password: ["123456", Validators.required],
+      password: ["123456", [Validators.required, Validators.minLength(6)]],
     });
   }
 

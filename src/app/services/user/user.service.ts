@@ -32,6 +32,25 @@ export class UserService {
     return dbRef.once('value').
       then((snapshot) => {
         return snapshot.exists();
-      })
+      });
+  }
+
+  userPasswordVerify(emailOrPhone,password){
+    const dbRef = this.db.database.ref(`/usersWithPhoneNumber/${emailOrPhone}`)
+    return dbRef.once('value').
+      then((snapshot) => {
+        if(snapshot.exists()){
+          const currentUser = snapshot.val();
+          if(currentUser.password === password){
+            return true;
+          }
+          else {
+            return false;
+          }
+        }
+        else {
+          return false;
+        }
+      });
   }
 }
