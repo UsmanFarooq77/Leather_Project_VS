@@ -1,17 +1,17 @@
-.myOrderSection{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+.myOrderSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
-.myOrderSection .heading{
-    text-align: center;
-    color: crimson;
-    width: 70%;
+.myOrderSection .heading {
+  text-align: center;
+  color: crimson;
+  width: 70%;
 }
 
-@media (max-width:425px) {
-    .myOrderSection .heading {
-        width: 100%;
-    }
+@media (max-width: 425px) {
+  .myOrderSection .heading {
+    width: 100%;
+  }
 }

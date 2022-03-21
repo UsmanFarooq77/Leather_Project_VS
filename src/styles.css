@@ -4,7 +4,7 @@
 @import "https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.0/css/swiper.min.css";
 
 body {
-  font-family: 'Playfair Display', Times, serif;
+  font-family: "Playfair Display", Times, serif;
   color: black !important;
   padding-right: 0px !important;
 }
@@ -17,4 +17,27 @@ body {
   margin-top: 38px;
 }
 
+* {
+  scrollbar-width: thin; /* "auto" or "thin" */
+  scrollbar-color: crimson #f1f1f1; /* scroll thumb and track */
+}
 
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+/* ::-webkit-scrollbar:hover {
+    width: 7px;
+  } */
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: crimson;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(240, 53, 90);
+}
