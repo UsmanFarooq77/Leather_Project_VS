@@ -10,7 +10,6 @@ import { LoginService } from '../../services/login/login.service';
 export class VerifyOtpComponent implements OnInit {
 
   verificationCode: string;
-  user: any;
 
   constructor(public loginService: LoginService) { }
 

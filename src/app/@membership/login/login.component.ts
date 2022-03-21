@@ -14,8 +14,6 @@ declare var $: any;
 export class LoginComponent implements OnInit {
 
   registerForm: FormGroup;
-  errorMessage: string;
-  successMessage: string;
   // EMAIL_REGEXP = /^[^@]+@([^@\.]+\.)+[^@\.]+$/i;
   // EMAILORPHONE_REGEXP = /^(?:\d{11}|\w+@\w+\.\w{2,3})$/i;
   EMAILORPHONE_REGEXP = /^(?:\d{11}|\+[1-9]{1}[0-9]{3,14}|\w+@\w+\.\w{2,3})$/i;
@@ -34,7 +32,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  signIn(value) {
+  signIn(value: FormGroup): void {
     this.authService.signIn(value)
   }
 }
