@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '../../interfaces/user';
-import { user } from '../../models/user-model';
+
 import { AdminserviceService } from '../../services/admin/adminservice.service';
 import { AuthService } from '../../services/auth/auth.service';
 import { LoginService } from '../../services/login/login.service';
@@ -56,15 +56,6 @@ export class HeaderComponent implements OnInit {
       //   $dropdown.off("mouseenter mouseleave");
       // }
     });
-    // this.authService.User$.subscribe((user) => {
-    //   if (user) {
-    //     this.user = user.uid;
-    //   }
-    //   else {
-    //     this.user = '';
-    //   }
-    // });
-    // console.log(localStorage.getItem())
     this.loginService.currentUser.subscribe((user) => {
       if (user)
         this.currentUser = user;

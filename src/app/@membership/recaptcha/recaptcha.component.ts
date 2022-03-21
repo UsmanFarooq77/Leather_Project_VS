@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AuthService } from '../../services/auth/auth.service';
+import * as firebase from 'firebase';
+
+import { RecaptchaService } from '../../services/reCAPTCHA/recaptcha.service';
 import { LoginService } from '../../services/login/login.service';
 
-import * as firebase from 'firebase';
-import { RecaptchaService } from '../../services/reCAPTCHA/recaptcha.service';
 
 @Component({
   selector: 'app-recaptcha',
@@ -48,8 +48,6 @@ export class RecaptchaComponent implements OnInit {
           alert(error.message + ' Please reload your application.');
         }, 10000);
       });
-
     this.loginService.appVerifier = this.windowRef.recaptchaVerifier;
   }
-
 }

@@ -2,12 +2,11 @@ import { Injectable } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { AngularFireAuth } from 'angularfire2/auth'
-import { LoginService } from '../login/login.service';
-
 import * as firebase from 'firebase';
 
 import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs';
+
+import { LoginService } from '../login/login.service';
 import { RecaptchaService } from '../reCAPTCHA/recaptcha.service';
 
 @Injectable()
@@ -22,7 +21,6 @@ export class AuthService {
     private loginService: LoginService,
     private recaptchaService: RecaptchaService) {
     this.User$ = this.afAuth.authState;
-    // this.afAuth.authState.subscribe();
   }
 
   login(value) {
@@ -49,7 +47,7 @@ export class AuthService {
     }
   }
 
-  signIn(value) {
+  signIn(value): void {
     if (this.recaptchaService.reCAPTCHAVerified) {
       if (value.emailOrPhone.includes("@")) {
         this.loginService.signInWithEmailAndPassword(value);
@@ -67,6 +65,6 @@ export class AuthService {
     localStorage.removeItem('returnUrl');
     this.loginService._currentUserSubject.next(null);
     this.afAuth.auth.signOut();
-    this.router.navigate(['/']);
+    this.router.navigate([this.router.url]);
   }
 }

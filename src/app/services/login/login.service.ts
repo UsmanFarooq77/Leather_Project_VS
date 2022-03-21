@@ -5,8 +5,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 import { user } from '../../models/user-model';
 import { User } from '../../interfaces/user';
+
 import { UserService } from '../user/user.service';
-import { AuthService } from '../auth/auth.service';
 import { RecaptchaService } from '../reCAPTCHA/recaptcha.service';
 
 @Injectable()
@@ -87,7 +87,7 @@ export class LoginService {
     })
   }
 
-  verifyOtpCode(verificationCode) {
+  verifyOtpCode(verificationCode: string) {
     if (!this.recaptchaService.reCAPTCHAVerified) return this.recaptchaService.reCAPTCHAVerifiedMessage();
     this.isSignedLoading = true;
     this.confirmationResult
@@ -113,7 +113,7 @@ export class LoginService {
       })
       .catch((error) => {
         this.isLoading(false);
-        alert(error.message + 'Please enter correct otp code or code has been expired.')
+        alert('Please enter correct otp code or code has been expired.')
       });
   }
 
