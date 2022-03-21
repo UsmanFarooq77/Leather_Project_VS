@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Login } from '../../interfaces/login';
 
 import { AuthService } from '../../services/auth/auth.service';
 import { LoginService } from '../../services/login/login.service';
@@ -32,7 +33,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  signIn(value: FormGroup): void {
+  signIn(value: Login): void {
     this.authService.signIn(value)
   }
 }

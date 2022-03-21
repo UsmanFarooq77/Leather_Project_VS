@@ -1,3 +1,4 @@
+import { Register } from './../../interfaces/register';
 import { Injectable } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -5,6 +6,7 @@ import { AngularFireAuth } from 'angularfire2/auth'
 import * as firebase from 'firebase';
 
 import { Observable } from 'rxjs/Observable';
+import { Login } from '../../interfaces/login';
 
 import { LoginService } from '../login/login.service';
 import { RecaptchaService } from '../reCAPTCHA/recaptcha.service';
@@ -34,7 +36,7 @@ export class AuthService {
     }
   }
 
-  signUp(value) {
+  signUp(value: Register) {
     if (this.recaptchaService.reCAPTCHAVerified) {
       if (value.emailOrPhone.includes("@")) {
         this.loginService.doRegisterWithEmail(value);
@@ -47,7 +49,7 @@ export class AuthService {
     }
   }
 
-  signIn(value): void {
+  signIn(value: Login): void {
     if (this.recaptchaService.reCAPTCHAVerified) {
       if (value.emailOrPhone.includes("@")) {
         this.loginService.signInWithEmailAndPassword(value);
@@ -60,7 +62,7 @@ export class AuthService {
     }
   }
 
-  logout() {
+  logout(): void {
     localStorage.removeItem('currentUser');
     localStorage.removeItem('returnUrl');
     this.loginService._currentUserSubject.next(null);

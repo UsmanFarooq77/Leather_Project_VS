@@ -1,3 +1,4 @@
+import { Register } from './../../interfaces/register';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
@@ -5,9 +6,11 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 import { user } from '../../models/user-model';
 import { User } from '../../interfaces/user';
+import { Login } from '../../interfaces/login';
 
 import { UserService } from '../user/user.service';
 import { RecaptchaService } from '../reCAPTCHA/recaptcha.service';
+
 
 @Injectable()
 export class LoginService {
@@ -22,7 +25,6 @@ export class LoginService {
 
   public user = new user();
   registerFormValues: any;
-  userFiltered: any[];
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -43,7 +45,7 @@ export class LoginService {
     return this._openLoginModal.asObservable();
   }
 
-  signInWithEmailAndPassword(value) {
+  signInWithEmailAndPassword(value: Login) {
     this.isLoading(true);
     this.afAuth.auth.signInWithEmailAndPassword(value.emailOrPhone, value.password).
       then((user) => {
@@ -58,7 +60,7 @@ export class LoginService {
         });
   }
 
-  signInWithPhoneNumber(value) {
+  signInWithPhoneNumber(value: Login | Register) {
     this.isLoading(true);
     this.registerFormValues = value;
     if (!value.emailOrPhone.includes("+")) {
@@ -69,12 +71,12 @@ export class LoginService {
     this.userRegister(value);
   }
 
-  doRegisterWithEmail(value) {
+  doRegisterWithEmail(value: Register) {
     this.isLoading(true);
     this.afAuth.auth.createUserWithEmailAndPassword(value.emailOrPhone, value.password).then(
       (result) => {
         if (result) {
-          this.authStateChanged(value, result);
+          this.addUserIntoDatabase(value, result);
         }
         (error) => {
           this.isLoading(false);
@@ -95,7 +97,7 @@ export class LoginService {
       .then((result) => {
         if (result) {
           if (this.registerFormValues.firstName) {
-            this.authStateChanged(this.registerFormValues, result.user);
+            this.addUserIntoDatabase(this.registerFormValues, result.user);
           }
           else {
             this.userService.getUserWithPhoneNumber(result.user.phoneNumber).subscribe((user) => {
@@ -117,7 +119,7 @@ export class LoginService {
       });
   }
 
-  private doRegisterWithPhone(value, appVerifier) {
+  private doRegisterWithPhone(value: Login | Register, appVerifier: any) {
     this.afAuth.auth.signInWithPhoneNumber(value.emailOrPhone, appVerifier)
       .then((result) => {
         this.confirmationResult = result;
@@ -129,7 +131,7 @@ export class LoginService {
         });
   }
 
-  private userRegister(value) {
+  private userRegister(value: Login | Register) {
     this.userService.isUserExist(value.emailOrPhone).then((exist) => {
       if (!exist) {
         if (this.registerFormValues.firstName) {
@@ -160,11 +162,11 @@ export class LoginService {
     });
   }
 
-  private passwordVerify(value) {
+  private passwordVerify(value: Login) {
     return this.userService.userPasswordVerify(value.emailOrPhone, value.password)
   }
 
-  private authStateChanged(value, user) {
+  private addUserIntoDatabase(value: Register, user: any) {
     this.saveUserToLocalStorage(value, user);
     this.user.password = value.password;
     if (value.emailOrPhone.includes('@')) {
@@ -186,7 +188,7 @@ export class LoginService {
     }
   }
 
-  private saveUserToLocalStorage(value, user) {
+  private saveUserToLocalStorage(value: any, user: any) {
     this.isLoading(false);
 
     this.user.id = user.uid ? user.uid : user.id;
