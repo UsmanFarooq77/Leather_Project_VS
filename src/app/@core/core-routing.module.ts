@@ -1,4 +1,4 @@
-import { GuardsGuard } from './../guards/guards.guard';
+import { AuthGuard } from '../guards/auth.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -32,9 +32,9 @@ const routes: Routes = [
       { path: 'reviews', component: ReviewsComponent },
       {
         path: 'my-orders',
-        loadChildren: '../@orders/orders.module#OrdersModule', canActivate: [GuardsGuard]
+        loadChildren: '../@orders/orders.module#OrdersModule', canActivate: [AuthGuard]
       },
-      { path: 'booking/:id', component: BookingFormComponent },
+      { path: 'booking/:id', component: BookingFormComponent, canActivate: [AuthGuard] },
     ]
   }
 ];

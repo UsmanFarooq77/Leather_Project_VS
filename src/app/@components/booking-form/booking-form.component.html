@@ -107,7 +107,7 @@
                       <input name="user_phone" type="tel" class="form-control" placeholder="Phone #"
                         [(ngModel)]="bookings.user_phone" #phone="ngModel" required
                         pattern="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"
-                        onkeypress=" return (event.charCode >= 48 && event.charCode <=57 )" />
+                        (keypress)="checkOnlyNumbers($event)" />
                       <span *ngIf="phone.errors?.required && phone.touched"
                         class="glyphicon glyphicon-remove form-control-feedback"></span>
                       <span *ngIf="phone.valid && phone.touched"

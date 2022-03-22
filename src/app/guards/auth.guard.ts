@@ -8,7 +8,7 @@ import { LoginService } from '../services/login/login.service';
 import { AuthService } from '../services/auth/auth.service';
 
 @Injectable()
-export class GuardsGuard implements CanActivate {
+export class AuthGuard implements CanActivate {
   constructor(
     private authService: AuthService,
     private router: Router,

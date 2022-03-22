@@ -15,7 +15,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 import { AdminserviceService } from './services/admin/adminservice.service';
 import { AuthService } from './services/auth/auth.service';
-import { GuardsGuard } from './guards/guards.guard';
+import { AuthGuard } from './guards/auth.guard';
 import { MainModalComponent } from './main-modal/main-modal.component';
 
 
@@ -36,7 +36,7 @@ import { MainModalComponent } from './main-modal/main-modal.component';
     CoreModule,
     AppRoutingModule
   ],
-  providers: [AdminserviceService, AuthService, GuardsGuard],
+  providers: [AdminserviceService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

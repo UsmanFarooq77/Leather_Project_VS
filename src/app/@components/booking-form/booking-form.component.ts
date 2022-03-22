@@ -26,7 +26,7 @@ export class BookingFormComponent implements OnInit {
   }
   ngOnInit() {
     this.scrollToUp();
-    this.subcription = this.adservice.getPost().subscribe((posts) => this.filteredPosts = posts.filter((post) => post.$key == this.id ))
+    this.subcription = this.adservice.getPost().subscribe((posts) => this.filteredPosts = posts.filter((post) => post.$key == this.id))
   }
   booking(booking: NgForm) {
     if (confirm("Are You Sure To Add Booking?")) {
@@ -65,5 +65,8 @@ export class BookingFormComponent implements OnInit {
       top: 0,
       behavior: 'smooth'
     });
+  }
+  checkOnlyNumbers(value: KeyboardEvent) {
+    return (value.key.charCodeAt(0) >= 48 && value.key.charCodeAt(0) <= 57);
   }
 }
