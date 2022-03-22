@@ -32,7 +32,7 @@ const routes: Routes = [
       { path: 'reviews', component: ReviewsComponent },
       {
         path: 'my-orders',
-        loadChildren: 'app/@orders/orders.module#OrdersModule', canActivate: [GuardsGuard]
+        loadChildren: '../@orders/orders.module#OrdersModule', canActivate: [GuardsGuard]
       },
       { path: 'booking/:id', component: BookingFormComponent },
     ]
