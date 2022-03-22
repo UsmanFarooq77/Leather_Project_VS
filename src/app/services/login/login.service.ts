@@ -174,8 +174,14 @@ export class LoginService {
         alert('Congratulation! ' + value.firstName + ' You has been successfully registered.');
       },
         (error) => {
-          alert(error.message);
-        });
+          alert(error.message + 'Sorry! Something went wrong');
+          localStorage.removeItem('currentUser');
+        }).catch(
+          (error) => {
+            alert(error.message + 'Sorry! Something went wrong');
+            localStorage.removeItem('currentUser');
+          }
+        );
     }
     else {
       this.user.password = value.password;
@@ -183,8 +189,14 @@ export class LoginService {
         alert('Congratulation! ' + value.firstName + ' You has been successfully registered.');
       },
         (error) => {
-          alert(error.message);
-        });
+          alert(error.message + 'Sorry! Something went wrong');
+          localStorage.removeItem('currentUser');
+        }).catch(
+          (error) => {
+            alert(error.message + 'Sorry! Something went wrong');
+            localStorage.removeItem('currentUser');
+          }
+        );
     }
   }
 
