@@ -1,0 +1,26 @@
+.myOrderSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .myOrderSection .heading {
+    text-align: center;
+    color: crimson;
+    width: 70%;
+  }
+  
+  .date_countdown_section {
+    margin: 10px;
+    background: black;
+    width: 30%;
+    text-align: center;
+  }
+  
+  @media (max-width: 425px) {
+    .myOrderSection .heading {
+      width: 100%;
+    }
+  }
+  
