@@ -1,21 +1,28 @@
-import { Subscription } from 'rxjs/Subscription';
-import { comment } from '../../interfaces/comment';
-import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AdminserviceService } from '../../services/admin/adminservice.service';
-import { comments } from '../../models/comment-model';
+import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
+
+import { AdminserviceService } from '../../services/admin/adminservice.service';
+import { UserService } from '../../services/user/user.service';
+
+import { comments } from '../../models/comment-model';
+import { comment } from '../../interfaces/comment';
+import { User } from '../../interfaces/user';
+
+
+import { Subscription } from 'rxjs/Subscription';
+
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
   styleUrls: ['./comments.component.css']
 })
+
 export class CommentsComponent implements OnInit, OnDestroy {
 
   Comments: comment[];
   comment_date: Date = new Date();
   isAlertHide: boolean;
-  public comment = new comments();
   id: string;
   IdLower: any;
   unapproved: string;
@@ -23,9 +30,13 @@ export class CommentsComponent implements OnInit, OnDestroy {
   commentStatus: string;
   autoGenerateId: string;
   commentsSubscription: Subscription;
+  currentUser: User;
+
+  public comment = new comments();
 
   constructor(
     private adminService: AdminserviceService,
+    private userService: UserService,
     private route: ActivatedRoute) {
     this.id = this.route.snapshot.paramMap.get("id");
     this.IdLower = this.id.substr(0, this.id.length);
@@ -38,6 +49,11 @@ export class CommentsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.commentsSubscription = this.adminService.getComment().subscribe((comments) => this.Comments = comments.filter((comment) => this.id == comment.id && this.commentStatus == comment.comment_status));
+    if (this.userService.currentUser()) {
+      this.currentUser = this.userService.currentUser();
+      this.comment.comment_author = this.currentUser.firstName + ' ' + this.currentUser.lastName;
+      if (this.currentUser.emailOrPhone.includes('@')) return this.comment.comment_email = this.currentUser.emailOrPhone;
+    }
   }
 
   commentUser(comment: NgForm) {
