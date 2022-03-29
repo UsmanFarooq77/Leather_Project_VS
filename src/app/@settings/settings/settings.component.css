@@ -1,26 +1,59 @@
 .myOrderSection {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  height: 100vh;
+  margin-top: 112px;
+}
+.myOrderSection .message {
+  text-align: center;
+  font-size: 40px;
+  color: crimson;
+  padding: 0px 5px 0px 5px;
+}
+.date_countdown_section {
+  margin: 10px;
+  background: black;
+  width: 50%;
+  text-align: center;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .myOrderSection img {
+    margin-top: 38px;
+    width: 40%;
   }
-  .myOrderSection .heading {
-    text-align: center;
-    color: crimson;
+  .myOrderSection .message {
+    /* width: 95%; */
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 767px) {
+  .myOrderSection img {
+    width: 50%;
+    margin-top: 38px;
+  }
+  .myOrderSection .message {
+    /* width: 100%; */
+    font-size: 28px;
+  }
+  .date_countdown_section {
     width: 70%;
   }
-  
+}
+
+@media (max-width: 570px) {
+  .myOrderSection img {
+    width: 70%;
+    margin-top: 38px;
+  }
+  .myOrderSection .message {
+    /* width: 95%; */
+    font-size: 25px;
+  }
   .date_countdown_section {
-    margin: 10px;
-    background: black;
-    width: 30%;
-    text-align: center;
+    width: 95%;
   }
-  
-  @media (max-width: 425px) {
-    .myOrderSection .heading {
-      width: 100%;
-    }
-  }
-  
+}
