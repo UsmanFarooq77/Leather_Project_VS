@@ -86,7 +86,7 @@
     <div class="row">
       <ng-container *ngFor="let post of filteredCategories | reverse | filter : searchText | paginate : {itemsPerPage:9, currentPage: pageNumber};
         let i=index">
-        <div class="col-md-6 col-lg-4 mb-5 w3-animate-left">
+        <div class="col-md-6 col-lg-4 mb-5 w3-animate-left" [ngClass]="{'sold_out_blur': !post.post_status}">
           <div class="hotel-room text-center">
             <span *ngIf="post.post_discount && post.post_discount >= 1" class="discount_logo">{{'-'+post.post_discount |
               number: '1.0-0' }}%</span>
