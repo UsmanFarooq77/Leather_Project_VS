@@ -1,7 +1,9 @@
 .site-section {
   padding: 1em 0 !important;
 }
-
+.sold_out_blur {
+  opacity: 0.5;
+}
 .main_services .col-md-2 img {
   transition: all 0.5s linear;
 }

@@ -10,6 +10,7 @@ import { SliderComponent } from './slider/slider.component';
 import { LoginService } from '../services/login/login.service';
 import { UserService } from '../services/user/user.service';
 import { RecaptchaService } from '../services/reCAPTCHA/recaptcha.service';
+import { TypingAnimationModule } from 'angular-typing-animation';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { RecaptchaService } from '../services/reCAPTCHA/recaptcha.service';
     OwlModule,
     SwiperModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    TypingAnimationModule
   ],
   exports: [
     CommonModule,
@@ -31,7 +33,8 @@ import { RecaptchaService } from '../services/reCAPTCHA/recaptcha.service';
     SwiperModule,
     ReactiveFormsModule,
     FormsModule,
-    SliderComponent
+    SliderComponent,
+    TypingAnimationModule
   ],
   declarations: [
     SliderComponent

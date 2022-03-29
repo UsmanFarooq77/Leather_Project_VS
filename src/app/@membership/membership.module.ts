@@ -9,13 +9,15 @@ import { RecaptchaComponent } from './recaptcha/recaptcha.component';
 import { VerifyOtpComponent } from './verify-otp/verify-otp.component';
 import { LoginModelComponent } from './login-model/login-model.component';
 import { LoginComponent } from './login/login.component';
+import { MembershipRoutingModule } from './membership-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     MaterialModule,
-    SharedModule
+    SharedModule,
+    MembershipRoutingModule
   ],
   declarations: [
     LoginComponent,

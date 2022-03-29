@@ -2,16 +2,23 @@ import { contacts } from '../../models/contact-model';
 import { Component, OnInit } from '@angular/core';
 import { AdminserviceService } from '../../services/admin/adminservice.service';
 import { NgForm } from '@angular/forms';
+import { UserService } from '../../services/user/user.service';
+import { User } from '../../interfaces/user';
+
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css']
 })
+
 export class ContactComponent implements OnInit {
   isAlertHide: boolean;
   public contact = new contacts();
   autoGenerateId: string;
-  constructor(private adservice:AdminserviceService) {
+  currentUser: User;
+
+  constructor(private adservice:AdminserviceService,
+    private userService: UserService ) {
     this.isAlertHide = null;
    }
   ngOnInit() {
@@ -19,6 +26,12 @@ export class ContactComponent implements OnInit {
       top:0,
       behavior: 'smooth'
     });
+    if (this.userService.currentUser()) {
+      this.currentUser = this.userService.currentUser();
+      this.contact.fullname = this.currentUser.firstName + ' ' + this.currentUser.lastName;
+      if (this.currentUser.emailOrPhone.includes('@')) return this.contact.email = this.currentUser.emailOrPhone;
+      this.contact.phone = this.currentUser.emailOrPhone;
+    }
   }
   addContact(contact:NgForm){
     if(confirm("Are You Sure To Contacting Us?")){
@@ -45,5 +58,8 @@ export class ContactComponent implements OnInit {
       top:500,
       behavior: 'smooth'
     });
+  }
+  checkOnlyNumbers(value: KeyboardEvent) {
+    return (value.key.charCodeAt(0) >= 48 && value.key.charCodeAt(0) <= 57);
   }
 }

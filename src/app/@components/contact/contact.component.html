@@ -79,7 +79,7 @@
                     <input style="border-radius: 8px;" type="tel" name="phone" class="form-control"
                       placeholder="Phone #" [(ngModel)]="contact.phone" required
                       pattern="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]" #phoneCheck='ngModel'
-                      onkeypress=" return (event.charCode >= 48 && event.charCode <=57 )">
+                      (keypress)="checkOnlyNumbers($event)">
                   </div>
                   <span *ngIf="phoneCheck.errors?.required && phoneCheck.touched"
                     class="glyphicon glyphicon-remove form-control-feedback"></span>

@@ -29,5 +29,8 @@
     <button [disabled]="registerForm.invalid || !!loginService.confirmationResult" mat-raised-button color="primary">Log In
       <i *ngIf="loginService.isSignedLoading && !loginService.confirmationResult" class="fa fa-spinner fa-spin" style="font-size:20px"></i>
     </button>
+    <div class="forgot_password_section">
+      <a title="Please Contact Us" (click)="navigateToContact()">Forgot Password?</a>
+    </div>
   </form>
 </div>

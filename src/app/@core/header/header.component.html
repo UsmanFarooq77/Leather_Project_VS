@@ -55,10 +55,13 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" routerLink="/my-orders" routerLinkActive="Active">
-                    My Orders
+                    <i class="fa fa-table" aria-hidden="true"></i>&nbsp; My Orders
+                  </a>
+                  <a class="dropdown-item" routerLink="/settings" routerLinkActive="Active">
+                    <i class="fa fa-cog" aria-hidden="true"></i>&nbsp; Settings
                   </a>
                   <a class="dropdown-item" (click)="logout()">
-                    Logout
+                    <i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp; Logout
                   </a>
                 </div>
               </li>

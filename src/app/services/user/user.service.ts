@@ -1,10 +1,31 @@
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
+import { User } from '../../interfaces/user';
+
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable()
 export class UserService {
 
-  constructor(private db: AngularFireDatabase) { }
+  user: User;
+
+  public _currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')))
+  public _currentUser: Observable<User>;
+
+
+  constructor(private db: AngularFireDatabase) {
+    this._currentUser = this._currentUserSubject.asObservable();
+    this._currentUser.subscribe((user) => {
+      if (user) {
+        this.user = user;
+      }
+      (error) => { alert(error.message); }
+    })
+  }
+
+  currentUser(): User {
+    return this.user;
+  }
 
   addUserWithId(user, uid) {
     const toSend = this.db.object('/users/' + uid);

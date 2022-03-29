@@ -10,6 +10,7 @@ import { Login } from '../../interfaces/login';
 
 import { LoginService } from '../login/login.service';
 import { RecaptchaService } from '../reCAPTCHA/recaptcha.service';
+import { UserService } from '../user/user.service';
 
 @Injectable()
 export class AuthService {
@@ -21,6 +22,7 @@ export class AuthService {
     private router: Router,
     private route: ActivatedRoute,
     private loginService: LoginService,
+    private userService: UserService,
     private recaptchaService: RecaptchaService) {
     this.User$ = this.afAuth.authState;
   }
@@ -65,7 +67,7 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('currentUser');
     localStorage.removeItem('returnUrl');
-    this.loginService._currentUserSubject.next(null);
+    this.userService._currentUserSubject.next(null);
     this.afAuth.auth.signOut();
     this.router.navigate(['/']);
   }

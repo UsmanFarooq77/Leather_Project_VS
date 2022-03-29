@@ -34,6 +34,10 @@ const routes: Routes = [
         path: 'my-orders',
         loadChildren: '../@orders/orders.module#OrdersModule', canActivate: [AuthGuard]
       },
+      {
+        path: 'settings',
+        loadChildren: '../@settings/settings.module#SettingsModule', canActivate: [AuthGuard]
+      },
       { path: 'booking/:id', component: BookingFormComponent, canActivate: [AuthGuard] },
     ]
   }

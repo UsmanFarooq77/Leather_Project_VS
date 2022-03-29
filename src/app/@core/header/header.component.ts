@@ -6,6 +6,7 @@ import { User } from '../../interfaces/user';
 import { AdminserviceService } from '../../services/admin/adminservice.service';
 import { AuthService } from '../../services/auth/auth.service';
 import { LoginService } from '../../services/login/login.service';
+import { UserService } from '../../services/user/user.service';
 
 declare var $: any;
 
@@ -23,9 +24,9 @@ export class HeaderComponent implements OnInit {
 
   constructor(private adService: AdminserviceService,
     public router: Router,
-    private route: ActivatedRoute,
     public authService: AuthService,
-    public loginService: LoginService) {
+    public loginService: LoginService,
+    private userService: UserService) {
     this.user = "";
   }
 
@@ -56,7 +57,7 @@ export class HeaderComponent implements OnInit {
       //   $dropdown.off("mouseenter mouseleave");
       // }
     });
-    this.loginService.currentUser.subscribe((user) => {
+    this.userService._currentUser.subscribe((user) => {
       if (user)
         this.currentUser = user;
       else {

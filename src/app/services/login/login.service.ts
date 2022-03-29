@@ -5,7 +5,6 @@ import { BehaviorSubject } from 'rxjs';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 import { user } from '../../models/user-model';
-import { User } from '../../interfaces/user';
 import { Login } from '../../interfaces/login';
 
 import { UserService } from '../user/user.service';
@@ -16,9 +15,7 @@ import { RecaptchaService } from '../reCAPTCHA/recaptcha.service';
 export class LoginService {
 
   public _openLoginModal = new BehaviorSubject(false);
-  public _currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')))
-  public currentUser: Observable<User>;
-
+  
   appVerifier: any;
   confirmationResult: any;
   isSignedLoading: boolean;
@@ -31,7 +28,6 @@ export class LoginService {
     private userService: UserService,
     private recaptchaService: RecaptchaService) {
     this.isSignedLoading = false;
-    this.currentUser = this._currentUserSubject.asObservable();
   }
 
   get windowRef() {
@@ -209,7 +205,7 @@ export class LoginService {
     this.user.emailOrPhone = value.emailOrPhone ? value.emailOrPhone : value;
 
     localStorage.setItem('currentUser', JSON.stringify(this.user));
-    this._currentUserSubject.next(this.user);
+    this.userService._currentUserSubject.next(this.user);
   }
 
   private isLoading(value: boolean) {
