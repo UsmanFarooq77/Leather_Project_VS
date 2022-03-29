@@ -13,21 +13,25 @@ import { NgForm } from '@angular/forms';
 export class BookingFormComponent implements OnInit {
   id: any;
   isAlertHide: boolean;
-  public bookings = new bookings();
   totalOrders: number;
   autoGenerateId: string;
   filteredPosts: Product[];
   subcription: Subscription;
+
+  public bookings = new bookings();
+
   constructor(private adservice: AdminserviceService, private route: ActivatedRoute) {
     this.id = this.route.snapshot.paramMap.get('id');
     this.totalOrders = 1;
     this.isAlertHide = null;
     this.filteredPosts = [];
   }
-  ngOnInit() {
+
+  ngOnInit() { 
     this.scrollToUp();
     this.subcription = this.adservice.getPost().subscribe((posts) => this.filteredPosts = posts.filter((post) => post.$key == this.id))
   }
+
   booking(booking: NgForm) {
     if (confirm("Are You Sure To Add Booking?")) {
       this.bookings.number_of_orders = this.totalOrders;
@@ -49,6 +53,7 @@ export class BookingFormComponent implements OnInit {
       this.scrollToUp();
     }
   }
+
   closeAlert(): void {
     this.isAlertHide = null;
   }

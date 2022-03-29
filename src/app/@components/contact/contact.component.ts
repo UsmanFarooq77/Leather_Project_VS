@@ -46,4 +46,7 @@ export class ContactComponent implements OnInit {
       behavior: 'smooth'
     });
   }
+  checkOnlyNumbers(value: KeyboardEvent) {
+    return (value.key.charCodeAt(0) >= 48 && value.key.charCodeAt(0) <= 57);
+  }
 }
