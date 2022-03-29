@@ -23,7 +23,6 @@ export class HeaderComponent implements OnInit {
 
   constructor(private adService: AdminserviceService,
     public router: Router,
-    private route: ActivatedRoute,
     public authService: AuthService,
     public loginService: LoginService) {
     this.user = "";
