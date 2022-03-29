@@ -15,6 +15,14 @@
   outline: 0px !important;
 }
 
+.forgot_password_section {
+  margin-top: 8px;
+}
+.forgot_password_section > a {
+  color: crimson;
+  cursor: pointer;
+}
+
 @media (min-width: 320px) and (max-width: 425px) {
   .login_form {
     text-align: center;

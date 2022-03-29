@@ -1,9 +1,11 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Login } from '../../interfaces/login';
 
 import { AuthService } from '../../services/auth/auth.service';
 import { LoginService } from '../../services/login/login.service';
+import { LoginModelComponent } from '../login-model/login-model.component';
 
 declare var $: any;
 
@@ -22,7 +24,9 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private authService: AuthService,
-    public loginService: LoginService) {
+    private router: Router,
+    public loginService: LoginService,
+    public loginModalRef: LoginModelComponent) {
     this.isSignedIn = false;
   }
 
@@ -35,5 +39,14 @@ export class LoginComponent implements OnInit {
 
   signIn(value: Login): void {
     this.authService.signIn(value)
+  }
+  navigateToContact() {
+    alert('Please send us your query or Ask any question?');
+    this.loginModalRef.hideModel();
+    window.scrollTo({
+      top: window.innerHeight / 2,
+      behavior: 'smooth'
+    });
+    this.router.navigate(['contact']);
   }
 }
